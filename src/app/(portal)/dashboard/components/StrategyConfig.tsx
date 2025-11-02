@@ -127,7 +127,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
   return (
     <div className="space-y-6">
       {/* Presets */}
-      <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg p-6 shadow-md border border-purple-200 dark:border-purple-800">
+      <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20p-6border-2 border-purple-200 dark:border-purple-800">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           快速配置预设
         </h2>
@@ -137,7 +137,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button
             onClick={() => applyPreset('conservative')}
-            className="p-4 bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:border-green-500 dark:hover:border-green-400 transition-all text-left group"
+            className="p-4 bg-white dark:bg-gray-800border-2 border-gray-300 dark:border-gray-600 hover:border-green-500 dark:hover:border-green-400 transition-all text-left group"
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-bold text-gray-900 dark:text-white">保守配置</h3>
@@ -155,7 +155,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
 
           <button
             onClick={() => applyPreset('moderate')}
-            className="p-4 bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-all text-left group"
+            className="p-4 bg-white dark:bg-gray-800border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-all text-left group"
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-bold text-gray-900 dark:text-white">适中配置</h3>
@@ -173,7 +173,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
 
           <button
             onClick={() => applyPreset('aggressive')}
-            className="p-4 bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-300 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-400 transition-all text-left group"
+            className="p-4 bg-white dark:bg-gray-800border-2 border-gray-300 dark:border-gray-600 hover:border-red-500 dark:hover:border-red-400 transition-all text-left group"
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-bold text-gray-900 dark:text-white">激进配置</h3>
@@ -192,7 +192,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
       </div>
 
       {/* Basic Settings */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+      <div className="bg-white dark:bg-gray-800p-6 ">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           基础设置
         </h2>
@@ -204,7 +204,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
             <select
               value={config.symbol}
               onChange={(e) => updateConfig(['symbol'], e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               {popularSymbols.map((symbol) => (
                 <option key={symbol} value={symbol}>
@@ -223,7 +223,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
             <select
               value={config.interval}
               onChange={(e) => updateConfig(['interval'], e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="1m">1分钟</option>
               <option value="5m">5分钟</option>
@@ -237,7 +237,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
       </div>
 
       {/* Strategy Settings */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+      <div className="bg-white dark:bg-gray-800p-6 ">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           策略设置
         </h2>
@@ -249,7 +249,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
             <select
               value={config.strategy.aggressiveness}
               onChange={(e) => updateConfig(['strategy', 'aggressiveness'], Number(e.target.value) as 1 | 2 | 3)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value={1}>1 - 保守 (所有条件必须满足)</option>
               <option value={2}>2 - 适中 (5个条件满足3个)</option>
@@ -267,7 +267,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 step="0.1"
                 value={config.strategy.trailingActivation}
                 onChange={(e) => updateConfig(['strategy', 'trailingActivation'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
             <div>
@@ -279,7 +279,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 step="0.1"
                 value={config.strategy.trailingDistance}
                 onChange={(e) => updateConfig(['strategy', 'trailingDistance'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
           </div>
@@ -287,7 +287,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
       </div>
 
       {/* Indicator Settings */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+      <div className="bg-white dark:bg-gray-800p-6 ">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           指标参数
         </h2>
@@ -306,7 +306,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 type="number"
                 value={config.strategy.indicators.keltner.maPeriod}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'keltner', 'maPeriod'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
             <div>
@@ -317,7 +317,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 type="number"
                 value={config.strategy.indicators.keltner.atrPeriod}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'keltner', 'atrPeriod'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
             <div>
@@ -329,7 +329,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 step="0.1"
                 value={config.strategy.indicators.keltner.atrMultiple}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'keltner', 'atrMultiple'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
           </div>
@@ -349,7 +349,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 type="number"
                 value={config.strategy.indicators.bollinger.period}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'bollinger', 'period'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
             <div>
@@ -361,7 +361,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 step="0.1"
                 value={config.strategy.indicators.bollinger.deviation}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'bollinger', 'deviation'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
           </div>
@@ -381,7 +381,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 type="number"
                 value={config.strategy.indicators.macd.fastPeriod}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'macd', 'fastPeriod'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
             <div>
@@ -392,7 +392,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 type="number"
                 value={config.strategy.indicators.macd.slowPeriod}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'macd', 'slowPeriod'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
             <div>
@@ -403,7 +403,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 type="number"
                 value={config.strategy.indicators.macd.signalPeriod}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'macd', 'signalPeriod'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
           </div>
@@ -423,7 +423,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                 type="number"
                 value={config.strategy.indicators.cci.period}
                 onChange={(e) => updateConfig(['strategy', 'indicators', 'cci', 'period'], Number(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
           </div>
@@ -440,7 +440,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                   type="number"
                   value={config.strategy.indicators.supertrend.period}
                   onChange={(e) => updateConfig(['strategy', 'indicators', 'supertrend', 'period'], Number(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 />
               </div>
               <div>
@@ -452,7 +452,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
                   step="0.1"
                   value={config.strategy.indicators.supertrend.multiplier}
                   onChange={(e) => updateConfig(['strategy', 'indicators', 'supertrend', 'multiplier'], Number(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 />
               </div>
             </div>
@@ -461,7 +461,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
       </div>
 
       {/* Risk Management */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+      <div className="bg-white dark:bg-gray-800p-6 ">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           风险管理
         </h2>
@@ -474,7 +474,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
               type="number"
               value={config.risk.maxDailyLoss}
               onChange={(e) => updateConfig(['risk', 'maxDailyLoss'], Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
           <div>
@@ -486,7 +486,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
               step="0.01"
               value={config.risk.maxDrawdown}
               onChange={(e) => updateConfig(['risk', 'maxDrawdown'], Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
           <div>
@@ -497,7 +497,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
               type="number"
               value={config.risk.maxPositions}
               onChange={(e) => updateConfig(['risk', 'maxPositions'], Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
           <div>
@@ -509,7 +509,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
               step="0.1"
               value={config.risk.positionSize}
               onChange={(e) => updateConfig(['risk', 'positionSize'], Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
           <div>
@@ -521,14 +521,14 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
               step="0.1"
               value={config.risk.stopLossMultiple}
               onChange={(e) => updateConfig(['risk', 'stopLossMultiple'], Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             />
           </div>
         </div>
       </div>
 
       {/* Save/Load Config */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+      <div className="bg-white dark:bg-gray-800p-6 ">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           配置管理
         </h2>
@@ -543,7 +543,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
               a.download = `trading-config-${Date.now()}.json`;
               a.click();
             }}
-            className="flex-1 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+            className="flex-1 px-6 py-3 bg-green-600 text-white font-semibold  hover:bg-green-700 transition-colors"
           >
             导出配置
           </button>
@@ -568,7 +568,7 @@ export default function StrategyConfig({ config, onConfigChange }: StrategyConfi
               };
               input.click();
             }}
-            className="flex-1 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+            className="flex-1 px-6 py-3 bg-blue-600 text-white font-semibold  hover:bg-blue-700 transition-colors"
           >
             导入配置
           </button>

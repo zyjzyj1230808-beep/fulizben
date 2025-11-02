@@ -190,12 +190,12 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
   return (
     <div className="space-y-6">
       {/* Binance Connection Status */}
-      <div className={`rounded-lg p-4 shadow-md ${
+      <div className={` p-4  ${
         binanceConnected
-          ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
+          ? 'bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-800'
           : isConnecting
-          ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800'
-          : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
+          ? 'bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800'
+          : 'bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800'
       }`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -237,13 +237,13 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
             <button
               onClick={checkBinanceConnection}
               disabled={isConnecting || !apiKey || !apiSecret}
-              className="px-3 py-1 text-sm bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-3 py-1 text-sm bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isConnecting ? '连接中...' : '测试连接'}
             </button>
             <button
               onClick={() => setShowApiConfig(!showApiConfig)}
-              className="px-3 py-1 text-sm bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+              className="px-3 py-1 text-sm bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
             >
               配置
             </button>
@@ -265,7 +265,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
                   type="text"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-mono"
+                  className="w-full px-3 py-2 text-sm border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-mono"
                   placeholder="输入您的Binance API Key"
                 />
               </div>
@@ -277,7 +277,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
                   type="password"
                   value={apiSecret}
                   onChange={(e) => setApiSecret(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-mono"
+                  className="w-full px-3 py-2 text-sm border-2 border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-mono"
                   placeholder="输入您的Binance API Secret"
                 />
               </div>
@@ -304,7 +304,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
       </div>
 
       {/* Warning Banner */}
-      <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+      <div className="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-200 dark:border-yellow-800p-4">
         <div className="flex items-start">
           <svg className="w-5 h-5 text-yellow-600 dark:text-yellow-400 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
@@ -321,7 +321,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
       </div>
 
       {/* Auto Refresh Toggle */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md flex items-center justify-between">
+      <div className="bg-white dark:bg-gray-800p-4  flex items-center justify-between">
         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
           自动刷新 (5秒)
         </span>
@@ -344,14 +344,14 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4"
+          className="bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800p-4"
         >
           <p className="text-red-800 dark:text-red-200 font-medium">错误: {error}</p>
         </motion.div>
       )}
 
       {/* Current Signal */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+      <div className="bg-white dark:bg-gray-800p-6 ">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           当前信号
         </h2>
@@ -359,7 +359,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
           <div>
             <div className="flex items-center justify-between mb-4">
               <div>
-                <span className={`px-4 py-2 rounded-lg text-lg font-bold ${
+                <span className={`px-4 py-2  text-lg font-bold ${
                   signal.type === 'long'
                     ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
                     : signal.type === 'short'
@@ -414,7 +414,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
               <button
                 onClick={executeSignal}
                 disabled={loading}
-                className="w-full mt-4 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                className="w-full mt-4 px-6 py-3 bg-indigo-600 text-white font-semibold  hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
               >
                 {loading ? '执行中...' : '执行交易'}
               </button>
@@ -426,7 +426,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
       </div>
 
       {/* Current Position */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+      <div className="bg-white dark:bg-gray-800p-6 ">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
           当前仓位
         </h2>
@@ -466,7 +466,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
             <button
               onClick={closePosition}
               disabled={loading}
-              className="w-full px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+              className="w-full px-6 py-3 bg-red-600 text-white font-semibold  hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
             >
               {loading ? '平仓中...' : '平仓'}
             </button>
@@ -478,7 +478,7 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
 
       {/* Account Balance */}
       {balance && (
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+        <div className="bg-white dark:bg-gray-800p-6 ">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
             账户余额
           </h2>

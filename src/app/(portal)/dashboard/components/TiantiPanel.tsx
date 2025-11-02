@@ -38,7 +38,7 @@ export default function TiantiPanel() {
   return (
     <div className="space-y-6">
       {/* Controls */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800p-6border-2 border-gray-200 dark:border-gray-700">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
@@ -51,12 +51,12 @@ export default function TiantiPanel() {
 
           <div className="flex items-center gap-4">
             {/* Auto Refresh Toggle */}
-            <label className="flex items-center gap-3 cursor-pointer bg-gray-50 dark:bg-gray-700/50 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <label className="flex items-center gap-3 cursor-pointer bg-gray-50 dark:bg-gray-700/50 px-4 py-2  hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <input
                 type="checkbox"
                 checked={autoRefresh}
                 onChange={(e) => setAutoRefresh(e.target.checked)}
-                className="w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                className="w-5 h-5 text-black dark:text-white border-gray-300 rounded focus:ring-black dark:focus:ring-white"
               />
               <span className="text-sm font-medium text-gray-900 dark:text-white">
                 自动刷新
@@ -66,7 +66,7 @@ export default function TiantiPanel() {
             {/* Manual Refresh Button */}
             <button
               onClick={handleManualRefresh}
-              className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105 shadow-md hover:shadow-lg"
+              className="px-4 py-2 bg-black dark:bg-white text-white font-semibold  hover:bg-gray-800 dark:hover:bg-gray-200 transition-all transform   hover:"
             >
                手动刷新
             </button>
@@ -76,7 +76,7 @@ export default function TiantiPanel() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg font-mono font-bold"
+                className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300  font-mono font-bold"
               >
                 {countdown}s
               </motion.div>
@@ -86,13 +86,13 @@ export default function TiantiPanel() {
       </div>
 
       {/* Image Display */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800p-4border-2 border-gray-200 dark:border-gray-700">
         <div className="relative w-full overflow-auto">
           <img
             key={refreshKey}
             src={`${imageUrl}?t=${refreshKey}`}
             alt="天梯趋势指示器"
-            className="w-full h-auto rounded-lg"
+            className="w-full h-auto "
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="600"%3E%3Crect width="800" height="600" fill="%23f3f4f6"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="%239ca3af"%3E加载失败%3C/text%3E%3C/svg%3E';

@@ -7,7 +7,7 @@ import type { TradingConfig, BacktestResult } from '@/lib/trading/types';
 
 const ProfitChart = dynamic(() => import('./ProfitChart'), {
   ssr: false,
-  loading: () => <div className="w-full h-[400px] flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg">加载图表中...</div>
+  loading: () => <div className="w-full h-[400px] flex items-center justify-center bg-gray-100 dark:bg-gray-800 ">加载图表中...</div>
 });
 
 interface BacktestPanelProps {
@@ -74,7 +74,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
   return (
     <div className="space-y-6">
       {/* Controls */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800  p-6  border border-gray-200 dark:border-gray-700">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
           回测参数配置
         </h2>
@@ -88,7 +88,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-all"
             />
           </div>
 
@@ -100,7 +100,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-all"
             />
           </div>
 
@@ -112,18 +112,18 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
               type="number"
               value={initialCapital}
               onChange={(e) => setInitialCapital(Number(e.target.value))}
-              className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600  bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-black dark:focus:border-white transition-all"
             />
           </div>
         </div>
 
-        <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+        <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700/50 ">
           <label className="flex items-center space-x-3 cursor-pointer">
             <input
               type="checkbox"
               checked={useHistoricalData}
               onChange={(e) => setUseHistoricalData(e.target.checked)}
-              className="w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+              className="w-5 h-5 text-black dark:text-white border-gray-300 rounded focus:ring-black dark:focus:ring-white"
             />
             <span className="text-sm font-medium text-gray-900 dark:text-white">
               使用模拟历史数据 (不需要Binance连接)
@@ -139,7 +139,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
         <button
           onClick={runBacktest}
           disabled={loading}
-          className="w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg rounded-lg hover:from-purple-700 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          className="w-full px-6 py-4 bg-black dark:bg-white text-white font-bold text-lg  hover:bg-gray-800 dark:hover:bg-gray-200 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-all  hover: "
         >
           {loading ? (
             <span className="flex items-center justify-center">
@@ -158,7 +158,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-800 rounded-xl p-4"
+          className="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-800  p-4"
         >
           <div className="flex items-start">
             <div className="flex-shrink-0">
@@ -183,7 +183,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
         >
           {/* Data Source Info */}
           {(results as any).dataSource && (
-            <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-xl p-4">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800  p-4">
               <div className="flex items-center">
                 <svg className="h-5 w-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
@@ -196,7 +196,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
           )}
 
           {/* Performance Overview */}
-          <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-xl p-6 border-2 border-purple-200 dark:border-purple-800">
+          <div className="bg-white dark:bg-gray-800  p-6 border-2 border-purple-200 dark:border-purple-800">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">核心表现指标</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <MetricCard
@@ -228,7 +228,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
           </div>
 
           {/* Detailed Metrics */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800  p-6 border-2 border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">详细统计</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <MetricCard
@@ -260,7 +260,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
           </div>
 
           {/* Equity Curve Chart */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800  p-6 border-2 border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
               <span className="mr-2"></span>
               资金曲线
@@ -269,12 +269,12 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
           </div>
 
           {/* Trade List */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-800  p-6 border-2 border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
               <span className="mr-2"></span>
               交易记录 ({results.trades.length})
             </h3>
-            <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="overflow-x-auto  border border-gray-200 dark:border-gray-700">
               <table className="w-full text-sm">
                 <thead className="bg-gray-100 dark:bg-gray-700 border-b-2 border-gray-200 dark:border-gray-600">
                   <tr>
@@ -365,7 +365,7 @@ function MetricCard({ title, value, subtitle, icon, color }: MetricCardProps) {
   };
 
   return (
-    <div className={`border-2 rounded-xl p-4 transition-all hover:shadow-lg ${colorClasses[color]}`}>
+    <div className={`border-2  p-4 transition-all hover: ${colorClasses[color]}`}>
       <div className="flex items-center justify-between mb-2">
         <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">{title}</p>
         {icon && <span className="text-2xl">{icon}</span>}

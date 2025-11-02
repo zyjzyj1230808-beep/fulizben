@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import BacktestPanel from './components/BacktestPanel';
 import LiveTradePanel from './components/LiveTradePanel';
-import StrategyConfig from './components/StrategyConfig';
 import TiantiPanel from './components/TiantiPanel';
 import AdminLogin from './components/AdminLogin';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -115,7 +114,7 @@ export default function TradingDashboard() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
         <Tabs defaultValue="backtest" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
             <TabsTrigger value="backtest">
               {t('dashboard.tab.backtest')}
             </TabsTrigger>
@@ -125,28 +124,24 @@ export default function TradingDashboard() {
             <TabsTrigger value="tianti">
               {t('dashboard.tab.tianti')}
             </TabsTrigger>
-            <TabsTrigger value="config">
-              {t('dashboard.tab.config')}
-            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="backtest" className="space-y-6">
-            <BacktestPanel tradingConfig={tradingConfig} />
+            <BacktestPanel
+              tradingConfig={tradingConfig}
+              onConfigChange={setTradingConfig}
+            />
           </TabsContent>
 
           <TabsContent value="live" className="space-y-6">
-            <LiveTradePanel tradingConfig={tradingConfig} />
+            <LiveTradePanel
+              tradingConfig={tradingConfig}
+              onConfigChange={setTradingConfig}
+            />
           </TabsContent>
 
           <TabsContent value="tianti" className="space-y-6">
             <TiantiPanel />
-          </TabsContent>
-
-          <TabsContent value="config" className="space-y-6">
-            <StrategyConfig
-              config={tradingConfig}
-              onConfigChange={setTradingConfig}
-            />
           </TabsContent>
         </Tabs>
       </div>

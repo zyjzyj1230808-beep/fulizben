@@ -2,13 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import CompactStrategyConfig from './CompactStrategyConfig';
 import type { TradingConfig, Signal } from '@/lib/trading/types';
 
 interface LiveTradePanelProps {
   tradingConfig: TradingConfig;
+  onConfigChange?: (config: TradingConfig) => void;
 }
 
-export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
+export default function LiveTradePanel({ tradingConfig: initialConfig, onConfigChange }: LiveTradePanelProps) {
+  const [tradingConfig, setTradingConfig] = useState<TradingConfig>(initialConfig);
   const [signal, setSignal] = useState<Signal | null>(null);
   const [position, setPosition] = useState<any>(null);
   const [balance, setBalance] = useState<any>(null);
@@ -24,6 +27,13 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
   const [apiSecret, setApiSecret] = useState('');
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectionError, setConnectionError] = useState<string>('');
+
+  const handleConfigChange = (newConfig: TradingConfig) => {
+    setTradingConfig(newConfig);
+    if (onConfigChange) {
+      onConfigChange(newConfig);
+    }
+  };
 
   // 检查Binance连接状态
   const checkBinanceConnection = async () => {
@@ -189,6 +199,13 @@ export default function LiveTradePanel({ tradingConfig }: LiveTradePanelProps) {
 
   return (
     <div className="space-y-6">
+      {/* Strategy Config */}
+      <CompactStrategyConfig
+        config={tradingConfig}
+        onConfigChange={handleConfigChange}
+        showPresets={true}
+      />
+
       {/* Binance Connection Status */}
       <div className={`p-6 border-2 ${
         binanceConnected

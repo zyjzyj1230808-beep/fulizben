@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import dynamic from 'next/dynamic';
+import CompactStrategyConfig from './CompactStrategyConfig';
 import type { TradingConfig, BacktestResult } from '@/lib/trading/types';
 
 const ProfitChart = dynamic(() => import('./ProfitChart'), {
@@ -12,9 +13,11 @@ const ProfitChart = dynamic(() => import('./ProfitChart'), {
 
 interface BacktestPanelProps {
   tradingConfig: TradingConfig;
+  onConfigChange?: (config: TradingConfig) => void;
 }
 
-export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
+export default function BacktestPanel({ tradingConfig: initialConfig, onConfigChange }: BacktestPanelProps) {
+  const [tradingConfig, setTradingConfig] = useState<TradingConfig>(initialConfig);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<BacktestResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +30,13 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
     new Date().toISOString().split('T')[0]
   );
   const [initialCapital, setInitialCapital] = useState(10000);
-  const [useHistoricalData, setUseHistoricalData] = useState(true);
+
+  const handleConfigChange = (newConfig: TradingConfig) => {
+    setTradingConfig(newConfig);
+    if (onConfigChange) {
+      onConfigChange(newConfig);
+    }
+  };
 
   const runBacktest = async () => {
     setLoading(true);
@@ -44,7 +53,7 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
           initialCapital,
           tradingConfig,
           useTestnet: true,
-          useHistoricalData,
+          useHistoricalData: false, // Always use real data from Binance
         }),
       });
 
@@ -73,6 +82,13 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
 
   return (
     <div className="space-y-6">
+      {/* Strategy Config */}
+      <CompactStrategyConfig
+        config={tradingConfig}
+        onConfigChange={handleConfigChange}
+        showPresets={true}
+      />
+
       {/* Controls */}
       <div className="bg-white dark:bg-gray-800 p-8 border-2 border-black dark:border-white">
         <h2 className="text-2xl font-bold text-black dark:text-white mb-6 pb-3 border-b-2 border-black dark:border-white">
@@ -118,22 +134,19 @@ export default function BacktestPanel({ tradingConfig }: BacktestPanelProps) {
         </div>
 
         <div className="mb-6 p-4 bg-white dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700">
-          <label className="flex items-center space-x-3 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={useHistoricalData}
-              onChange={(e) => setUseHistoricalData(e.target.checked)}
-              className="w-5 h-5 border-2 border-gray-300 dark:border-gray-700 focus:ring-0"
-            />
-            <span className="text-sm font-bold text-black dark:text-white">
-              使用模拟历史数据 (不需要Binance连接)
-            </span>
-          </label>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 ml-8">
-            {useHistoricalData
-              ? '将使用确定性算法生成的历史数据，每次运行相同参数结果一致'
-              : '将尝试从Binance获取真实历史数据，需要API凭证'}
-          </p>
+          <div className="flex items-start">
+            <svg className="w-5 h-5 text-black dark:text-white mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+            </svg>
+            <div>
+              <p className="text-sm font-bold text-black dark:text-white">
+                使用Binance真实历史数据
+              </p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                回测将使用Binance免费提供的{tradingConfig.symbol}历史K线数据，无需API密钥
+              </p>
+            </div>
+          </div>
         </div>
 
         <button

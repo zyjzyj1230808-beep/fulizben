@@ -4,7 +4,6 @@ import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { blogPosts } from '@/data/blogPosts';
-import ReactMarkdown from 'react-markdown';
 import { motion } from 'motion/react';
 
 export default function BlogPostPage() {
@@ -134,7 +133,7 @@ export default function BlogPostPage() {
             prose-code:text-gray-900 dark:prose-code:text-white prose-code:bg-gray-100 dark:prose-code:bg-gray-800
             prose-code:px-2 prose-code:py-1 prose-code:rounded"
         >
-          <ReactMarkdown>{post.content[language]}</ReactMarkdown>
+          <div dangerouslySetInnerHTML={{ __html: post.content[language] }} />
         </motion.article>
       </div>
 

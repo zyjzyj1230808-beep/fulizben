@@ -3,6 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+interface ExchangeRates {
+  [key: string]: number;
+}
+
 export default function PositionCalculatorPage() {
   const { language } = useLanguage();
   const isZh = language === 'zh';
@@ -14,6 +18,12 @@ export default function PositionCalculatorPage() {
   const [currencyPair, setCurrencyPair] = useState<string>('EURUSD');
   const [accountCurrency, setAccountCurrency] = useState<string>('USD');
   const [takeProfitPips, setTakeProfitPips] = useState<string>('100');
+  const [leverage, setLeverage] = useState<string>('100');
+
+  // Exchange rates state
+  const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
+  const [ratesLoading, setRatesLoading] = useState<boolean>(true);
+  const [ratesError, setRatesError] = useState<string>('');
 
   // Calculated results
   const [results, setResults] = useState({
@@ -22,55 +32,173 @@ export default function PositionCalculatorPage() {
     pipValue: 0,
     potentialProfit: 0,
     riskRewardRatio: 0,
+    marginRequired: 0,
+    currentPrice: 0,
   });
 
-  // Currency pair pip values (for standard lot)
-  const pipValues: { [key: string]: number } = {
-    'EURUSD': 10,
-    'GBPUSD': 10,
-    'AUDUSD': 10,
-    'NZDUSD': 10,
-    'USDJPY': 9.09, // Approximate, varies with exchange rate
-    'USDCHF': 10,
-    'USDCAD': 10,
-    'XAUUSD': 10, // Gold
+  // Fetch real-time exchange rates
+  useEffect(() => {
+    const fetchRates = async () => {
+      try {
+        setRatesLoading(true);
+        setRatesError('');
+
+        // Using ExchangeRate-API (free tier: 1,500 requests/month)
+        const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch exchange rates');
+        }
+
+        const data = await response.json();
+        setExchangeRates(data.rates);
+        setRatesLoading(false);
+      } catch (error) {
+        console.error('Error fetching exchange rates:', error);
+        setRatesError(isZh ? '无法获取实时汇率，使用默认值' : 'Cannot fetch real-time rates, using defaults');
+        setRatesLoading(false);
+
+        // Fallback to approximate rates if API fails
+        setExchangeRates({
+          EUR: 0.92,
+          GBP: 0.79,
+          AUD: 1.52,
+          NZD: 1.65,
+          JPY: 149.50,
+          CHF: 0.88,
+          CAD: 1.36,
+          CNY: 7.24,
+        });
+      }
+    };
+
+    fetchRates();
+    // Refresh rates every 5 minutes
+    const interval = setInterval(fetchRates, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [isZh]);
+
+  // Get current price for currency pair
+  const getCurrentPrice = (pair: string): number => {
+    if (!exchangeRates || Object.keys(exchangeRates).length === 0) return 0;
+
+    const base = pair.substring(0, 3);
+    const quote = pair.substring(3, 6);
+
+    // Special handling for gold (XAU)
+    if (pair === 'XAUUSD') {
+      return 2000; // Approximate gold price, you may want to fetch this separately
+    }
+
+    // Calculate pair price
+    if (base === 'USD') {
+      return exchangeRates[quote] || 0;
+    } else if (quote === 'USD') {
+      return 1 / (exchangeRates[base] || 1);
+    } else {
+      // Cross pairs
+      const baseToUSD = 1 / (exchangeRates[base] || 1);
+      const quoteToUSD = 1 / (exchangeRates[quote] || 1);
+      return baseToUSD / quoteToUSD;
+    }
   };
 
+  // Calculate pip value based on real-time price
+  const calculatePipValue = (pair: string, lotSize: number): number => {
+    const price = getCurrentPrice(pair);
+    if (price === 0) return 10; // Fallback
+
+    const quote = pair.substring(3, 6);
+    const contractSize = 100000; // Standard lot size
+
+    // For JPY pairs, pip is 0.01, for others 0.0001
+    const pipSize = pair.includes('JPY') ? 0.01 : 0.0001;
+
+    // Pip value in quote currency
+    let pipValueInQuote = pipSize * contractSize * lotSize;
+
+    // Convert to account currency if different from quote currency
+    if (quote !== accountCurrency) {
+      if (quote === 'USD') {
+        pipValueInQuote = pipValueInQuote;
+      } else if (accountCurrency === 'USD') {
+        // Quote currency to USD
+        const quoteRate = exchangeRates[quote] || 1;
+        pipValueInQuote = pipValueInQuote / quoteRate;
+      } else {
+        // Convert via USD
+        const quoteToUSD = 1 / (exchangeRates[quote] || 1);
+        const usdToAccount = exchangeRates[accountCurrency] || 1;
+        pipValueInQuote = (pipValueInQuote * quoteToUSD) / usdToAccount;
+      }
+    }
+
+    return pipValueInQuote;
+  };
+
+  // Real-time calculation
   useEffect(() => {
-    calculatePosition();
-  }, [accountBalance, riskPercentage, stopLossPips, currencyPair, takeProfitPips]);
+    if (!ratesLoading && Object.keys(exchangeRates).length > 0) {
+      calculatePosition();
+    }
+  }, [accountBalance, riskPercentage, stopLossPips, currencyPair, takeProfitPips, leverage, exchangeRates, ratesLoading]);
 
   const calculatePosition = () => {
     const balance = parseFloat(accountBalance) || 0;
     const risk = parseFloat(riskPercentage) || 0;
     const slPips = parseFloat(stopLossPips) || 0;
     const tpPips = parseFloat(takeProfitPips) || 0;
+    const lev = parseFloat(leverage) || 1;
 
-    if (balance <= 0 || risk <= 0 || slPips <= 0) {
+    if (balance <= 0 || risk <= 0 || slPips <= 0 || lev <= 0) {
       setResults({
         lotSize: 0,
         riskAmount: 0,
         pipValue: 0,
         potentialProfit: 0,
         riskRewardRatio: 0,
+        marginRequired: 0,
+        currentPrice: 0,
       });
       return;
     }
 
     const riskAmount = balance * (risk / 100);
-    const pipValue = pipValues[currencyPair] || 10;
-    const lotSize = riskAmount / (slPips * pipValue);
-    const potentialProfit = lotSize * tpPips * pipValue;
+    const currentPrice = getCurrentPrice(currencyPair);
+
+    // Calculate pip value for 1 standard lot
+    const pipValuePerLot = calculatePipValue(currencyPair, 1);
+
+    // Calculate lot size based on risk
+    const lotSize = riskAmount / (slPips * pipValuePerLot);
+
+    // Calculate actual pip value for the calculated lot size
+    const actualPipValue = calculatePipValue(currencyPair, lotSize);
+
+    // Calculate potential profit
+    const potentialProfit = actualPipValue * tpPips;
+
+    // Calculate risk/reward ratio
     const riskRewardRatio = tpPips / slPips;
+
+    // Calculate margin required
+    const contractSize = 100000;
+    const positionValue = lotSize * contractSize * currentPrice;
+    const marginRequired = positionValue / lev;
 
     setResults({
       lotSize: Math.round(lotSize * 100) / 100,
       riskAmount: Math.round(riskAmount * 100) / 100,
-      pipValue: pipValue,
+      pipValue: Math.round(actualPipValue * 100) / 100,
       potentialProfit: Math.round(potentialProfit * 100) / 100,
       riskRewardRatio: Math.round(riskRewardRatio * 100) / 100,
+      marginRequired: Math.round(marginRequired * 100) / 100,
+      currentPrice: Math.round(currentPrice * 100000) / 100000,
     });
   };
+
+  // Check if enough margin
+  const hasEnoughMargin = parseFloat(accountBalance) >= results.marginRequired;
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 pt-24 pb-16">
@@ -82,9 +210,24 @@ export default function PositionCalculatorPage() {
           </h1>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             {isZh
-              ? '根据账户余额、风险百分比和止损点数，精确计算推荐的交易手数'
-              : 'Calculate the recommended lot size based on your account balance, risk percentage, and stop loss pips'}
+              ? '基于实时汇率，精确计算推荐的交易手数、保证金需求和风险收益比'
+              : 'Calculate recommended lot size, margin requirement, and risk/reward ratio based on real-time exchange rates'}
           </p>
+
+          {/* Exchange Rate Status */}
+          <div className="mt-4 text-sm">
+            {ratesLoading ? (
+              <span className="text-gray-500 dark:text-gray-500">
+                {isZh ? '正在获取实时汇率...' : 'Fetching real-time rates...'}
+              </span>
+            ) : ratesError ? (
+              <span className="text-yellow-600 dark:text-yellow-500">⚠ {ratesError}</span>
+            ) : (
+              <span className="text-green-600 dark:text-green-500">
+                ✓ {isZh ? '实时汇率已更新' : 'Real-time rates updated'}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Main Calculator */}
@@ -125,6 +268,31 @@ export default function PositionCalculatorPage() {
                 />
                 <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
                   {isZh ? '推荐：1-2%' : 'Recommended: 1-2%'}
+                </p>
+              </div>
+
+              {/* Leverage */}
+              <div>
+                <label className="block text-sm font-bold text-black dark:text-white mb-2">
+                  {isZh ? '杠杆倍数' : 'Leverage'}
+                </label>
+                <select
+                  value={leverage}
+                  onChange={(e) => setLeverage(e.target.value)}
+                  className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-black dark:text-white focus:border-black dark:focus:border-white outline-none"
+                >
+                  <option value="1">1:1</option>
+                  <option value="10">1:10</option>
+                  <option value="20">1:20</option>
+                  <option value="50">1:50</option>
+                  <option value="100">1:100</option>
+                  <option value="200">1:200</option>
+                  <option value="400">1:400</option>
+                  <option value="500">1:500</option>
+                  <option value="1000">1:1000</option>
+                </select>
+                <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                  {isZh ? '杠杆越高，所需保证金越低' : 'Higher leverage requires less margin'}
                 </p>
               </div>
 
@@ -175,6 +343,11 @@ export default function PositionCalculatorPage() {
                   <option value="USDCAD">USD/CAD</option>
                   <option value="XAUUSD">XAU/USD (Gold)</option>
                 </select>
+                {results.currentPrice > 0 && (
+                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                    {isZh ? '当前价格' : 'Current Price'}: {results.currentPrice.toFixed(5)}
+                  </p>
+                )}
               </div>
 
               {/* Account Currency */}
@@ -213,6 +386,30 @@ export default function PositionCalculatorPage() {
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
                   {isZh ? '标准手' : 'Standard Lots'}
+                </p>
+              </div>
+
+              {/* Margin Required */}
+              <div className={`bg-white dark:bg-gray-900 p-4 border-2 ${
+                hasEnoughMargin
+                  ? 'border-green-500 dark:border-green-500'
+                  : 'border-red-500 dark:border-red-500'
+              }`}>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  {isZh ? '所需保证金' : 'Margin Required'}
+                </p>
+                <p className={`text-3xl font-bold ${
+                  hasEnoughMargin
+                    ? 'text-green-600 dark:text-green-500'
+                    : 'text-red-600 dark:text-red-500'
+                }`}>
+                  ${results.marginRequired.toFixed(2)}
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                  {hasEnoughMargin
+                    ? (isZh ? '✓ 保证金充足' : '✓ Sufficient margin')
+                    : (isZh ? '✗ 保证金不足' : '✗ Insufficient margin')
+                  }
                 </p>
               </div>
 
@@ -269,7 +466,7 @@ export default function PositionCalculatorPage() {
                   ${results.pipValue.toFixed(2)}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                  {isZh ? '每标准手' : 'Per standard lot'}
+                  {isZh ? '基于实时汇率' : 'Based on real-time rates'}
                 </p>
               </div>
             </div>
@@ -289,10 +486,19 @@ export default function PositionCalculatorPage() {
               </h3>
               <div className="bg-white dark:bg-gray-900 p-4 border border-gray-300 dark:border-gray-700">
                 <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-mono">
-                  {isZh ? '手数 = (账户余额 × 风险%) ÷ (止损点数 × 每点价值)' : 'Lot Size = (Balance × Risk%) ÷ (Stop Loss Pips × Pip Value)'}
+                  {isZh
+                    ? '手数 = 风险金额 ÷ (止损点数 × 每点价值)'
+                    : 'Lot Size = Risk Amount ÷ (SL Pips × Pip Value)'}
+                </p>
+                <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 font-mono">
+                  {isZh
+                    ? '保证金 = (手数 × 100,000 × 价格) ÷ 杠杆'
+                    : 'Margin = (Lots × 100,000 × Price) ÷ Leverage'}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-500 mt-3">
-                  {isZh ? '示例：($10,000 × 2%) ÷ (50 × $10) = 0.4 手' : 'Example: ($10,000 × 2%) ÷ (50 × $10) = 0.4 lots'}
+                  {isZh
+                    ? '每点价值基于实时汇率动态计算'
+                    : 'Pip value calculated dynamically from real-time rates'}
                 </p>
               </div>
             </div>
@@ -304,6 +510,10 @@ export default function PositionCalculatorPage() {
               <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
                 <li className="flex items-start gap-2">
                   <span className="text-black dark:text-white font-bold">•</span>
+                  <span>{isZh ? '确保账户有足够保证金' : 'Ensure sufficient margin in account'}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-black dark:text-white font-bold">•</span>
                   <span>{isZh ? '建议单笔风险不超过2%' : 'Recommended risk per trade: max 2%'}</span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -312,11 +522,11 @@ export default function PositionCalculatorPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-black dark:text-white font-bold">•</span>
-                  <span>{isZh ? '止损一旦设置不得移动扩大亏损' : 'Never move stop loss to increase loss'}</span>
+                  <span>{isZh ? '高杠杆增加风险，谨慎使用' : 'High leverage increases risk, use cautiously'}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-black dark:text-white font-bold">•</span>
-                  <span>{isZh ? '所有持仓总风险建议不超过6%' : 'Total risk for all positions: max 6%'}</span>
+                  <span>{isZh ? '汇率每5分钟自动更新' : 'Rates auto-update every 5 minutes'}</span>
                 </li>
               </ul>
             </div>
@@ -344,6 +554,10 @@ export default function PositionCalculatorPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-black dark:text-white font-bold">•</span>
+                <span>{isZh ? '杠杆：1:100' : 'Leverage: 1:100'}</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-black dark:text-white font-bold">•</span>
                 <span>{isZh ? '止损：50点' : 'Stop Loss: 50 pips'}</span>
               </li>
               <li className="flex items-start gap-2">
@@ -362,11 +576,15 @@ export default function PositionCalculatorPage() {
             <ul className="space-y-2 ml-4">
               <li className="flex items-start gap-2">
                 <span className="text-black dark:text-white font-bold">•</span>
-                <span>{isZh ? '推荐手数：0.4手' : 'Recommended Lot Size: 0.4 lots'}</span>
+                <span>{isZh ? '风险金额：$200（账户的2%）' : 'Risk Amount: $200 (2% of account)'}</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-black dark:text-white font-bold">•</span>
-                <span>{isZh ? '风险金额：$200' : 'Risk Amount: $200'}</span>
+                <span>{isZh ? '推荐手数：约0.4手（基于实时价格）' : 'Recommended Lot Size: ~0.4 lots (based on live price)'}</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-black dark:text-white font-bold">•</span>
+                <span>{isZh ? '所需保证金：约$440（使用1:100杠杆）' : 'Margin Required: ~$440 (with 1:100 leverage)'}</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-black dark:text-white font-bold">•</span>
@@ -384,8 +602,8 @@ export default function PositionCalculatorPage() {
               </p>
               <p className="text-sm">
                 {isZh
-                  ? '即使这笔交易止损，你只损失账户的2%（$200），但账户还剩$9,800，可以继续交易。这就是风险管理的威力！'
-                  : 'Even if this trade hits stop loss, you only lose 2% ($200). You still have $9,800 to continue trading. This is the power of risk management!'}
+                  ? '使用实时汇率计算确保精确性。即使触发止损，你只损失账户的2%（$200），但保证金占用为$440。这意味着你需要确保账户有足够的可用保证金来持有仓位。'
+                  : 'Using real-time rates ensures accuracy. Even if stop loss is triggered, you only lose 2% ($200), but margin used is $440. This means you need to ensure sufficient available margin to hold the position.'}
               </p>
             </div>
           </div>

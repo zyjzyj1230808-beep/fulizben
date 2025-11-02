@@ -30,10 +30,6 @@ export default function UnifiedNavbar() {
       link: "/splan/join-us",
     },
     {
-      name: t('nav.tools'),
-      link: "/tools/position-calculator",
-    },
-    {
       name: t('nav.blog'),
       link: "/splan/blog",
     },
@@ -44,6 +40,10 @@ export default function UnifiedNavbar() {
     {
       name: t('nav.dashboard'),
       link: "/dashboard",
+    },
+    {
+      name: t('nav.tradingTools'),
+      link: "/tools/position-calculator",
     },
     {
       name: t('nav.faq'),

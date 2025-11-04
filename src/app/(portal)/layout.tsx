@@ -60,6 +60,9 @@ export const metadata: Metadata = {
   verification: {
     // 可以添加 Google Search Console 验证码
     // google: 'google-site-verification-code',
+    other: {
+      'baidu-site-verification': 'codeva-kDRjETSiUu',
+    },
   },
 };
 
@@ -71,6 +74,7 @@ export default function PortalLayout({
   return (
     <html lang="zh-CN" className={inter.variable} suppressHydrationWarning>
       <head>
+        <meta name="baidu-site-verification" content="codeva-kDRjETSiUu" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

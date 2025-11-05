@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
+import LocaleLink from '@/components/navigation/LocaleLink';
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -22,13 +22,13 @@ export default function CurrencyPairsGuidePage() {
       <div className="bg-gray-50 dark:bg-gray-900 border-b-2 border-black dark:border-white">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
+            <LocaleLink href="/" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
               首页
-            </Link>
+            </LocaleLink>
             <span className="text-gray-400">/</span>
-            <Link href="/education" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
+            <LocaleLink href="/education" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
               教育中心
-            </Link>
+            </LocaleLink>
             <span className="text-gray-400">/</span>
             <span className="text-black dark:text-white font-bold">货币对分类与特点</span>
           </nav>
@@ -1249,29 +1249,29 @@ export default function CurrencyPairsGuidePage() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/education/forex-basics" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
+            <LocaleLink href="/education/forex-basics" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
               <div className="text-3xl mb-4">📚</div>
               <h3 className="text-xl font-bold mb-2">外汇交易基础</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
                 了解外汇市场的基本概念和运作机制
               </p>
-            </Link>
+            </LocaleLink>
 
-            <Link href="/education/trading-sessions-guide" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
+            <LocaleLink href="/education/trading-sessions-guide" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
               <div className="text-3xl mb-4">🕐</div>
               <h3 className="text-xl font-bold mb-2">交易时段详解</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
                 掌握不同时段的货币对活跃度和最佳交易时间
               </p>
-            </Link>
+            </LocaleLink>
 
-            <Link href="/education/spreads-and-commissions" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
+            <LocaleLink href="/education/spreads-and-commissions" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
               <div className="text-3xl mb-4">💰</div>
               <h3 className="text-xl font-bold mb-2">点差与佣金</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
                 理解外汇交易成本，选择最合适的经纪商
               </p>
-            </Link>
+            </LocaleLink>
           </div>
         </section>
 
@@ -1285,18 +1285,18 @@ export default function CurrencyPairsGuidePage() {
               加入 FX Killer 30天系统化培训，掌握不同货币对的特性和交易技巧
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              <LocaleLink
                 href="/splan/join-us"
                 className="px-10 py-4 bg-white dark:bg-black text-black dark:text-white font-bold text-lg border-2 border-white dark:border-black hover:bg-transparent hover:text-white dark:hover:bg-transparent dark:hover:text-black transition-all inline-block text-center"
               >
                 了解培训计划
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
                 href="/tools/position-calculator"
                 className="px-10 py-4 bg-transparent text-white dark:text-black font-bold text-lg border-2 border-white dark:border-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-all inline-block text-center"
               >
                 免费仓位计算器
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </section>
@@ -1309,15 +1309,15 @@ export default function CurrencyPairsGuidePage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">上一课</p>
-              <Link href="/education/market-participants" className="text-lg font-bold text-black dark:text-white hover:underline">
+              <LocaleLink href="/education/market-participants" className="text-lg font-bold text-black dark:text-white hover:underline">
                 ← 外汇市场参与者
-              </Link>
+              </LocaleLink>
             </div>
             <div className="text-right">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">下一课</p>
-              <Link href="/education/trading-sessions-guide" className="text-lg font-bold text-black dark:text-white hover:underline">
+              <LocaleLink href="/education/trading-sessions-guide" className="text-lg font-bold text-black dark:text-white hover:underline">
                 交易时段详解 →
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>

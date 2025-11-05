@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import LocaleLink from '@/components/navigation/LocaleLink';
 import { EducationPageContent } from '@/content/education/forex-basics.content';
 
@@ -117,7 +116,7 @@ export default function EducationPageTemplate({
 
           <div className="grid md:grid-cols-3 gap-6">
             {content.relatedResources.map((resource, index) => (
-              <Link
+              <LocaleLink
                 key={index}
                 href={resource.href}
                 className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group"
@@ -127,7 +126,7 @@ export default function EducationPageTemplate({
                 <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
                   {resource.description}
                 </p>
-              </Link>
+              </LocaleLink>
             ))}
           </div>
         </section>
@@ -142,7 +141,7 @@ export default function EducationPageTemplate({
               {content.ctaDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              <LocaleLink
                 href={
                   content.ctaPrimaryButton.includes('合作经纪商') ||
                   content.ctaPrimaryButton.includes('Partner Brokers')
@@ -155,31 +154,31 @@ export default function EducationPageTemplate({
                 className="px-10 py-4 bg-white dark:bg-black text-black dark:text-white font-bold text-lg border-2 border-white dark:border-black hover:bg-transparent hover:text-white dark:hover:bg-transparent dark:hover:text-black transition-all inline-block text-center"
               >
                 {content.ctaPrimaryButton}
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
                 href="/splan/psychology-test"
                 className="px-10 py-4 bg-transparent text-white dark:text-black font-bold text-lg border-2 border-white dark:border-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-all inline-block text-center"
               >
                 {content.ctaSecondaryButton}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </section>
 
         {/* Footer Navigation */}
         <nav className="mt-16 flex justify-between items-center pt-8 border-t-2 border-black dark:border-white">
-          <Link
+          <LocaleLink
             href={content.footerPrevHref || "/education"}
             className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white font-bold transition-colors"
           >
             {content.footerPrevText}
-          </Link>
-          <Link
+          </LocaleLink>
+          <LocaleLink
             href={content.footerNextHref || "/education"}
             className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white font-bold transition-colors"
           >
             {content.footerNextText}
-          </Link>
+          </LocaleLink>
         </nav>
       </article>
     </div>

@@ -44,12 +44,6 @@ export default function UnifiedNavbar() {
     {
       name: t('nav.blog'),
       link: "/splan/blog",
-      hasDropdown: true,
-      dropdownItems: [
-        { name: language === 'zh' ? '所有文章' : 'All Posts', link: '/splan/blog' },
-        { name: language === 'zh' ? '市场分析' : 'Market Analysis', link: '/splan/blog?category=analysis' },
-        { name: language === 'zh' ? '交易技巧' : 'Trading Tips', link: '/splan/blog?category=tips' },
-      ]
     },
     {
       name: t('nav.psychology'),

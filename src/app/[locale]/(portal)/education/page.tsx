@@ -92,46 +92,49 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
   const isZh = lang === 'zh';
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      {/* Hero Section */}
-      <div className="bg-black dark:bg-white text-white dark:text-black py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
-              {isZh ? '外汇交易教育中心' : 'Forex Trading Education Center'}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 dark:text-gray-700 mb-12 leading-relaxed">
-              {isZh ? (
-                <>
-                  系统化学习外汇交易知识，从零基础到职业交易员<br />
-                  专业、实战、高效的学习路径
-                </>
-              ) : (
-                <>
-                  Systematic forex trading education from beginner to professional<br />
-                  Professional, practical, and efficient learning path
-                </>
-              )}
-            </p>
+    <div className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Hero Section - 增强版 */}
+      <div className="relative bg-gradient-to-br from-black via-gray-900 to-black text-white border-b-2 border-gray-800 overflow-hidden">
+        {/* 装饰性背景 */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div className="text-center">
-                <div className="text-4xl font-black mb-2">20+</div>
-                <div className="text-sm text-gray-400 dark:text-gray-600">{isZh ? '专业课程' : 'Courses'}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-black mb-2">4</div>
-                <div className="text-sm text-gray-400 dark:text-gray-600">{isZh ? '学习方向' : 'Categories'}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-black mb-2">100%</div>
-                <div className="text-sm text-gray-400 dark:text-gray-600">{isZh ? '免费学习' : 'Free'}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-black mb-2">24/7</div>
-                <div className="text-sm text-gray-400 dark:text-gray-600">{isZh ? '随时访问' : 'Access'}</div>
-              </div>
+        <div className="relative max-w-6xl mx-auto px-6 py-24 text-center">
+          <div className="inline-block px-6 py-2 bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
+            <span className="text-sm font-semibold tracking-wider">{isZh ? '专业交易教育' : 'Professional Trading Education'}</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <span className="font-black">{isZh ? '外汇交易教育中心' : 'Forex Trading Education Center'}</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            {isZh ? (
+              <>
+                系统化学习外汇交易知识，从零基础到职业交易员<br />
+                专业、实战、高效的学习路径
+              </>
+            ) : (
+              <>
+                Systematic forex trading education from beginner to professional<br />
+                Professional, practical, and efficient learning path
+              </>
+            )}
+          </p>
+
+          {/* Quick Stats */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
+            <div className="px-4 py-2 bg-white/5 border border-white/20 backdrop-blur-sm">
+              <span className="text-white font-bold">25+</span> {isZh ? '专业课程' : 'Courses'}
+            </div>
+            <div className="px-4 py-2 bg-white/5 border border-white/20 backdrop-blur-sm">
+              <span className="text-white font-bold">4</span> {isZh ? '学习方向' : 'Categories'}
+            </div>
+            <div className="px-4 py-2 bg-white/5 border border-white/20 backdrop-blur-sm">
+              <span className="text-white font-bold">100%</span> {isZh ? '免费学习' : 'Free Learning'}
+            </div>
+            <div className="px-4 py-2 bg-white/5 border border-white/20 backdrop-blur-sm">
+              <span className="text-white font-bold">24/7</span> {isZh ? '随时访问' : 'Always Available'}
             </div>
           </div>
         </div>

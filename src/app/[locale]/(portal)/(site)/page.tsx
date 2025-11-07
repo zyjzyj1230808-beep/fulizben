@@ -120,12 +120,15 @@ const DummyContent = () => {
 
       {/* 为什么选择 FX Killer - 增强版 */}
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">
-          {t('why.title')}
-        </h2>
-        <p className="text-center text-gray-600 dark:text-gray-400 mb-12 text-lg">
-          {t('why.subtitle')}
-        </p>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 text-black dark:text-white">
+            {t('why.title')}
+          </h2>
+          <div className="w-24 h-1 bg-black dark:bg-white mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
+            {t('why.subtitle')}
+          </p>
+        </div>
 
         {/* 核心优势 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -371,72 +374,83 @@ const DummyContent = () => {
 
       {/* 你是否符合基本条件 - 全新设计 */}
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">
-          {t('req.title')}
-        </h2>
-        <p className="text-center text-gray-600 dark:text-gray-400 mb-12 text-lg">
-          {t('req.subtitle')}
-        </p>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 text-black dark:text-white">
+            {t('req.title')}
+          </h2>
+          <div className="w-24 h-1 bg-black dark:bg-white mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
+            {t('req.subtitle')}
+          </p>
+        </div>
 
         {/* 条件卡片 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* 人群画像 */}
-          <div className="bg-black dark:bg-white p-8 border-2 border-black dark:border-white">
+          <div className="bg-gradient-to-br from-gray-900 to-black dark:from-gray-100 dark:to-white p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
             <div className="text-white dark:text-black">
-              <div className="text-5xl mb-4"></div>
-              <h3 className="text-2xl font-bold mb-6">{t('req.profile.title')}</h3>
-              <div className="space-y-4">
-                <div className="border-l-4 border-white dark:border-black pl-4">
-                  <p className="font-bold text-lg">{t('req.profile.education')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-700">{t('req.profile.education.desc')}</p>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white dark:bg-black flex items-center justify-center">
+                  <span className="text-2xl">👥</span>
                 </div>
-                <div className="border-l-4 border-white dark:border-black pl-4">
-                  <p className="font-bold text-lg">{t('req.profile.psychology')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-700">{t('req.profile.psychology.desc')}</p>
+                <h3 className="text-2xl font-bold">{t('req.profile.title')}</h3>
+              </div>
+              <div className="space-y-5">
+                <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
+                  <p className="font-bold text-lg mb-1">{t('req.profile.education')}</p>
+                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.profile.education.desc')}</p>
                 </div>
-                <div className="border-l-4 border-white dark:border-black pl-4">
-                  <p className="font-bold text-lg">{t('req.profile.character')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-700">{t('req.profile.character.desc')}</p>
+                <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
+                  <p className="font-bold text-lg mb-1">{t('req.profile.psychology')}</p>
+                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.profile.psychology.desc')}</p>
+                </div>
+                <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
+                  <p className="font-bold text-lg mb-1">{t('req.profile.character')}</p>
+                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.profile.character.desc')}</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* 时间与环境 */}
-          <div className="bg-white dark:bg-black p-8 border-2 border-black dark:border-white">
-            <div className="text-5xl mb-4"></div>
-            <h3 className="text-2xl font-bold mb-6 text-black dark:text-white">{t('req.time.title')}</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center">
+          <div className="bg-white dark:bg-gray-900 p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 bg-black dark:bg-white flex items-center justify-center">
+                <span className="text-2xl">⏰</span>
+              </div>
+              <h3 className="text-2xl font-bold text-black dark:text-white">{t('req.time.title')}</h3>
+            </div>
+            <div className="space-y-5">
+              <div className="flex items-start gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 p-3 -m-3 transition-colors">
+                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center mt-1">
                   <svg className="w-5 h-5 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 dark:text-white">{t('req.time.commitment')}</p>
+                  <p className="font-bold text-gray-900 dark:text-white mb-1">{t('req.time.commitment')}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">{t('req.time.commitment.desc')}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center">
+              <div className="flex items-start gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 p-3 -m-3 transition-colors">
+                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center mt-1">
                   <svg className="w-5 h-5 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 dark:text-white">{t('req.time.equipment')}</p>
+                  <p className="font-bold text-gray-900 dark:text-white mb-1">{t('req.time.equipment')}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">{t('req.time.equipment.desc')}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center">
+              <div className="flex items-start gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 p-3 -m-3 transition-colors">
+                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center mt-1">
                   <svg className="w-5 h-5 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 dark:text-white">{t('req.time.environment')}</p>
+                  <p className="font-bold text-gray-900 dark:text-white mb-1">{t('req.time.environment')}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">{t('req.time.environment.desc')}</p>
                 </div>
               </div>
@@ -444,39 +458,47 @@ const DummyContent = () => {
           </div>
 
           {/* 在线时间 */}
-          <div className="bg-black dark:bg-white p-8 border-2 border-black dark:border-white">
+          <div className="bg-gradient-to-br from-gray-900 to-black dark:from-gray-100 dark:to-white p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
             <div className="text-white dark:text-black">
-              <div className="text-5xl mb-4"></div>
-              <h3 className="text-2xl font-bold mb-6">{t('req.online.title')}</h3>
-              <div className="space-y-4">
-                <div className="border-l-4 border-white dark:border-black pl-4">
-                  <p className="font-bold text-lg">{t('req.online.hours')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-700">{t('req.online.hours.desc')}</p>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white dark:bg-black flex items-center justify-center">
+                  <span className="text-2xl">📅</span>
                 </div>
-                <div className="border-l-4 border-white dark:border-black pl-4">
-                  <p className="font-bold text-lg">{t('req.online.debrief')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-700">{t('req.online.debrief.desc')}</p>
+                <h3 className="text-2xl font-bold">{t('req.online.title')}</h3>
+              </div>
+              <div className="space-y-5">
+                <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
+                  <p className="font-bold text-lg mb-1">{t('req.online.hours')}</p>
+                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.online.hours.desc')}</p>
+                </div>
+                <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
+                  <p className="font-bold text-lg mb-1">{t('req.online.debrief')}</p>
+                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.online.debrief.desc')}</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* 适合与否 */}
-          <div className="bg-white dark:bg-black p-8 border-2 border-black dark:border-white">
+          <div className="bg-white dark:bg-gray-900 p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
             <div className="text-black dark:text-white">
-              <div className="text-5xl mb-4"></div>
-              <h3 className="text-2xl font-bold mb-6">{t('unsuitable.title')}</h3>
-              <div className="space-y-4">
-                <div className="border-l-4 border-black dark:border-white pl-4">
-                  <p className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-red-600 dark:text-red-500">✗</span>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-black dark:bg-white flex items-center justify-center">
+                  <span className="text-2xl">⚠️</span>
+                </div>
+                <h3 className="text-2xl font-bold">{t('unsuitable.title')}</h3>
+              </div>
+              <div className="space-y-5">
+                <div className="border-l-4 border-black dark:border-white pl-4 hover:pl-6 transition-all">
+                  <p className="font-bold text-lg flex items-center gap-2 mb-1">
+                    <span className="text-red-600 dark:text-red-400">✗</span>
                     {t('unsuitable.gambler')}
                   </p>
                   <p className="text-sm text-gray-700 dark:text-gray-400">{t('unsuitable.gambler.desc')}</p>
                 </div>
-                <div className="border-l-4 border-black dark:border-white pl-4">
-                  <p className="font-bold text-lg flex items-center gap-2">
-                    <span className="text-green-600 dark:text-green-500">✓</span>
+                <div className="border-l-4 border-black dark:border-white pl-4 hover:pl-6 transition-all">
+                  <p className="font-bold text-lg flex items-center gap-2 mb-1">
+                    <span className="text-green-600 dark:text-green-400">✓</span>
                     {t('expectations.mindset')}
                   </p>
                   <p className="text-sm text-gray-700 dark:text-gray-400">{t('expectations.mindset.desc')}</p>
@@ -487,9 +509,9 @@ const DummyContent = () => {
         </div>
 
         {/* 重要提示 */}
-        <div className="bg-black dark:bg-white text-white dark:text-black p-8 border-2 border-black dark:border-white">
+        <div className="mt-8 bg-gradient-to-r from-gray-900 to-black dark:from-gray-100 dark:to-white text-white dark:text-black p-8 border-2 border-black dark:border-white shadow-xl">
           <div className="flex items-start gap-6">
-            <div className="flex-shrink-0 w-16 h-16 bg-white dark:bg-black flex items-center justify-center">
+            <div className="flex-shrink-0 w-16 h-16 bg-white dark:bg-black flex items-center justify-center rounded-full">
               <svg className="w-8 h-8 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>

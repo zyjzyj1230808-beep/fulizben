@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { TrendingUp, TrendingDown, Activity, Clock, Zap, BarChart3 } from 'lucide-react';
+import { TrendingUp, TrendingDown, Activity, BarChart3 } from 'lucide-react';
+import InterviewCTA from '@/components/custom/InterviewCTA';
 
 interface AnalysisData {
   symbol: string;
@@ -55,47 +56,38 @@ export default function MarketAnalysisClient({ analyses, language }: MarketAnaly
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+      {/* Hero Section - 与其他页面统一风格 */}
+      <div className="relative bg-gradient-to-br from-black via-gray-900 to-black text-white border-b-2 border-gray-800 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-6 py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              {isZh ? '📊 实时市场分析' : '📊 Real-Time Market Analysis'}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
-              {isZh ? 'AI 驱动 · 每 90 分钟自动更新' : 'AI-Powered · Auto-Updated Every 90 Minutes'}
-            </p>
-
-            {/* 特点标签 */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full">
-                <Clock className="w-5 h-5" />
-                <span className="font-semibold">
-                  {isZh ? '每 90 分钟更新' : 'Updated Every 90 Min'}
-                </span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full">
-                <Zap className="w-5 h-5" />
-                <span className="font-semibold">
-                  {isZh ? '8 大主流货币对' : '8 Major Pairs'}
-                </span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full">
-                <Activity className="w-5 h-5" />
-                <span className="font-semibold">
-                  {isZh ? 'AI 智能分析' : 'AI Analysis'}
-                </span>
-              </div>
+            <div className="inline-block px-6 py-2 bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
+              <span className="text-sm font-semibold tracking-wider">
+                {isZh ? 'AI 驱动的市场洞察' : 'AI-Powered Market Insights'}
+              </span>
             </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              <span className="font-black">
+                {isZh ? '实时市场分析' : 'Real-Time Market Analysis'}
+              </span>
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+              {isZh
+                ? '每 90 分钟自动更新 · 8 大主流货币对 · 专业技术指标分析'
+                : 'Auto-Updated Every 90 Minutes · 8 Major Pairs · Professional Technical Analysis'}
+            </p>
 
             {/* 更新时间 */}
             {analyses.length > 0 && (
-              <div className="text-white/80 text-sm">
+              <div className="text-white/70 text-sm">
                 {isZh ? '最后更新: ' : 'Last Updated: '}
                 {new Date(analyses[0].timestamp).toLocaleString(isZh ? 'zh-CN' : 'en-US', {
                   year: 'numeric',
@@ -199,55 +191,10 @@ export default function MarketAnalysisClient({ analyses, language }: MarketAnaly
           </div>
         )}
 
-        {/* Info Section */}
-        <div className="mt-16 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            {isZh ? '💡 关于自动分析系统' : '💡 About Auto Analysis System'}
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-300">
-            <div>
-              <h3 className="font-bold mb-2">
-                {isZh ? '📊 分析周期' : '📊 Analysis Cycle'}
-              </h3>
-              <p>
-                {isZh
-                  ? '系统每 90 分钟自动运行一次，确保您获得最及时的市场洞察。'
-                  : 'System runs automatically every 90 minutes to provide timely market insights.'}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold mb-2">
-                {isZh ? '🤖 AI 驱动' : '🤖 AI-Powered'}
-              </h3>
-              <p>
-                {isZh
-                  ? '利用先进的 AI 技术分析技术指标，提供专业的交易建议。'
-                  : 'Leverages advanced AI to analyze technical indicators and provide professional trading advice.'}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold mb-2">
-                {isZh ? '📈 覆盖品种' : '📈 Coverage'}
-              </h3>
-              <p>
-                {isZh
-                  ? '8 大主流外汇货币对及黄金，满足您的交易需求。'
-                  : '8 major forex pairs and gold to meet your trading needs.'}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold mb-2">
-                {isZh ? '🎯 技术指标' : '🎯 Indicators'}
-              </h3>
-              <p>
-                {isZh
-                  ? 'RSI、MACD、SMA 等多种技术指标综合分析。'
-                  : 'Comprehensive analysis with RSI, MACD, SMA and more.'}
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
+
+      {/* Interview CTA Section */}
+      <InterviewCTA />
     </div>
   );
 }

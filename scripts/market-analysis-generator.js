@@ -221,21 +221,21 @@ async function generateMarketAnalysis() {
       const previousPrice = priceData.values[1];
       const change = ((parseFloat(latestPrice.close) - parseFloat(previousPrice.close)) / parseFloat(previousPrice.close) * 100).toFixed(2);
 
-      // 延迟避免速率限制
-      await sleep(1000);
+      // 延迟避免速率限制 - Twelve Data 限制: 8 请求/分钟
+      await sleep(8000); // 8秒延迟确保在限制内
 
       // 获取 RSI
       console.log(`  📊 获取技术指标...`);
       const rsiData = await fetchIndicator(pair.symbol, 'rsi', { time_period: 14 });
-      await sleep(1000);
+      await sleep(8000);
 
       // 获取 MACD
       const macdData = await fetchIndicator(pair.symbol, 'macd');
-      await sleep(1000);
+      await sleep(8000);
 
       // 获取 SMA
       const smaData = await fetchIndicator(pair.symbol, 'sma', { time_period: 20 });
-      await sleep(1000);
+      await sleep(8000);
 
       const marketData = {
         price: {
@@ -275,10 +275,10 @@ async function generateMarketAnalysis() {
         timestamp: dayjs().toISOString(),
         price: marketData.price,
         indicators: {
-          rsi: marketData.rsi?.rsi,
-          macd: marketData.macd?.macd,
-          macd_signal: marketData.macd?.macd_signal,
-          sma20: marketData.sma?.sma20
+          rsi: marketData.rsi?.rsi ? parseFloat(marketData.rsi.rsi) : undefined,
+          macd: marketData.macd?.macd ? parseFloat(marketData.macd.macd) : undefined,
+          macd_signal: marketData.macd?.macd_signal ? parseFloat(marketData.macd.macd_signal) : undefined,
+          sma20: marketData.sma?.sma20 ? parseFloat(marketData.sma.sma20) : undefined
         },
         analysis: {
           zh: {

@@ -1,0 +1,30 @@
+{
+  "symbol": "XAU/USD",
+  "name": "Gold vs US Dollar",
+  "nameCn": "黄金/美元",
+  "timestamp": "2025-11-09T09:29:05.854Z",
+  "price": {
+    "close": "3992.44",
+    "high": "3992.72",
+    "low": "3987.9",
+    "open": "3990.91",
+    "change": "0.04",
+    "datetime": "2025-11-08 23:00:00"
+  },
+  "indicators": {
+    "rsi": 49.4964,
+    "macd": -0.75801438,
+    "macd_signal": -0.16287453,
+    "sma20": 3994.802
+  },
+  "analysis": {
+    "zh": {
+      "title": "黄金/美元技术分析：[震荡整理中]",
+      "content": "当前黄金/美元(XAU/USD)的价格为3992.44，全天变化幅度仅为0.04%。市场在3992.72的高点和3987.9的低点之间呈现震荡整理的走势。短期内，市场缺乏明确的方向，投资者需保持警惕，关注潜在的突破信号。\n\n从技术指标来看，MACD值为-0.758，表明市场仍然存在一定的空头压力，但尚未出现明显的卖出信号。RSI指标尚未提供，因此需留意后续的数据更新，判断超买或超卖情况。20日简单移动平均线(SMA)为3994.80，显示出短期趋势的平稳，进一步确认了当前的整理态势。\n\n支撑位方面，3987.9是重要的支撑线，若下破则可能引发更大幅度的回调；而阻力位在3994.80附近，突破则有可能引发短期反弹。建议投资者在当前震荡区间内采取观望策略，待市场出现明确突破信号后再进行相应的交易决策，以降低风险并提高收益潜力。"
+    },
+    "en": {
+      "title": "Gold vs US Dollar Technical Analysis",
+      "content": "The current price of XAU/USD at 3992.44 indicates a relatively stable market, with a slight increase of 0.04% over the last 24 hours. This price action suggests a consolidation phase, as the gold market appears to be trapped between the recent high of 3992.72 and the low of 3987.9. The absence of directional momentum could indicate that traders are awaiting further economic data or geopolitical developments that may drive future price movements.\n\nTechnical indicators provide a mixed picture. The MACD shows a negative value of -0.75801438, reflecting bearish momentum in the short term. While the lack of an RSI reading limits our assessment of potential overbought or oversold conditions, the proximity of the SMA(20) at 3994.80200 suggests a potential area of resistance. A break above this level could signal renewed bullish interest, while failure to hold above the recent lows may trigger further selling pressure.\n\nKey support levels to watch include the recent low of 3987.9, which, if breached, could lead to further declines. Conversely, the high of 3992.72 serves as a critical resistance level that traders should monitor closely. A decisive move above this resistance could pave the way for a rally towards higher price targets, while a failure to reclaim this level may reinforce bearish sentiment in the market.\n\nFor trading strategies, a cautious approach is advisable. If prices hold above the SMA(20) and break the resistance at 3992.72, consider entering long positions with a target around 4000. Conversely, if prices break below the support at 3987.9, it may be prudent to consider short positions, with targets aligned to the next support levels that could emerge. Overall, maintaining a close watch on market developments and adjusting strategies accordingly will be crucial in navigating this environment."
+    }
+  }
+}

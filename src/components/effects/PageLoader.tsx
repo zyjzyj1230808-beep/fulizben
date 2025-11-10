@@ -32,9 +32,12 @@ export default function PageLoader() {
     };
   }, []);
 
-  const text = "汇刃 FxKiller";
+  const text = "浮力资本 Buoyancy Capital";
   const chars = text.split("");
-  const textColor = isDark ? "#ffffff" : "#000000";
+  const brandPrimary = "#0b1f4a";
+  const backgroundGradient = isDark
+    ? "radial-gradient(circle at top, rgba(96,165,250,0.15), rgba(2,6,23,0.95)), linear-gradient(135deg, #020617 0%, #0b1f4a 60%, #0f172a 100%)"
+    : "linear-gradient(135deg, #e0f2fe 0%, #c7d2fe 35%, #9ab6ff 65%, #e0f2fe 100%)";
 
   return (
     <AnimatePresence>
@@ -43,7 +46,10 @@ export default function PageLoader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="fixed inset-0 z-[100] bg-white dark:bg-black flex items-center justify-center"
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          style={{
+            background: backgroundGradient
+          }}
         >
           {/* Logo 文字分裂重组动画 */}
           <div className="flex flex-col items-center gap-8">
@@ -53,7 +59,10 @@ export default function PageLoader() {
                 <motion.span
                   key={index}
                   style={{
-                    color: textColor,
+                    color: brandPrimary,
+                    textShadow: isDark
+                      ? "0 12px 30px rgba(37, 99, 235, 0.35)"
+                      : "0 10px 24px rgba(15, 23, 42, 0.2)",
                     fontFamily: "'Noto Sans SC', 'Inter', sans-serif"
                   }}
                   initial={{
@@ -85,7 +94,7 @@ export default function PageLoader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="w-64 h-1 bg-gray-200 dark:bg-gray-800 overflow-hidden"
+              className="w-64 h-1 bg-blue-100/70 dark:bg-slate-900/60 overflow-hidden rounded-full border border-blue-200/60 dark:border-slate-700/60"
             >
               <motion.div
                 initial={{ x: "-100%" }}
@@ -96,7 +105,7 @@ export default function PageLoader() {
                   ease: "linear",
                   delay: 0.8,
                 }}
-                className="h-full w-1/2 bg-black dark:bg-white"
+                className="h-full w-1/2 bg-[#0b1f4a]"
               />
             </motion.div>
           </div>

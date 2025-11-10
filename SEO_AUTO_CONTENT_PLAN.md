@@ -114,7 +114,7 @@ tags:
   - "欧元"
   - "外汇新闻"
 source: "FXStreet"
-author: "FX Killer 编辑部"
+author: "Buoyancy Capital 编辑部"
 image: "/images/news/eurusd-chart.jpg"
 ---
 ```
@@ -338,7 +338,7 @@ ${rewrittenContent}
 [查看原文](${item.link})
 
 ---
-*本文由FX Killer自动生成 | 更新时间：${dayjs().format('YYYY-MM-DD HH:mm')}*
+*本文由Buoyancy Capital自动生成 | 更新时间：${dayjs().format('YYYY-MM-DD HH:mm')}*
 `;
 
         fs.writeFileSync(filePath, markdown, 'utf8');
@@ -404,11 +404,11 @@ generateContent();
   "datePublished": "2025-01-08T14:30:00+08:00",
   "author": {
     "@type": "Organization",
-    "name": "FX Killer"
+    "name": "Buoyancy Capital"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "FX Killer",
+    "name": "Buoyancy Capital",
     "logo": {
       "@type": "ImageObject",
       "url": "https://fxkiller.com/logo.png"

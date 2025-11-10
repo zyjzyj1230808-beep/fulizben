@@ -25,7 +25,8 @@ export default function AnimatedText({ className = "", loop = true, delay = 0 }:
     return () => observer.disconnect();
   }, []);
 
-  const textColor = isDark ? "#ffffff" : "#000000";
+  const brandPrimary = "#0b1f4a";
+  const glowColor = isDark ? "rgba(96, 165, 250, 0.4)" : "rgba(15, 23, 42, 0.25)";
 
   // 字符拆分动画变体
   const containerVariants = {
@@ -119,57 +120,72 @@ export default function AnimatedText({ className = "", loop = true, delay = 0 }:
         animate="visible"
         key={Math.random()} // 强制重新动画（如果 loop 为 true）
       >
-        {/* 汇刃 */}
+        {/* 浮力资本 */}
         <div className="flex items-center gap-1">
-          {/* 汇 - 整字动画 */}
+          {/* 浮 - 整字动画 */}
           <motion.span
             variants={letterVariants}
             className="text-7xl font-bold"
-            style={{ color: textColor, fontFamily: "'Noto Sans SC', sans-serif" }}
+            style={{
+              color: brandPrimary,
+              textShadow: `0 10px 28px ${glowColor}`,
+              fontFamily: "'Noto Sans SC', sans-serif" 
+            }}
           >
-            汇
+            浮
           </motion.span>
 
-          {/* 刃 - 拆分动画 */}
-          <div className="relative inline-block text-7xl font-bold" style={{ width: "1.2em", height: "1.2em" }}>
-            {/* 上面的点 */}
-            <motion.span
-              variants={bladeTopVariants}
-              className="absolute"
-              style={{
-                color: textColor,
-                top: "0",
-                left: "50%",
-                transform: "translateX(-50%)",
-                fontSize: "0.3em",
-                fontFamily: "'Noto Sans SC', sans-serif"
-              }}
-            >
-              丶
-            </motion.span>
-            {/* 下面的刀 */}
-            <motion.span
-              variants={bladeBottomVariants}
-              className="absolute"
-              style={{
-                color: textColor,
-                top: "0.4em",
-                left: "0",
-                fontFamily: "'Noto Sans SC', sans-serif"
-              }}
-            >
-              刀
-            </motion.span>
-          </div>
+          {/* 力 - 整字动画 */}
+          <motion.span
+            variants={letterVariants}
+            className="text-7xl font-bold"
+            style={{
+              color: brandPrimary,
+              textShadow: `0 10px 28px ${glowColor}`,
+              fontFamily: "'Noto Sans SC', sans-serif" 
+            }}
+          >
+            力
+          </motion.span>
+
+          {/* 资 - 整字动画 */}
+          <motion.span
+            variants={letterVariants}
+            className="text-7xl font-bold"
+            style={{
+              color: brandPrimary,
+              textShadow: `0 10px 28px ${glowColor}`,
+              fontFamily: "'Noto Sans SC', sans-serif" 
+            }}
+          >
+            资
+          </motion.span>
+
+          {/* 本 - 整字动画 */}
+          <motion.span
+            variants={letterVariants}
+            className="text-7xl font-bold"
+            style={{
+              color: brandPrimary,
+              textShadow: `0 10px 28px ${glowColor}`,
+              fontFamily: "'Noto Sans SC', sans-serif" 
+            }}
+          >
+            本
+          </motion.span>
         </div>
 
-        {/* FxKiller */}
+        {/* Buoyancy Capital */}
         <div className="flex items-center gap-1">
           {/* F */}
           <motion.span
             variants={letterVariants}
             className="text-6xl font-bold"
-            style={{ color: textColor, fontFamily: "Inter, sans-serif" }}
+            style={{
+              color: brandPrimary,
+              textShadow: `0 10px 28px ${glowColor}`,
+              fontFamily: "Inter, sans-serif" 
+            }}
           >
             F
           </motion.span>
@@ -183,7 +199,7 @@ export default function AnimatedText({ className = "", loop = true, delay = 0 }:
               style={{
                 width: "100%",
                 height: "4px",
-                backgroundColor: textColor,
+                backgroundColor: brandPrimary,
                 top: "50%",
                 left: "0",
                 transformOrigin: "left center",
@@ -197,7 +213,7 @@ export default function AnimatedText({ className = "", loop = true, delay = 0 }:
               style={{
                 width: "100%",
                 height: "4px",
-                backgroundColor: textColor,
+                backgroundColor: brandPrimary,
                 top: "50%",
                 left: "0",
                 transformOrigin: "left center",
@@ -212,7 +228,11 @@ export default function AnimatedText({ className = "", loop = true, delay = 0 }:
               key={index}
               variants={letterVariants}
               className="text-6xl font-bold"
-              style={{ color: textColor, fontFamily: "Inter, sans-serif" }}
+            style={{
+              color: brandPrimary,
+              textShadow: `0 10px 28px ${glowColor}`,
+                fontFamily: "Inter, sans-serif" 
+              }}
             >
               {letter}
             </motion.span>

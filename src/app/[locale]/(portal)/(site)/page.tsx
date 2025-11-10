@@ -55,41 +55,37 @@ const DummyContent = () => {
 
   return (
     <div className="w-full -mt-20">
-      {/* Hero Section - Full Width K-line Background */}
-      <div className="relative bg-white dark:bg-black overflow-hidden h-screen">
+      {/* Hero Section - Full Width Background with Buoyancy Capital Palette */}
+      <div className="relative overflow-hidden h-screen" style={{
+        background: 'linear-gradient(135deg, #020617 0%, #0b1f4a 55%, #122f63 100%)'
+      }}>
         {/* K-line Chart Background */}
-        <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full opacity-30">
           <CandlestickChart />
         </div>
 
-        {/* Gradient Overlay - from left (opaque) to right (transparent) */}
+        {/* Gradient Overlay - from left (opaque) to right (transparent) with ocean theme */}
         <div
           className="absolute inset-0 w-full h-full pointer-events-none"
           style={{
-            background: 'linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 30%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 0) 100%)'
-          }}
-        />
-        <div
-          className="absolute inset-0 w-full h-full pointer-events-none dark:block hidden"
-          style={{
-            background: 'linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0) 100%)'
+            background: 'linear-gradient(to right, rgba(2, 6, 23, 0.92) 0%, rgba(11, 31, 74, 0.88) 35%, rgba(30, 58, 138, 0.65) 65%, rgba(59, 130, 246, 0.25) 100%)'
           }}
         />
 
         {/* Content Overlay - Centered in viewport */}
         <div className="relative z-10 flex items-center h-full">
           <div className="max-w-7xl mx-auto px-6 w-full">
-            <div className="max-w-3xl flex flex-col space-y-10">
+            <div className="max-w-3xl flex flex-col space-y-10 items-center text-center">
             {/* Main Title */}
             <ScaleFadeIn delay={0.2}>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-black dark:text-white tracking-tight leading-none">
-                <BrandName />
+              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white dark:text-white tracking-tight leading-none">
+                <BrandName color="#ffffff" shadow="0 12px 32px rgba(59,130,246,0.45)" />
               </h1>
             </ScaleFadeIn>
 
             {/* Subtitle */}
             <FadeInSlide direction="right" delay={0.4}>
-              <p className="text-2xl md:text-3xl lg:text-4xl text-black dark:text-white font-bold leading-tight">
+              <p className="text-2xl md:text-3xl lg:text-4xl text-white font-bold leading-tight drop-shadow-lg">
                 {t('hero.subtitle')}
               </p>
             </FadeInSlide>
@@ -100,14 +96,14 @@ const DummyContent = () => {
                 <PulseButton>
                   <ShineButton
                     onClick={() => router.push(`/${language}/splan/join-us`)}
-                    className="px-12 py-6 bg-black dark:bg-white text-white dark:text-black text-xl font-black border-2 border-black dark:border-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-all shadow-lg"
+                    className="px-12 py-6 bg-white text-blue-900 text-xl font-black border-2 border-white hover:bg-blue-50 hover:text-blue-800 transition-all shadow-lg"
                   >
                     {t('hero.cta.learn')}
                   </ShineButton>
                 </PulseButton>
                 <button
                   onClick={() => router.push(`/${language}/dashboard`)}
-                  className="px-12 py-6 bg-white dark:bg-black text-black dark:text-white text-xl font-black border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                  className="px-12 py-6 bg-transparent text-white text-xl font-black border-2 border-white hover:bg-white hover:text-blue-900 transition-all"
                 >
                   {t('hero.cta.dashboard')}
                 </button>
@@ -118,13 +114,13 @@ const DummyContent = () => {
         </div>
       </div>
 
-      {/* 为什么选择 FX Killer - 增强版 */}
+      {/* 为什么选择 Buoyancy Capital - 增强版 */}
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-black dark:text-white">
+          <h2 className="text-4xl font-bold mb-4 text-[#0b1f4a] dark:text-white">
             {t('why.title')}
           </h2>
-          <div className="w-24 h-1 bg-black dark:bg-white mx-auto mb-4"></div>
+          <div className="w-24 h-1 bg-[#0b1f4a] dark:bg-white mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
             {t('why.subtitle')}
           </p>
@@ -134,11 +130,11 @@ const DummyContent = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <FadeInSlide direction="up" delay={0.1}>
             <HoverCard className="h-full">
-              <div className="p-8 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 h-full hover:border-black dark:hover:border-white transition-colors">
-                <div className="mb-4 w-12 h-12 bg-black dark:bg-white flex items-center justify-center">
+              <div className="p-8 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 h-full hover:border-[#0b1f4a] dark:hover:border-white transition-colors">
+                <div className="mb-4 w-12 h-12 bg-[#0b1f4a] dark:bg-white flex items-center justify-center">
                   <span className="text-2xl text-white dark:text-black font-bold">1</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('advantage.selection.title')}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[#0b1f4a] dark:text-white">{t('advantage.selection.title')}</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {t('advantage.selection.desc')}
                 </p>
@@ -148,11 +144,11 @@ const DummyContent = () => {
 
           <FadeInSlide direction="up" delay={0.2}>
             <HoverCard className="h-full">
-              <div className="p-8 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 h-full hover:border-black dark:hover:border-white transition-colors">
-                <div className="mb-4 w-12 h-12 bg-black dark:bg-white flex items-center justify-center">
+              <div className="p-8 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 h-full hover:border-[#0b1f4a] dark:hover:border-white transition-colors">
+                <div className="mb-4 w-12 h-12 bg-[#0b1f4a] dark:bg-white flex items-center justify-center">
                   <span className="text-2xl text-white dark:text-black font-bold">2</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('advantage.growth.title')}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[#0b1f4a] dark:text-white">{t('advantage.growth.title')}</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {t('advantage.growth.desc')}
                 </p>
@@ -162,11 +158,11 @@ const DummyContent = () => {
 
           <FadeInSlide direction="up" delay={0.3}>
             <HoverCard className="h-full">
-              <div className="p-8 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 h-full hover:border-black dark:hover:border-white transition-colors">
-                <div className="mb-4 w-12 h-12 bg-black dark:bg-white flex items-center justify-center">
+              <div className="p-8 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 h-full hover:border-[#0b1f4a] dark:hover:border-white transition-colors">
+                <div className="mb-4 w-12 h-12 bg-[#0b1f4a] dark:bg-white flex items-center justify-center">
                   <span className="text-2xl text-white dark:text-black font-bold">3</span>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('advantage.commission.title')}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[#0b1f4a] dark:text-white">{t('advantage.commission.title')}</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {t('advantage.commission.desc')}
                 </p>
@@ -177,42 +173,42 @@ const DummyContent = () => {
 
         {/* 与传统培训对比 */}
         <div className="bg-gray-50 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-800 p-8">
-          <h3 className="text-2xl font-bold text-center mb-8 text-black dark:text-white">
-            <span className="bg-black dark:bg-white text-white dark:text-black px-4 py-2">{t('comparison.vs')}</span>
+          <h3 className="text-2xl font-bold text-center mb-8 text-[#0b1f4a] dark:text-white">
+            <span className="bg-[#0b1f4a] dark:bg-white text-white dark:text-black px-4 py-2">{t('comparison.vs')}</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* FX Killer */}
-            <div className="bg-white dark:bg-gray-800 p-6 border-l-4 border-black dark:border-white">
-              <h4 className="text-xl font-bold mb-4 text-black dark:text-white flex items-center gap-2">
+            {/* Buoyancy Capital */}
+            <div className="bg-white dark:bg-gray-800 p-6 border-l-4 border-[#0b1f4a] dark:border-white">
+              <h4 className="text-xl font-bold mb-4 text-[#0b1f4a] dark:text-white flex items-center gap-2">
                 <span className="text-2xl"></span> {t('comparison.fxkiller')}
               </h4>
               <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex items-start gap-2">
-                  <span className="text-black dark:text-white font-bold">•</span>
+                  <span className="text-[#0b1f4a] dark:text-white font-bold">•</span>
                   <span>{t('comparison.free')}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black dark:text-white font-bold">•</span>
+                  <span className="text-[#0b1f4a] dark:text-white font-bold">•</span>
                   <span>{t('comparison.practical')}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black dark:text-white font-bold">•</span>
+                  <span className="text-[#0b1f4a] dark:text-white font-bold">•</span>
                   <span>{t('comparison.selection')}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black dark:text-white font-bold">•</span>
+                  <span className="text-[#0b1f4a] dark:text-white font-bold">•</span>
                   <span>{t('comparison.funding')}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black dark:text-white font-bold">•</span>
+                  <span className="text-[#0b1f4a] dark:text-white font-bold">•</span>
                   <span>{t('comparison.share')}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black dark:text-white font-bold">•</span>
+                  <span className="text-[#0b1f4a] dark:text-white font-bold">•</span>
                   <span>{t('comparison.career')}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-black dark:text-white font-bold">•</span>
+                  <span className="text-[#0b1f4a] dark:text-white font-bold">•</span>
                   <span>{t('comparison.discipline')}</span>
                 </li>
               </ul>
@@ -256,7 +252,7 @@ const DummyContent = () => {
             </div>
           </div>
 
-          <div className="mt-8 bg-black dark:bg-gray-950 text-white p-6 text-center">
+          <div className="mt-8 bg-[#0b1f4a] dark:bg-slate-950 text-white p-6 text-center">
             <p className="text-lg font-semibold">
               {t('comparison.emphasis')}
             </p>
@@ -267,7 +263,7 @@ const DummyContent = () => {
       {/* 职业发展路径 - 全新设计 */}
       <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-black py-20 border-y-2 border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">
+          <h2 className="text-4xl font-bold text-center mb-4 text-[#0b1f4a] dark:text-white border-b-4 border-[#0b1f4a] dark:border-white inline-block pb-2 w-full">
             {t('career.title')}
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-400 mb-16 text-lg">
@@ -278,15 +274,15 @@ const DummyContent = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             {/* 阶段 1 */}
             <div className="relative">
-              <div className="bg-white dark:bg-gray-800 border-2 border-black dark:border-white p-6 h-full">
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-black dark:bg-white border-2 border-black dark:border-white flex items-center justify-center">
+              <div className="bg-white dark:bg-gray-800 border-2 border-[#0b1f4a] dark:border-white p-6 h-full">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#0b1f4a] dark:bg-white border-2 border-[#0b1f4a] dark:border-white flex items-center justify-center">
                   <span className="text-white dark:text-black font-black text-2xl">1</span>
                 </div>
                 <div className="mt-4">
-                  <div className="inline-block px-3 py-1 bg-black dark:bg-white text-white dark:text-black text-xs font-bold mb-3">
+                  <div className="inline-block px-3 py-1 bg-[#0b1f4a] dark:bg-white text-white dark:text-black text-xs font-bold mb-3">
                     {t('career.stage1.days')}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{t('career.stage1.title')}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-[#0b1f4a] dark:text-white">{t('career.stage1.title')}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     {t('career.stage1.desc')}
                   </p>
@@ -309,7 +305,7 @@ const DummyContent = () => {
                   <div className="inline-block px-3 py-1 bg-gray-700 dark:bg-gray-400 text-white dark:text-black text-xs font-bold mb-3">
                     {t('career.stage2.days')}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{t('career.stage2.title')}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-[#0b1f4a] dark:text-white">{t('career.stage2.title')}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     {t('career.stage2.desc')}
                   </p>
@@ -332,7 +328,7 @@ const DummyContent = () => {
                   <div className="inline-block px-3 py-1 bg-gray-800 dark:bg-gray-300 text-white dark:text-black text-xs font-bold mb-3">
                     {t('career.stage3.days')}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{t('career.stage3.title')}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-[#0b1f4a] dark:text-white">{t('career.stage3.title')}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     {t('career.stage3.desc')}
                   </p>
@@ -347,12 +343,12 @@ const DummyContent = () => {
 
             {/* 阶段 4 */}
             <div className="relative">
-              <div className="bg-black dark:bg-white border-2 border-black dark:border-white p-6 h-full">
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-black dark:bg-white border-2 border-black dark:border-white flex items-center justify-center">
+              <div className="bg-[#0b1f4a] dark:bg-white border-2 border-[#0b1f4a] dark:border-white p-6 h-full">
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#0b1f4a] dark:bg-white border-2 border-[#0b1f4a] dark:border-white flex items-center justify-center">
                   <span className="text-white dark:text-black font-black text-2xl">★</span>
                 </div>
                 <div className="mt-4">
-                  <div className="inline-block px-3 py-1 bg-white dark:bg-black text-black dark:text-white text-xs font-bold mb-3">
+                  <div className="inline-block px-3 py-1 bg-white dark:bg-[#0b1f4a] text-[#0b1f4a] dark:text-white text-xs font-bold mb-3">
                     {t('career.stage4.path')}
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-white dark:text-black">{t('career.stage4.title')}</h3>
@@ -375,10 +371,10 @@ const DummyContent = () => {
       {/* 你是否符合基本条件 - 全新设计 */}
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-black dark:text-white">
+          <h2 className="text-4xl font-bold mb-4 text-[#0b1f4a] dark:text-white">
             {t('req.title')}
           </h2>
-          <div className="w-24 h-1 bg-black dark:bg-white mx-auto mb-4"></div>
+          <div className="w-24 h-1 bg-[#0b1f4a] dark:bg-white mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
             {t('req.subtitle')}
           </p>
@@ -387,10 +383,10 @@ const DummyContent = () => {
         {/* 条件卡片 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* 人群画像 */}
-          <div className="bg-gradient-to-br from-gray-900 to-black dark:from-gray-100 dark:to-white p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
+          <div className="bg-gradient-to-br from-[#08112a] to-[#0b1f4a] dark:from-gray-100 dark:to-white p-8 border-2 border-[#0b1f4a] dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
             <div className="text-white dark:text-black">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white dark:bg-black flex items-center justify-center">
+                <div className="w-12 h-12 bg-white dark:bg-[#0b1f4a] flex items-center justify-center">
                   <span className="text-2xl">👥</span>
                 </div>
                 <h3 className="text-2xl font-bold">{t('req.profile.title')}</h3>
@@ -413,16 +409,16 @@ const DummyContent = () => {
           </div>
 
           {/* 时间与环境 */}
-          <div className="bg-white dark:bg-gray-900 p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
+          <div className="bg-white dark:bg-slate-900 p-8 border-2 border-[#0b1f4a] dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-black dark:bg-white flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#0b1f4a] dark:bg-white flex items-center justify-center">
                 <span className="text-2xl">⏰</span>
               </div>
-              <h3 className="text-2xl font-bold text-black dark:text-white">{t('req.time.title')}</h3>
+              <h3 className="text-2xl font-bold text-[#0b1f4a] dark:text-white">{t('req.time.title')}</h3>
             </div>
             <div className="space-y-5">
               <div className="flex items-start gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 p-3 -m-3 transition-colors">
-                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center mt-1">
+                <div className="flex-shrink-0 w-8 h-8 bg-[#0b1f4a] dark:bg-white flex items-center justify-center mt-1">
                   <svg className="w-5 h-5 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -433,7 +429,7 @@ const DummyContent = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 p-3 -m-3 transition-colors">
-                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center mt-1">
+                <div className="flex-shrink-0 w-8 h-8 bg-[#0b1f4a] dark:bg-white flex items-center justify-center mt-1">
                   <svg className="w-5 h-5 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -444,7 +440,7 @@ const DummyContent = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 p-3 -m-3 transition-colors">
-                <div className="flex-shrink-0 w-8 h-8 bg-black dark:bg-white flex items-center justify-center mt-1">
+                <div className="flex-shrink-0 w-8 h-8 bg-[#0b1f4a] dark:bg-white flex items-center justify中心 mt-1">
                   <svg className="w-5 h-5 text-white dark:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
@@ -458,10 +454,10 @@ const DummyContent = () => {
           </div>
 
           {/* 在线时间 */}
-          <div className="bg-gradient-to-br from-gray-900 to-black dark:from-gray-100 dark:to-white p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
+          <div className="bg-gradient-to-br from-[#08112a] to-[#0b1f4a] dark:from-gray-100 dark:to-white p-8 border-2 border-[#0b1f4a] dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
             <div className="text-white dark:text-black">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white dark:bg-black flex items-center justify-center">
+                <div className="w-12 h-12 bg-white dark:bg-[#0b1f4a] flex items-center justify-center">
                   <span className="text-2xl">📅</span>
                 </div>
                 <h3 className="text-2xl font-bold">{t('req.online.title')}</h3>
@@ -480,23 +476,23 @@ const DummyContent = () => {
           </div>
 
           {/* 适合与否 */}
-          <div className="bg-white dark:bg-gray-900 p-8 border-2 border-black dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
-            <div className="text-black dark:text-white">
+          <div className="bg-white dark:bg-slate-900 p-8 border-2 border-[#0b1f4a] dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
+            <div className="text-[#0b1f4a] dark:text-white">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-black dark:bg-white flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#0b1f4a] dark:bg-white flex items-center justify-center">
                   <span className="text-2xl">⚠️</span>
                 </div>
                 <h3 className="text-2xl font-bold">{t('unsuitable.title')}</h3>
               </div>
               <div className="space-y-5">
-                <div className="border-l-4 border-black dark:border-white pl-4 hover:pl-6 transition-all">
+                <div className="border-l-4 border-[#0b1f4a] dark:border-white pl-4 hover:pl-6 transition-all">
                   <p className="font-bold text-lg flex items-center gap-2 mb-1">
                     <span className="text-red-600 dark:text-red-400">✗</span>
                     {t('unsuitable.gambler')}
                   </p>
                   <p className="text-sm text-gray-700 dark:text-gray-400">{t('unsuitable.gambler.desc')}</p>
                 </div>
-                <div className="border-l-4 border-black dark:border-white pl-4 hover:pl-6 transition-all">
+                <div className="border-l-4 border-[#0b1f4a] dark:border-white pl-4 hover:pl-6 transition-all">
                   <p className="font-bold text-lg flex items-center gap-2 mb-1">
                     <span className="text-green-600 dark:text-green-400">✓</span>
                     {t('expectations.mindset')}
@@ -509,10 +505,10 @@ const DummyContent = () => {
         </div>
 
         {/* 重要提示 */}
-        <div className="mt-8 bg-gradient-to-r from-gray-900 to-black dark:from-gray-100 dark:to-white text-white dark:text-black p-8 border-2 border-black dark:border-white shadow-xl">
+        <div className="mt-8 bg-gradient-to-r from-[#08112a] via-[#0b1f4a] to-[#123a7a] dark:from-gray-100 dark:to-white text-white dark:text-black p-8 border-2 border-[#0b1f4a] dark:border-white shadow-xl">
           <div className="flex items-start gap-6">
-            <div className="flex-shrink-0 w-16 h-16 bg-white dark:bg-black flex items-center justify-center rounded-full">
-              <svg className="w-8 h-8 text-black dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex-shrink-0 w-16 h-16 bg-white dark:bg-[#0b1f4a] flex items-center justify-center rounded-full">
+            <svg className="w-8 h-8 text-[#0b1f4a] dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             </div>
@@ -532,7 +528,7 @@ const DummyContent = () => {
       {/* 视频介绍板块 */}
       <div className="bg-gray-50 dark:bg-gray-900 py-20 border-y-2 border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">
+          <h2 className="text-4xl font-bold text-center mb-4 text-[#0b1f4a] dark:text-white border-b-4 border-[#0b1f4a] dark:border-white inline-block pb-2 w-full">
             {t('video.title')}
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-400 mb-12 text-lg">
@@ -541,8 +537,8 @@ const DummyContent = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* 视频 1 */}
-            <div className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 overflow-hidden group hover:border-black dark:hover:border-white transition-all">
-              <div className="relative h-64 bg-black dark:bg-gray-700 flex items-center justify-center">
+            <div className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 overflow-hidden group hover:border-[#0b1f4a] dark:hover:border-white transition-all">
+              <div className="relative h-64 bg-[#0b1f4a] dark:bg-slate-800 flex items-center justify-center">
                 <div className="text-center text-white">
                   <div className="text-6xl mb-4"></div>
                   <p className="text-lg font-semibold">{t('video.doc1.title')}</p>
@@ -550,7 +546,7 @@ const DummyContent = () => {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{t('video.doc1.title')}</h3>
+                <h3 className="text-xl font-bold mb-3 text-[#0b1f4a] dark:text-white">{t('video.doc1.title')}</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
                   {t('video.doc1.desc')}
                 </p>
@@ -558,7 +554,7 @@ const DummyContent = () => {
                   href="https://www.bilibili.com/video/BV19a411X7eY"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-bold border-2 border-black dark:border-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-colors"
+                  className="inline-block px-6 py-3 bg-[#0b1f4a] dark:bg-white text-white dark:text-black font-bold border-2 border-[#0b1f4a] dark:border-white hover:bg-white hover:text-[#0b1f4a] dark:hover:bg-[#0b1f4a] dark:hover:text-white transition-colors"
                 >
                   {t('video.doc1.cta')}
                 </a>
@@ -566,8 +562,8 @@ const DummyContent = () => {
             </div>
 
             {/* 视频 2 */}
-            <div className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 overflow-hidden group hover:border-black dark:hover:border-white transition-all">
-              <div className="relative h-64 bg-black dark:bg-gray-700 flex items-center justify-center">
+            <div className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 overflow-hidden group hover:border-[#0b1f4a] dark:hover:border-white transition-all">
+              <div className="relative h-64 bg-[#0b1f4a] dark:bg-slate-800 flex items-center justify-center">
                 <div className="text-center text-white">
                   <div className="text-6xl mb-4"></div>
                   <p className="text-lg font-semibold">{t('video.doc2.title')}</p>
@@ -575,7 +571,7 @@ const DummyContent = () => {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{t('video.doc2.title')}</h3>
+                <h3 className="text-xl font-bold mb-3 text-[#0b1f4a] dark:text-white">{t('video.doc2.title')}</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed">
                   {t('video.doc2.desc')}
                 </p>
@@ -583,7 +579,7 @@ const DummyContent = () => {
                   href="https://www.bilibili.com/video/BV1FZ4y1o734"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-bold border-2 border-black dark:border-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-colors"
+                  className="inline-block px-6 py-3 bg-[#0b1f4a] dark:bg-white text-white dark:text-black font-bold border-2 border-[#0b1f4a] dark:border-white hover:bg-white hover:text-[#0b1f4a] dark:hover:bg-[#0b1f4a] dark:hover:text-white transition-colors"
                 >
                   {t('video.doc2.cta')}
                 </a>
@@ -595,32 +591,32 @@ const DummyContent = () => {
 
       {/* 学员展示 - 收益滚动 */}
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">
+        <h2 className="text-4xl font-bold text-center mb-4 text-[#0b1f4a] dark:text-white border-b-4 border-[#0b1f4a] dark:border-white inline-block pb-2 w-full">
           {t('showcase.title')}
         </h2>
 
         {/* 收益统计 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white dark:bg-gray-800 p-6 border-2 border-gray-200 dark:border-gray-700 text-center">
-            <div className="text-4xl font-black text-black dark:text-white mb-2">{t('showcase.junior')}</div>
-            <p className="text-2xl font-bold text-black dark:text-white">¥10,000 - ¥30,000</p>
+            <div className="text-4xl font-black text-[#0b1f4a] dark:text-white mb-2">{t('showcase.junior')}</div>
+            <p className="text-2xl font-bold text-[#0b1f4a] dark:text-white">¥10,000 - ¥30,000</p>
             <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">{t('showcase.income.range')}</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 border-2 border-black dark:border-white text-center">
-            <div className="text-4xl font-black text-black dark:text-white mb-2">{t('showcase.intermediate')}</div>
-            <p className="text-2xl font-bold text-black dark:text-white">¥30,000 - ¥60,000</p>
+          <div className="bg-white dark:bg-gray-800 p-6 border-2 border-[#0b1f4a] dark:border-white text-center">
+            <div className="text-4xl font-black text-[#0b1f4a] dark:text-white mb-2">{t('showcase.intermediate')}</div>
+            <p className="text-2xl font-bold text-[#0b1f4a] dark:text-white">¥30,000 - ¥60,000</p>
             <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">{t('showcase.income.range')}</p>
           </div>
-          <div className="bg-black dark:bg-white p-6 border-2 border-black dark:border-white text-center">
+          <div className="bg-[#0b1f4a] dark:bg-white p-6 border-2 border-[#0b1f4a] dark:border-white text-center">
             <div className="text-4xl font-black text-white dark:text-black mb-2">{t('showcase.senior')}</div>
             <p className="text-2xl font-bold text-white dark:text-black">¥60,000 - ¥100,000+</p>
-            <p className="text-sm text-gray-400 dark:text-gray-600 mt-2">{t('showcase.income.range')}</p>
+            <p className="text-sm text-blue-100 dark:text-gray-600 mt-2">{t('showcase.income.range')}</p>
           </div>
         </div>
 
         {/* 收益图片滚动展示 - 每次显示3张 */}
-        <div className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 p-8">
-          <h3 className="text-2xl font-bold text-center mb-6 text-black dark:text-white">
+        <div className="bg-blue-50/70 dark:bg-slate-900 border-2 border-[#0b1f4a] dark:border-slate-700 p-8">
+          <h3 className="text-2xl font-bold text-center mb-6 text-[#0b1f4a] dark:text-white">
             {t('showcase.screenshots.title')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -685,19 +681,19 @@ const DummyContent = () => {
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="bg-black/50 backdrop-blur-sm p-4 border border-red-500/30">
+                <div className="bg-[#0b1f4a]/60 backdrop-blur-sm p-4 border border-red-500/30">
                   <p className="text-xs text-gray-500 mb-2">{t('cta.elimination')}</p>
                   <p className="text-sm text-white font-bold">{t('cta.elimination.reason')}</p>
                 </div>
-                <div className="bg-black/50 backdrop-blur-sm p-4 border border-red-500/30">
+                <div className="bg-[#0b1f4a]/60 backdrop-blur-sm p-4 border border-red-500/30">
                   <p className="text-xs text-gray-500 mb-2">{t('cta.opportunity')}</p>
                   <p className="text-sm text-white font-bold">{t('cta.opportunity.value')}</p>
                 </div>
-                <div className="bg-black/50 backdrop-blur-sm p-4 border border-red-500/30">
+                <div className="bg-[#0b1f4a]/60 backdrop-blur-sm p-4 border border-red-500/30">
                   <p className="text-xs text-gray-500 mb-2">{t('cta.time.cost')}</p>
                   <p className="text-sm text-white font-bold">{t('cta.time.value')}</p>
                 </div>
-                <div className="bg-black/50 backdrop-blur-sm p-4 border border-green-500/30">
+                <div className="bg-[#0b1f4a]/60 backdrop-blur-sm p-4 border border-green-500/30">
                   <p className="text-xs text-gray-500 mb-2">{t('cta.money.cost')}</p>
                   <p className="text-sm text-green-400 font-bold">{t('cta.money.value')}</p>
                 </div>
@@ -708,7 +704,7 @@ const DummyContent = () => {
           <div className="space-y-4">
             <button
               onClick={() => setIsEmailModalOpen(true)}
-              className="px-10 py-5 bg-white text-black font-bold text-lg border-2 border-white hover:bg-black hover:text-white transition-colors animate-shake"
+              className="px-10 py-5 bg-white text-[#0b1f4a] font-bold text-lg border-2 border-white hover:bg-[#0b1f4a] hover:text-white transition-colors animate-shake"
             >
               {t('cta.button.interview')}
             </button>

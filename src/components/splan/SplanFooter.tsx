@@ -17,10 +17,10 @@ export default function SplanFooter() {
           <div>
             <div className="flex items-center mb-4">
               <span className="text-xl font-black text-white">
-                {language === 'zh' ? '汇' : 'FX'}
+                {language === 'zh' ? '浮力' : 'Buoyancy'}
               </span>
               <span className="text-xl font-normal text-gray-400 ml-1">
-                {language === 'zh' ? '刃' : 'Killer'}
+                {language === 'zh' ? '资本' : 'Capital'}
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">

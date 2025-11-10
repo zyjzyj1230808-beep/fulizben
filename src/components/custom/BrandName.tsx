@@ -4,7 +4,12 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
-export default function BrandName() {
+interface BrandNameProps {
+  color?: string; // 允許外部指定顏色（例如白色以適配深色橫幅）
+  shadow?: string; // 可覆蓋陰影
+}
+
+export default function BrandName({ color, shadow }: BrandNameProps = {}) {
   const { language } = useLanguage();
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -16,18 +21,26 @@ export default function BrandName() {
     return () => clearTimeout(timer);
   }, []);
 
-  const text = language === 'zh' ? '汇刃' : 'FXKiller';
+  const text = language === 'zh' ? '浮力资本' : 'Buoyancy Capital';
   const chars = text.split('');
+
+  const primaryColor = '#0b1f4a';
+  const appliedColor = color || primaryColor;
+  const appliedShadow = shadow || '0 12px 30px rgba(15, 23, 42, 0.25)';
 
   return (
     <>
       {chars.map((char, index) => {
-        const isSecondPart = language === 'zh' ? index >= 1 : index >= 2;
+        const isSecondPart = language === 'zh' ? index >= 2 : index >= 2;
 
         return (
           <motion.span
             key={`${language}-${index}`}
-            className={isSecondPart ? 'font-normal text-gray-600 dark:text-gray-400' : 'font-black text-black dark:text-white'}
+            className="font-black tracking-tight"
+            style={{
+              color: appliedColor,
+              textShadow: appliedShadow,
+            }}
             initial={hasAnimated ? false : {
               x: (index % 2 === 0 ? -1 : 1) * 150,
               y: (index % 3 === 0 ? -1 : 1) * 80,

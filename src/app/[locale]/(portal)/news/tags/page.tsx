@@ -82,10 +82,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const isZh = language === 'zh';
 
   return {
-    title: isZh ? '标签归档 - FX Killer' : 'Tags Archive - FX Killer',
+    title: isZh ? '标签归档 - Buoyancy Capital' : 'Tags Archive - Buoyancy Capital',
     description: isZh
-      ? '按标签浏览FX Killer的所有外汇新闻文章'
-      : 'Browse all FX Killer forex news articles by tags',
+      ? '按标签浏览Buoyancy Capital的所有外汇新闻文章'
+      : 'Browse all Buoyancy Capital forex news articles by tags',
   };
 }
 

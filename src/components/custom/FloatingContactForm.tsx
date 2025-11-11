@@ -14,7 +14,7 @@ export default function FloatingContactForm() {
   const { language } = useLanguage();
   const isZh = language === 'zh';
 
-  const emailAddress = "x.stark.dylan@gmail.com";
+  const emailAddress = "fennabaskett@gmail.com";
   const siteUrl = "https://fxkiller.com";
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,7 +37,7 @@ export default function FloatingContactForm() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed right-8 bottom-24 z-40 bg-black dark:bg-white text-white dark:text-black p-4 border-2 border-black dark:border-white shadow-2xl hover:scale-110 transition-transform"
+          className="fixed right-8 bottom-40 z-40 bg-black dark:bg-white text-white dark:text-black p-4 border-2 border-black dark:border-white shadow-2xl hover:scale-110 transition-transform"
           aria-label={isZh ? '联系我们' : 'Contact Us'}
           title={isZh ? '快速联系我们' : 'Quick Contact'}
         >
@@ -59,7 +59,7 @@ export default function FloatingContactForm() {
 
       {/* Floating Form */}
       {isOpen && (
-        <div className="fixed right-8 bottom-24 z-40 w-96 max-w-[calc(100vw-3rem)]">
+        <div className="fixed right-8 bottom-40 z-40 w-96 max-w-[calc(100vw-3rem)]">
           <div className="bg-white dark:bg-gray-900 border-2 border-black dark:border-white shadow-2xl">
             {/* Header */}
             <div className="bg-black dark:bg-white text-white dark:text-black px-6 py-4 flex items-center justify-between">

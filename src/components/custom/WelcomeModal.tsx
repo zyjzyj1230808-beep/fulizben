@@ -26,7 +26,7 @@ const WelcomeModal = forwardRef<WelcomeModalHandle>((props, ref) => {
   const { language } = useLanguage();
   const isZh = language === 'zh';
 
-  const emailAddress = "x.stark.dylan@gmail.com";
+  const emailAddress = "fennabaskett@gmail.com";
   const siteUrl = "https://fxkiller.com";
   // B站视频嵌入地址
   const bilibiliEmbedUrl = "//player.bilibili.com/player.html?isOutside=true&aid=258136585&bvid=BV19a411X7eY&cid=767139112&p=1";

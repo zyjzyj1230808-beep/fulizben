@@ -89,8 +89,8 @@ export function generateBilingualMetadata(
     },
     twitter: {
       card: 'summary_large_image' as const,
-      site: '@RealFXkiller',
-      creator: '@RealFXkiller',
+      site: '@baskettfen27123',
+      creator: '@baskettfen27123',
       title,
       description,
       images: options?.image ? [options.image] : ['/og-image.jpg'],

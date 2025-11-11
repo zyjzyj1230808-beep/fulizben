@@ -35,8 +35,8 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero Section
     'hero.title': 'Professional FX Trader Training Platform',
     'hero.subtitle': '浮力，你的复利起点',
-    'hero.cta.learn': '了解外汇培训',
-    'hero.cta.dashboard': '进入交易系统',
+    'hero.cta.learn': '关于我们',
+    'hero.cta.dashboard': '产品与服务',
 
     // Why Choose Section
     'why.title': '为什么选择浮力资本',

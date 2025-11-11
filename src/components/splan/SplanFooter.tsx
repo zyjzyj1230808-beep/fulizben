@@ -44,7 +44,7 @@ export default function SplanFooter() {
 
               {/* X (Twitter) */}
               <a
-                href="https://x.com/baskettfen27123?s=11"
+                href="https://x.com/fuliziben999"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
@@ -52,6 +52,19 @@ export default function SplanFooter() {
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/share/1D9ozxLWVB/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                title="Facebook"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
               </a>
 
@@ -79,6 +92,17 @@ export default function SplanFooter() {
                 </svg>
               </button>
 
+              {/* QQ */}
+              <button
+                onClick={() => setShowQqModal(true)}
+                className="text-gray-400 hover:text-white transition-colors cursor-pointer"
+                title="QQ: 27439886"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2C6.486 2 2 6.29 2 11.6c0 2.53.999 4.82 2.637 6.5l-.637 2.9c-.02.09.06.17.148.148l2.906-.632C8.68 21.13 10.287 21.6 12 21.6c5.514 0 10-4.29 10-9.6S17.514 2 12 2zm0 3.2c1.768 0 3.2 1.343 3.2 3 0 1.657-1.432 3-3.2 3s-3.2-1.343-3.2-3c0-1.657 1.432-3 3.2-3zm0 13.2c-2.666 0-5.01-1.182-6.4-2.987.08-.89.63-1.7 1.49-2.207 2.43 1.37 5.4 1.37 7.82 0 .86.507 1.41 1.317 1.49 2.207-1.39 1.805-3.734 2.987-6.4 2.987z"/>
+                </svg>
+              </button>
+              
               {/* Email */}
               <a
                 href="mailto:fennabaskett@gmail.com"
@@ -90,29 +114,8 @@ export default function SplanFooter() {
                 </svg>
               </a>
 
-              {/* Facebook */}
-              <a
-                href="https://www.facebook.com/share/1D9ozxLWVB/?mibextid=wwXIfr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-                title="Facebook"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
 
-              {/* QQ */}
-              <button
-                onClick={() => setShowQqModal(true)}
-                className="text-gray-400 hover:text-white transition-colors cursor-pointer"
-                title="QQ: 27439886"
-              >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2C6.486 2 2 6.29 2 11.6c0 2.53.999 4.82 2.637 6.5l-.637 2.9c-.02.09.06.17.148.148l2.906-.632C8.68 21.13 10.287 21.6 12 21.6c5.514 0 10-4.29 10-9.6S17.514 2 12 2zm0 3.2c1.768 0 3.2 1.343 3.2 3 0 1.657-1.432 3-3.2 3s-3.2-1.343-3.2-3c0-1.657 1.432-3 3.2-3zm0 13.2c-2.666 0-5.01-1.182-6.4-2.987.08-.89.63-1.7 1.49-2.207 2.43 1.37 5.4 1.37 7.82 0 .86.507 1.41 1.317 1.49 2.207-1.39 1.805-3.734 2.987-6.4 2.987z"/>
-                </svg>
-              </button>
+
             </div>
           </div>
 
@@ -395,18 +398,18 @@ export default function SplanFooter() {
                   27439886
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-500">
-                  {language === 'zh' ? '複製 QQ 號，在 QQ 中添加好友' : 'Copy QQ number and add in QQ'}
+                  {language === 'zh' ? '复制 QQ 号，在 QQ 中添加好友' : 'Copy QQ number and add in QQ'}
                 </p>
               </div>
 
               <button
                 onClick={() => {
                   navigator.clipboard.writeText('27439886');
-                  alert(language === 'zh' ? 'QQ 號已複製！' : 'QQ number copied!');
+                  alert(language === 'zh' ? 'QQ 号已复制！' : 'QQ number copied!');
                 }}
                 className="w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
               >
-                {language === 'zh' ? '複製 QQ 號' : 'Copy QQ Number'}
+                {language === 'zh' ? '复制 QQ 号' : 'Copy QQ Number'}
               </button>
             </div>
           </div>

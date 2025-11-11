@@ -157,7 +157,7 @@ const translations: Record<Language, Record<string, string>> = {
     'cta.button.note': '请在充分了解并确认自己符合全部条件后再申请',
 
     // Footer
-    'footer.about': '一个专注于金融交易的精英生态圈。',
+    'footer.about': '你的复利起点',
     'footer.nav.title': '快速导航',
     'footer.resources.title': '资源',
     'footer.contact.title': '联系我们',

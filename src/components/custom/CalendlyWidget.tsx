@@ -19,6 +19,20 @@ export default function CalendlyWidget() {
     script.async = true;
     document.body.appendChild(script);
 
+    // 监听 Calendly 事件：预约完成后跳轉到感謝頁
+    const handleCalendlyEvent = (event: MessageEvent) => {
+      try {
+        const data = event?.data;
+        if (data && typeof data === 'object' && (data as any).event === 'calendly.event_scheduled') {
+          const locale = language === 'zh' ? 'zh' : 'en';
+          window.location.href = `/${locale}/calendly/thank-you`;
+        }
+      } catch (_e) {
+        // ignore
+      }
+    };
+    window.addEventListener('message', handleCalendlyEvent);
+
     return () => {
       // 清理：移除脚本和样式
       if (script.parentNode) {
@@ -27,6 +41,7 @@ export default function CalendlyWidget() {
       if (link.parentNode) {
         link.parentNode.removeChild(link);
       }
+      window.removeEventListener('message', handleCalendlyEvent);
     };
   }, []);
 
@@ -43,7 +58,7 @@ export default function CalendlyWidget() {
   return (
     <button
       onClick={openCalendly}
-      className="fixed right-8 bottom-[100px] z-40 bg-gradient-to-r from-black via-gray-800 to-black dark:from-white dark:via-gray-200 dark:to-white text-white dark:text-black p-4 border-2 border-black dark:border-white shadow-2xl hover:scale-110 transition-transform"
+      className="fixed right-8 bottom-40 z-40 bg-gradient-to-r from-black via-gray-800 to-black dark:from-white dark:via-gray-200 dark:to-white text-white dark:text-black p-4 border-2 border-black dark:border-white shadow-2xl hover:scale-110 transition-transform"
       aria-label={language === 'zh' ? '预约咨询' : 'Schedule Appointment'}
       title={language === 'zh' ? '预约咨询' : 'Schedule Appointment'}
     >

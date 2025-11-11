@@ -37,7 +37,7 @@ export default function FloatingContactForm() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed right-8 bottom-40 z-40 bg-black dark:bg-white text-white dark:text-black p-4 border-2 border-black dark:border-white shadow-2xl hover:scale-110 transition-transform"
+          className="fixed right-8 bottom-[100px] z-40 bg-black dark:bg-white text-white dark:text-black p-4 border-2 border-black dark:border-white shadow-2xl hover:scale-110 transition-transform"
           aria-label={isZh ? '联系我们' : 'Contact Us'}
           title={isZh ? '快速联系我们' : 'Quick Contact'}
         >
@@ -59,12 +59,12 @@ export default function FloatingContactForm() {
 
       {/* Floating Form */}
       {isOpen && (
-        <div className="fixed right-8 bottom-40 z-40 w-96 max-w-[calc(100vw-3rem)]">
-          <div className="bg-white dark:bg-gray-900 border-2 border-black dark:border-white shadow-2xl">
+        <div className="fixed right-8 bottom-40 z-40 w-96 max-w-[calc(100vw-3rem)] max-h-[80vh]">
+          <div className="bg-white dark:bg-gray-900 border-2 border-black dark:border-white shadow-2xl max-h-[80vh] flex flex-col">
             {/* Header */}
             <div className="bg-black dark:bg-white text-white dark:text-black px-6 py-4 flex items-center justify-between">
               <h3 className="text-lg font-bold">
-                {isZh ? '快速联系' : 'Quick Contact'}
+                {isZh ? '联系我们' : 'Contact Us'}
               </h3>
               <button
                 onClick={() => setIsOpen(false)}
@@ -92,7 +92,7 @@ export default function FloatingContactForm() {
               action={`https://formsubmit.co/${emailAddress}`}
               method="POST"
               onSubmit={handleSubmit}
-              className="p-6 space-y-4"
+              className="p-6 space-y-4 overflow-y-auto"
             >
               {/* Hidden Fields */}
               <input
@@ -190,7 +190,7 @@ export default function FloatingContactForm() {
                 type="submit"
                 className="w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-bold border-2 border-black dark:border-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-colors"
               >
-                {isZh ? '快联系我' : 'Contact Me'}
+                {isZh ? '联系我们' : 'Contact Us'}
               </button>
 
               {/* Privacy Note */}

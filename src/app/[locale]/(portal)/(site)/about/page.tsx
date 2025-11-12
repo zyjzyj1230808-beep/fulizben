@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import LocaleLink from "@/components/navigation/LocaleLink";
 import { motion } from "motion/react";
 
-export default function AboutOverviewPage() {
+export default function AboutPage() {
 	const { language } = useLanguage();
 	const isZh = language === "zh";
 
@@ -20,10 +20,14 @@ export default function AboutOverviewPage() {
 				</div>
 
 				{/* Grid Pattern Overlay */}
-				<div className="absolute inset-0 opacity-5" style={{
-					backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-					backgroundSize: '50px 50px'
-				}}></div>
+				<div
+					className="absolute inset-0 opacity-5"
+					style={{
+						backgroundImage:
+							"linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+						backgroundSize: "50px 50px",
+					}}
+				></div>
 
 				<div className="relative max-w-6xl mx-auto px-6 py-24">
 					<motion.div

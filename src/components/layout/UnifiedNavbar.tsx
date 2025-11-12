@@ -23,9 +23,8 @@ export default function UnifiedNavbar() {
       link: "/about",
       hasDropdown: true,
       dropdownItems: [
-        { name: language === 'zh' ? '文字简介' : 'Overview', link: '/about/overview' },
-        { name: language === 'zh' ? '公开信' : 'Open Letter', link: '/about/letter' },
-        { name: language === 'zh' ? '财富自增' : 'Wealth Growth', link: '/about/wealth' },
+        { name: language === 'zh' ? '关于浮力' : 'Overview', link: '/about/overview' },
+        { name: language === 'zh' ? '浮力榜' : 'Leaderboard', link: '/top-traders' },
         { name: language === 'zh' ? '联系我们' : 'Contact Us', link: '/about/contact' },
       ]
     },
@@ -59,10 +58,6 @@ export default function UnifiedNavbar() {
     {
       name: language === 'zh' ? '日历' : 'Calendar',
       link: "/economic-calendar",
-    },
-    {
-      name: language === 'zh' ? '天梯' : 'Leaderboard',
-      link: "/top-traders",
     },
     {
       name: t('nav.tradingTools'),

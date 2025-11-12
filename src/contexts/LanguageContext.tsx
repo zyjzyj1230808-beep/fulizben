@@ -430,7 +430,7 @@ const translations: Record<Language, Record<string, string>> = {
     'dashboard.logout': '退出登录',
     'dashboard.tab.backtest': '回测分析',
     'dashboard.tab.live': '实时交易',
-    'dashboard.tab.tianti': '天梯',
+    'dashboard.tab.tianti': '浮力榜',
     'dashboard.tab.config': '策略配置',
     'dashboard.footer.warning': ' 仅用于测试环境。实盘交易需要充分测试和风险评估。',
     'dashboard.footer.copyright': '2024-2025 © Buoyancy Capital 专注于金融交易的精英生态圈',

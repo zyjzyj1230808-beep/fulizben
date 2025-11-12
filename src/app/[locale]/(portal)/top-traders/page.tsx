@@ -53,7 +53,7 @@ export default function TopTradersPage() {
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="font-black">
-              {isZh ? '天梯' : 'Leaderboard'}
+              {isZh ? '浮力榜' : 'Leaderboard'}
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">

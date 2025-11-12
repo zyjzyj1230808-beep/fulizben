@@ -19,6 +19,17 @@ export default function UnifiedNavbar() {
 
   const navItems = [
     {
+      name: language === 'zh' ? '关于我们' : 'About Us',
+      link: "/about",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: language === 'zh' ? '文字简介' : 'Overview', link: '/about/overview' },
+        { name: language === 'zh' ? '公开信' : 'Open Letter', link: '/about/letter' },
+        { name: language === 'zh' ? '财富自增' : 'Wealth Growth', link: '/about/wealth' },
+        { name: language === 'zh' ? '联系我们' : 'Contact Us', link: '/about/contact' },
+      ]
+    },
+    {
       name: t('nav.training'),
       link: "/splan/join-us",
     },
@@ -62,6 +73,10 @@ export default function UnifiedNavbar() {
         { name: language === 'zh' ? '风险回报计算器' : 'Risk/Reward Calculator', link: '/tools/risk-reward-calculator' },
         { name: language === 'zh' ? '点值计算器' : 'Pip Calculator', link: '/tools/pip-calculator' },
       ]
+    },
+    {
+      name: language === 'zh' ? '产品与服务' : 'Products and Services',
+      link: "/products",
     },
     {
       name: t('nav.faq'),

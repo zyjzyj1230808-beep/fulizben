@@ -514,8 +514,8 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero Section
     'hero.title': 'Professional FX Trader Training Platform',
     'hero.subtitle': 'Buoyancy: Your Starting Point for Compounding',
-    'hero.cta.learn': 'Learn About Forex Training',
-    'hero.cta.dashboard': 'Enter Trading System',
+    'hero.cta.learn': 'About Us',
+    'hero.cta.dashboard': 'Products and Services',
 
     // Why Choose Section
     'why.title': 'Why Choose Buoyancy Capital',

@@ -62,10 +62,10 @@ export const currencyPairsGuideContent = {
         description: '掌握全球外汇交易时间'
       },
       {
-        href: '/partners/brokers',
-        icon: '🏦',
-        title: '经纪商对比',
-        description: '找到点差最低的交易平台'
+        href: '/partners/magic-university',
+        icon: '🏫',
+        title: '战略合作伙伴',
+        description: '了解我们的教育与孵化合作'
       }
     ],
 
@@ -141,10 +141,10 @@ export const currencyPairsGuideContent = {
         description: 'Master global forex trading hours'
       },
       {
-        href: '/partners/brokers',
-        icon: '🏦',
-        title: 'Broker Comparison',
-        description: 'Find platforms with lowest spreads'
+        href: '/partners/magic-university',
+        icon: '🏫',
+        title: 'Strategic Partners',
+        description: 'Learn about our education and incubation partners'
       }
     ],
 

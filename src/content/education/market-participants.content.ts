@@ -62,10 +62,10 @@ export const marketParticipantsContent = {
         description: '学习跟随机构资金的策略'
       },
       {
-        href: '/partners/brokers',
-        icon: '🏦',
-        title: '经纪商选择',
-        description: '选择机构级别的交易平台'
+        href: '/partners/magic-university',
+        icon: '🏫',
+        title: '战略合作伙伴',
+        description: '了解我们的教育与孵化合作'
       }
     ],
 
@@ -141,10 +141,10 @@ export const marketParticipantsContent = {
         description: 'Learn to follow institutional capital'
       },
       {
-        href: '/partners/brokers',
-        icon: '🏦',
-        title: 'Broker Selection',
-        description: 'Choose institutional-grade platforms'
+        href: '/partners/magic-university',
+        icon: '🏫',
+        title: 'Strategic Partners',
+        description: 'Learn about our education and incubation partners'
       }
     ],
 

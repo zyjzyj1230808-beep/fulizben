@@ -62,10 +62,10 @@ export const brokerSelectionContent = {
         description: '从零开始学习外汇市场基础知识'
       },
       {
-        href: '/partners/brokers',
+        href: '/partners/magic-university',
         icon: '🤝',
-        title: 'Buoyancy Capital合作经纪商',
-        description: '查看我们推荐的受监管经纪商'
+        title: '战略合作伙伴',
+        description: '了解我们的教育与孵化合作'
       }
     ],
 
@@ -141,10 +141,10 @@ export const brokerSelectionContent = {
         description: 'Learn forex market fundamentals from scratch'
       },
       {
-        href: '/partners/brokers',
+        href: '/partners/magic-university',
         icon: '🤝',
-        title: 'Buoyancy Capital Partner Brokers',
-        description: 'View our recommended regulated brokers'
+        title: 'Strategic Partners',
+        description: 'Learn about our education and incubation partners'
       }
     ],
 

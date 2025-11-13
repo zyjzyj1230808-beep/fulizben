@@ -20,7 +20,7 @@ export default function UnifiedNavbar() {
   const navItems = [
     {
       name: language === 'zh' ? '关于我们' : 'About Us',
-      link: "/about",
+      link: "/about/overview",
       hasDropdown: true,
       dropdownItems: [
         { name: language === 'zh' ? '关于浮力' : 'Overview', link: '/about/overview' },
@@ -58,10 +58,20 @@ export default function UnifiedNavbar() {
     {
       name: language === 'zh' ? '浮力财富' : 'Fuli Wealth',
       link: "/about/wealth",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: language === 'zh' ? '复利矩阵' : 'Compound Matrix', link: '/about/wealth#compound-matrix' },
+        { name: language === 'zh' ? '合伙人' : 'Partners', link: '/about/wealth#partners' },
+      ],
     },
     {
       name: language === 'zh' ? '战略合作伙伴' : 'Strategic Partners',
-      link: "/partners/brokers",
+      link: "/partners/magic-university",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: language === 'zh' ? '魔界大学' : 'Magic University', link: '/partners/magic-university' },
+        { name: language === 'zh' ? '稳准狠自营交易孵化器' : 'WZH Prop Trading Incubator', link: '/partners/incubator' },
+      ]
     },
     {
       name: t('nav.faq'),

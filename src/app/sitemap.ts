@@ -80,7 +80,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/education/breakout-trading', priority: 0.75, changeFrequency: 'monthly' as const },
 
     // 其他页面
-    { path: '/partners/brokers', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/privacy', priority: 0.6, changeFrequency: 'yearly' as const },
     { path: '/thank-you', priority: 0.5, changeFrequency: 'yearly' as const },
   ]

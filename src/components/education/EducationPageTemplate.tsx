@@ -145,7 +145,7 @@ export default function EducationPageTemplate({
                 href={
                   content.ctaPrimaryButton.includes('合作经纪商') ||
                   content.ctaPrimaryButton.includes('Partner Brokers')
-                    ? '/partners/brokers'
+                    ? '/partners/magic-university'
                     : content.ctaPrimaryButton.includes('心理测评') ||
                       content.ctaPrimaryButton.includes('Psychology Test') ||
                       content.ctaPrimaryButton.includes('Psychology Assessment')

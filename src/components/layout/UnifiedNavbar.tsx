@@ -41,33 +41,27 @@ export default function UnifiedNavbar() {
         { name: language === 'zh' ? '行业介绍' : 'Industry Overview', link: '/education/industry' },
         { name: language === 'zh' ? '入门学习' : 'Beginner Learning', link: '/education/beginner' },
         { name: language === 'zh' ? '职业之路' : 'Career Path', link: '/education/career' },
+        { name: t('nav.blog'), link: '/splan/blog' },
+        { name: language === 'zh' ? '日历' : 'Calendar', link: '/economic-calendar' },
+        { name: t('nav.dashboard'), link: '/dashboard' },
+        { name: t('nav.tradingTools'), link: '/tools/position-calculator' },
       ]
-    },
-    {
-      name: t('nav.blog'),
-      link: "/splan/blog",
     },
     {
       name: t('nav.psychology'),
       link: "/splan/psychology-test",
     },
     {
-      name: t('nav.dashboard'),
-      link: "/dashboard",
+      name: language === 'zh' ? '浮力助力' : 'Fuli Support',
+      link: "/splan/support",
     },
     {
-      name: language === 'zh' ? '日历' : 'Calendar',
-      link: "/economic-calendar",
+      name: language === 'zh' ? '浮力财富' : 'Fuli Wealth',
+      link: "/about/wealth",
     },
     {
-      name: t('nav.tradingTools'),
-      link: "/tools/position-calculator",
-      hasDropdown: true,
-      dropdownItems: [
-        { name: language === 'zh' ? '仓位计算器' : 'Position Calculator', link: '/tools/position-calculator' },
-        { name: language === 'zh' ? '风险回报计算器' : 'Risk/Reward Calculator', link: '/tools/risk-reward-calculator' },
-        { name: language === 'zh' ? '点值计算器' : 'Pip Calculator', link: '/tools/pip-calculator' },
-      ]
+      name: language === 'zh' ? '战略合作伙伴' : 'Strategic Partners',
+      link: "/partners/brokers",
     },
     {
       name: t('nav.faq'),

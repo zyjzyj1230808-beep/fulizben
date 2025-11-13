@@ -22,6 +22,8 @@ export default function DonatePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
+      {/* 梦想启航项目区块已从捐赠页移除 */}
+
       {/* Hero Section - 增强版 */}
       <div className="relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black border-b-2 border-gray-800">
         {/* 装饰性背景 */}

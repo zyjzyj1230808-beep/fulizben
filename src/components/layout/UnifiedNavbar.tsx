@@ -34,14 +34,13 @@ export default function UnifiedNavbar() {
       link: "/splan/join-us",
     },
     {
-      name: language === 'zh' ? '教育' : 'Education',
+      name: language === 'zh' ? '浮力教育' : 'Fuli Education',
       link: "/education",
       hasDropdown: true,
       dropdownItems: [
-        { name: language === 'zh' ? '基础知识' : 'Basics', link: '/education#basics' },
-        { name: language === 'zh' ? '技术分析' : 'Technical Analysis', link: '/education#technical' },
-        { name: language === 'zh' ? '交易策略' : 'Trading Strategies', link: '/education#strategies' },
-        { name: language === 'zh' ? '风险管理' : 'Risk Management', link: '/education#risk' },
+        { name: language === 'zh' ? '行业介绍' : 'Industry Overview', link: '/education/industry' },
+        { name: language === 'zh' ? '入门学习' : 'Beginner Learning', link: '/education/beginner' },
+        { name: language === 'zh' ? '职业之路' : 'Career Path', link: '/education/career' },
       ]
     },
     {
@@ -69,10 +68,6 @@ export default function UnifiedNavbar() {
         { name: language === 'zh' ? '风险回报计算器' : 'Risk/Reward Calculator', link: '/tools/risk-reward-calculator' },
         { name: language === 'zh' ? '点值计算器' : 'Pip Calculator', link: '/tools/pip-calculator' },
       ]
-    },
-    {
-      name: language === 'zh' ? '产品与服务' : 'Products and Services',
-      link: "/products",
     },
     {
       name: t('nav.faq'),

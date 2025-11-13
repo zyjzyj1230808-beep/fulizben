@@ -131,47 +131,33 @@ export default async function PortalLayout({
   const lang = locale === 'en' ? 'en-US' : 'zh-CN';
 
   return (
-    <html lang={lang} className={inter.variable} suppressHydrationWarning style={{ colorScheme: 'light dark' }}>
-      <head>
-        <meta name="baidu-site-verification" content="codeva-kDRjETSiUu" />
-        <meta name="color-scheme" content="light dark" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const theme = localStorage.getItem('theme');
-                if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                  document.documentElement.style.colorScheme = 'dark';
-                } else {
-                  document.documentElement.style.colorScheme = 'light';
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
-      <body suppressHydrationWarning>
-        <Providers>
-          <StructuredData />
-          <PageLoader />
-          <MouseFollower />
-          <ScrollProgress />
-          <UnifiedNavbar />
-          <main className="pt-16">
-            <Theme accentColor="gray" scaling="90%" grayColor="slate" appearance="inherit" radius="none">
-              {children}
-            </Theme>
-          </main>
-          <SplanFooter />
-          <BackToTop />
-          <FloatingContactForm />
-          <WelcomeModalWrapper />
-          <SubscriptionNotification />
-          <Analytics />
-          <SpeedInsights />
-        </Providers>
-      </body>
-    </html>
+    <>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.documentElement.lang = '${lang}';
+          `,
+        }}
+      />
+      <Providers>
+        <StructuredData />
+        <PageLoader />
+        <MouseFollower />
+        <ScrollProgress />
+        <UnifiedNavbar />
+        <main className="pt-16">
+          <Theme accentColor="gray" scaling="90%" grayColor="slate" appearance="inherit" radius="none">
+            {children}
+          </Theme>
+        </main>
+        <SplanFooter />
+        <BackToTop />
+        <FloatingContactForm />
+        <WelcomeModalWrapper />
+        <SubscriptionNotification />
+        <Analytics />
+        <SpeedInsights />
+      </Providers>
+    </>
   );
 }

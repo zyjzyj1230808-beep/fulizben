@@ -25,6 +25,7 @@ export default function UnifiedNavbar() {
       dropdownItems: [
         { name: language === 'zh' ? '关于浮力' : 'Overview', link: '/about/overview' },
         { name: language === 'zh' ? '浮力榜' : 'Leaderboard', link: '/top-traders' },
+        { name: language === 'zh' ? '浮力市场晴雨表' : 'Market Barometer', link: '/market-barometer' },
         { name: language === 'zh' ? '联系我们' : 'Contact Us', link: '/about/contact' },
       ]
     },

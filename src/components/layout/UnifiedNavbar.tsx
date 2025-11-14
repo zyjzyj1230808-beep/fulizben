@@ -46,6 +46,17 @@ export default function UnifiedNavbar() {
     {
       name: language === 'zh' ? '浮力助梦' : 'Fuli Support',
       link: "/splan/support",
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          name: language === 'zh' ? '项目介绍' : 'Program Overview',
+          link: '/splan/support',
+        },
+        {
+          name: language === 'zh' ? '培训体系' : 'Training Tracks',
+          link: '/splan/support/training',
+        },
+      ],
     },
     {
       name: language === 'zh' ? '浮力财富' : 'Fuli Wealth',

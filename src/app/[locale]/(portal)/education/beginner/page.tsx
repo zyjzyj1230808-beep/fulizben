@@ -259,7 +259,7 @@ export default async function BeginnerPage({ params }: { params: Promise<{ local
       <section className="bg-black dark:bg-white text-white dark:text-black py-16 border-t-2 border-b-2 border-black dark:border-white">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">
-            {isZh ? '下一步：提升策略或規劃職業發展' : 'Next Step: Advance Strategy or Plan Your Career'}
+            {isZh ? '下一步：提升策略或规划职业发展' : 'Next Step: Advance Strategy or Plan Your Career'}
           </h2>
           <p className="text-lg text-gray-300 dark:text-gray-700 leading-relaxed">
             {isZh
@@ -277,7 +277,7 @@ export default async function BeginnerPage({ params }: { params: Promise<{ local
               href="/education/career"
               className="px-8 py-3 bg-transparent text-white dark:text-black font-bold border-2 border-white dark:border-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-all"
             >
-              {isZh ? '規劃職業之路' : 'Plan Your Career Path'}
+              {isZh ? '规划职业之路' : 'Plan Your Career Path'}
             </LocaleLink>
           </div>
         </div>

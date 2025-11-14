@@ -30,10 +30,6 @@ export default function UnifiedNavbar() {
       ]
     },
     {
-      name: t('nav.training'),
-      link: "/splan/join-us",
-    },
-    {
       name: language === 'zh' ? '浮力教育' : 'Fuli Education',
       link: "/education",
       hasDropdown: true,
@@ -48,11 +44,7 @@ export default function UnifiedNavbar() {
       ]
     },
     {
-      name: t('nav.psychology'),
-      link: "/splan/psychology-test",
-    },
-    {
-      name: language === 'zh' ? '浮力助力' : 'Fuli Support',
+      name: language === 'zh' ? '浮力助梦' : 'Fuli Support',
       link: "/splan/support",
     },
     {
@@ -72,14 +64,6 @@ export default function UnifiedNavbar() {
         { name: language === 'zh' ? '魔界大学' : 'Magic University', link: '/partners/magic-university' },
         { name: language === 'zh' ? '稳准狠自营交易孵化器' : 'WZH Prop Trading Incubator', link: '/partners/incubator' },
       ]
-    },
-    {
-      name: t('nav.faq'),
-      link: "/splan/faq",
-    },
-    {
-      name: t('nav.membership'),
-      link: "/splan/donate",
     },
   ];
 

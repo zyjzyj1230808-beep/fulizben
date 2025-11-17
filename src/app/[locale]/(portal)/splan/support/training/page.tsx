@@ -243,7 +243,7 @@ const trainingTracks: TrainingTrack[] = [
     id: "junior",
     label: "初级交易员",
     tagline: "打好底层功 · 建立风控脑回路",
-    theme: "from-[#020617] via-[#0f172a] to-[#1e293b]",
+    theme: "from-[#020617] via-[#020617] to-[#020617]",
     modules: [
       {
         title: "理论学习",
@@ -284,7 +284,7 @@ const trainingTracks: TrainingTrack[] = [
     id: "intermediate",
     label: "中级交易员",
     tagline: "深入策略研发 · 掌握多品种交易节奏",
-    theme: "from-[#f97316] via-[#f97316] to-[#ea580c]",
+    theme: "from-[#020617] via-[#020617] to-[#020617]",
     modules: [
       {
         title: "策略拆解",
@@ -308,7 +308,7 @@ const trainingTracks: TrainingTrack[] = [
     id: "senior",
     label: "高级交易员",
     tagline: "多账户矩阵 · 机构级风控标准",
-    theme: "from-[#0ea5e9] via-[#0284c7] to-[#0369a1]",
+    theme: "from-[#020617] via-[#020617] to-[#020617]",
     modules: [
       {
         title: "多策略调度",
@@ -332,7 +332,7 @@ const trainingTracks: TrainingTrack[] = [
     id: "fund-manager",
     label: "基金经理",
     tagline: "从优秀交易员到资产管理人",
-    theme: "from-[#a21caf] via-[#86198f] to-[#701a75]",
+    theme: "from-[#020617] via-[#020617] to-[#020617]",
     modules: [
       {
         title: "产品设计",
@@ -372,11 +372,11 @@ function TheoryLearningDetail({ content }: { content: LearningModule[] }) {
       {content.map((module, moduleIndex) => (
         <div
           key={moduleIndex}
-          className="border-2 border-[#020617] dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg overflow-hidden"
+          className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-xl overflow-hidden"
         >
           <button
             onClick={() => toggleModule(moduleIndex)}
-            className="w-full px-6 py-4 bg-gradient-to-r from-[#020617] to-[#0f172a] dark:from-gray-700 dark:to-gray-600 text-white flex items-center justify-between hover:from-[#0f172a] hover:to-[#1e293b] transition-colors"
+            className="w-full px-6 py-4 bg-[#020617] dark:bg-gray-800 text-white flex items-center justify-between hover:bg-slate-900 dark:hover:bg-gray-700 transition-colors"
           >
             <h4 className="text-lg font-bold">{module.title}</h4>
             <svg
@@ -391,18 +391,18 @@ function TheoryLearningDetail({ content }: { content: LearningModule[] }) {
           {expandedModules.has(moduleIndex) && (
             <div className="p-6 space-y-6">
               {module.courses.map((course, courseIndex) => (
-                <div key={courseIndex} className="border-l-4 border-[#020617] dark:border-gray-500 pl-4">
-                  <h5 className="text-base font-bold text-[#020617] dark:text-white mb-3">{course.title}</h5>
+                <div key={courseIndex} className="border-l-4 border-slate-300 dark:border-gray-600 pl-4">
+                  <h5 className="text-base font-bold text-slate-900 dark:text-white mb-3">{course.title}</h5>
                   {course.lessons && course.lessons.length > 0 ? (
                     <ul className="space-y-2 ml-4">
                       {course.lessons.map((lesson, lessonIndex) => (
-                        <li key={lessonIndex} className="text-sm text-gray-700 dark:text-gray-300">
+                        <li key={lessonIndex} className="text-sm text-gray-700 dark:text-gray-200">
                           <div className="flex items-start gap-2">
-                            <span className="text-[#020617] dark:text-gray-400 mt-1">•</span>
+                            <span className="text-slate-500 dark:text-gray-400 mt-1">•</span>
                             <div className="flex-1">
                               <span className="font-medium">{lesson.title}</span>
                               {lesson.topics && lesson.topics.length > 0 && (
-                                <ul className="mt-1 ml-4 space-y-1 text-gray-600 dark:text-gray-400">
+                                <ul className="mt-1 ml-4 space-y-1 text-gray-500 dark:text-gray-400">
                                   {lesson.topics.map((topic, topicIndex) => (
                                     <li key={topicIndex} className="text-xs">
                                       - {topic}
@@ -416,7 +416,7 @@ function TheoryLearningDetail({ content }: { content: LearningModule[] }) {
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-sm text-gray-600 dark:text-gray-400 ml-4">课程内容待补充</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 ml-4">课程内容待补充</p>
                   )}
                 </div>
               ))}

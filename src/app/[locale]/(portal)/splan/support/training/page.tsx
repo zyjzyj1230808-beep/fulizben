@@ -1,12 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import LocaleLink from "@/components/navigation/LocaleLink";
+
+type Lesson = {
+  title: string;
+  topics: string[];
+};
+
+type Course = {
+  title: string;
+  lessons: Lesson[];
+};
+
+type LearningModule = {
+  title: string;
+  courses: Course[];
+};
 
 type TrainingModule = {
   title: string;
   description: string;
   highlight?: string;
+  detailedContent?: LearningModule[];
 };
 
 type TrainingTrack = {
@@ -21,6 +37,207 @@ type TrainingTrack = {
   };
 };
 
+const theoryLearningContent: LearningModule[] = [
+  {
+    title: "模块一：交易世界观——重塑对市场的认知",
+    courses: [
+      {
+        title: "课程1：欢迎来到真实的交易世界",
+        lessons: [
+          {
+            title: "职业交易 VS 业余交易：本质区别是什么？",
+            topics: [],
+          },
+          {
+            title: "打破“快速致富”的幻想：交易的残酷性与概率本质",
+            topics: [],
+          },
+          {
+            title: "成功的交易员是什么样？成功所需的技能金字塔——心态、风险管理、技术分析",
+            topics: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "模块二：市场语言与武器库——交易基础知识",
+    courses: [
+      {
+        title: "课程2：金融市场概览与武器库",
+        lessons: [
+          {
+            title: "股票、外汇、期货、加密货币市场简介",
+            topics: ["点差、流动性、交易时间"],
+          },
+          {
+            title: "为什么我们选择外汇/CFD作为起点？",
+            topics: [],
+          },
+        ],
+      },
+      {
+        title: "课程3：订单与执行——TICKMILL平台",
+        lessons: [
+          {
+            title: "图标、窗口、基本操作",
+            topics: [],
+          },
+          {
+            title: "市价单、限价单、止损单、止盈单",
+            topics: [],
+          },
+          {
+            title: "什么是滑点？如何管理滑点",
+            topics: [],
+          },
+        ],
+      },
+      {
+        title: "课程4：风险管理的数学基石",
+        lessons: [
+          {
+            title: "仓位计算：如何根据账户资金和止损距离科学计算下单量",
+            topics: [],
+          },
+          {
+            title: "理解“风险回报比”：1:2意味着什么？",
+            topics: [],
+          },
+          {
+            title: "最大回撤与生存第一法则",
+            topics: [],
+          },
+          {
+            title: "“上帝之手”是否真的存在？",
+            topics: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "模块三：“莫道”技术分析",
+    courses: [
+      {
+        title: "课程5：进场",
+        lessons: [
+          {
+            title: "标准进场",
+            topics: [],
+          },
+          {
+            title: "激进进场",
+            topics: [],
+          },
+        ],
+      },
+      {
+        title: "课程6：止损",
+        lessons: [
+          {
+            title: "保守止损",
+            topics: [],
+          },
+          {
+            title: "标准止损",
+            topics: [],
+          },
+          {
+            title: "硬止损——高压线",
+            topics: [],
+          },
+        ],
+      },
+      {
+        title: "课程7：出场",
+        lessons: [
+          {
+            title: "保守出场",
+            topics: [],
+          },
+          {
+            title: "标准出场",
+            topics: [],
+          },
+          {
+            title: "激进出场",
+            topics: [],
+          },
+        ],
+      },
+      {
+        title: "课程8：技术分析的重要性和局限性",
+        lessons: [],
+      },
+    ],
+  },
+  {
+    title: "模块四：交易者的内核——心理学与交易计划",
+    courses: [
+      {
+        title: "课程9：交易心理学：与心魔共舞",
+        lessons: [
+          {
+            title: "识别并战胜：贪婪、恐惧、希望、侥幸",
+            topics: [],
+          },
+          {
+            title: "常见心理陷阱：贪婪、恐惧、过度自信、报复性交易",
+            topics: [],
+          },
+          {
+            title: "应对技巧：正念冥想、交易日志",
+            topics: [],
+          },
+          {
+            title: "如何处理亏损？亏损是交易成本",
+            topics: [],
+          },
+          {
+            title: "保持纪律：为什么“知易行难”？",
+            topics: [],
+          },
+        ],
+      },
+      {
+        title: "课程10：构建你的交易系统",
+        lessons: [
+          {
+            title: "一个交易系统的必备要素：进场条件、出场条件（止损/止盈）、仓位管理",
+            topics: [],
+          },
+          {
+            title: "如何将前面所学的知识组合成一个简单的、可回溯的系统",
+            topics: [],
+          },
+        ],
+      },
+      {
+        title: "课程11：制作你的交易计划书——毕业设计",
+        lessons: [
+          {
+            title: "我的交易品种、时间框架",
+            topics: [],
+          },
+          {
+            title: "我的进场规则",
+            topics: [],
+          },
+          {
+            title: "我的仓位管理规则",
+            topics: [],
+          },
+          {
+            title: "我的每日/周/月复盘流程",
+            topics: [],
+          },
+        ],
+      },
+    ],
+  },
+];
+
 const trainingTracks: TrainingTrack[] = [
   {
     id: "junior",
@@ -31,6 +248,7 @@ const trainingTracks: TrainingTrack[] = [
       {
         title: "理论学习",
         description: "掌握宏观框架、交易方法论与风控体系，完成不少于 40 小时的系统课程。",
+        detailedContent: theoryLearningContent,
       },
       {
         title: "模拟交易",
@@ -136,6 +354,80 @@ const trainingTracks: TrainingTrack[] = [
   },
 ];
 
+function TheoryLearningDetail({ content }: { content: LearningModule[] }) {
+  const [expandedModules, setExpandedModules] = useState<Set<number>>(new Set([0]));
+
+  const toggleModule = (index: number) => {
+    const newExpanded = new Set(expandedModules);
+    if (newExpanded.has(index)) {
+      newExpanded.delete(index);
+    } else {
+      newExpanded.add(index);
+    }
+    setExpandedModules(newExpanded);
+  };
+
+  return (
+    <div className="mt-6 space-y-4">
+      {content.map((module, moduleIndex) => (
+        <div
+          key={moduleIndex}
+          className="border-2 border-[#020617] dark:border-gray-600 bg-white dark:bg-gray-800 rounded-lg overflow-hidden"
+        >
+          <button
+            onClick={() => toggleModule(moduleIndex)}
+            className="w-full px-6 py-4 bg-gradient-to-r from-[#020617] to-[#0f172a] dark:from-gray-700 dark:to-gray-600 text-white flex items-center justify-between hover:from-[#0f172a] hover:to-[#1e293b] transition-colors"
+          >
+            <h4 className="text-lg font-bold">{module.title}</h4>
+            <svg
+              className={`w-5 h-5 transition-transform ${expandedModules.has(moduleIndex) ? "rotate-180" : ""}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {expandedModules.has(moduleIndex) && (
+            <div className="p-6 space-y-6">
+              {module.courses.map((course, courseIndex) => (
+                <div key={courseIndex} className="border-l-4 border-[#020617] dark:border-gray-500 pl-4">
+                  <h5 className="text-base font-bold text-[#020617] dark:text-white mb-3">{course.title}</h5>
+                  {course.lessons && course.lessons.length > 0 ? (
+                    <ul className="space-y-2 ml-4">
+                      {course.lessons.map((lesson, lessonIndex) => (
+                        <li key={lessonIndex} className="text-sm text-gray-700 dark:text-gray-300">
+                          <div className="flex items-start gap-2">
+                            <span className="text-[#020617] dark:text-gray-400 mt-1">•</span>
+                            <div className="flex-1">
+                              <span className="font-medium">{lesson.title}</span>
+                              {lesson.topics && lesson.topics.length > 0 && (
+                                <ul className="mt-1 ml-4 space-y-1 text-gray-600 dark:text-gray-400">
+                                  {lesson.topics.map((topic, topicIndex) => (
+                                    <li key={topicIndex} className="text-xs">
+                                      - {topic}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-sm text-gray-600 dark:text-gray-400 ml-4">课程内容待补充</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function TrainingSystemPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
@@ -196,7 +488,12 @@ export default function TrainingSystemPage() {
               </div>
               <div className="p-6 md:p-10 grid md:grid-cols-2 gap-6">
                 {track.modules.map((module, index) => (
-                  <div key={index} className="border-2 border-dashed border-gray-300 dark:border-gray-700 p-5 bg-gray-50 dark:bg-gray-900/60">
+                  <div
+                    key={index}
+                    className={`border-2 border-dashed border-gray-300 dark:border-gray-700 p-5 bg-gray-50 dark:bg-gray-900/60 ${
+                      module.detailedContent ? "md:col-span-2" : ""
+                    }`}
+                  >
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="text-lg font-bold text-black dark:text-white">{module.title}</h3>
                       <span className="text-xs text-gray-500 dark:text-gray-400">STEP {index + 1}</span>
@@ -209,6 +506,9 @@ export default function TrainingSystemPage() {
                         {module.highlight}
                       </div>
                     )}
+                    {module.detailedContent && (
+                      <TheoryLearningDetail content={module.detailedContent} />
+                    )}
                   </div>
                 ))}
               </div>
@@ -219,4 +519,3 @@ export default function TrainingSystemPage() {
     </div>
   );
 }
-

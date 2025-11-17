@@ -31,7 +31,7 @@ export default function SplanFooter() {
             <div className="flex items-center gap-4">
               {/* Telegram */}
               <a
-                href="https://t.me/+FdZS4GU9j4s1ZmRl"
+                href="https://t.me/Fuliziben999"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
@@ -126,6 +126,11 @@ export default function SplanFooter() {
               <li>
                 <LocaleLink href="/" className="text-gray-400 hover:text-white transition-colors">
                   {t('nav.home')}
+                </LocaleLink>
+              </li>
+              <li>
+                <LocaleLink href="/about/overview" className="text-gray-400 hover:text-white transition-colors">
+                  {language === 'zh' ? '关于我们' : 'About Us'}
                 </LocaleLink>
               </li>
               <li>

@@ -95,7 +95,7 @@ const DummyContent = () => {
               <div className="flex flex-col sm:flex-row gap-6">
                 <PulseButton>
                   <ShineButton
-                    onClick={() => router.push(`/${language}/splan/join-us`)}
+                    onClick={() => router.push(`/${language}/about/overview`)}
                     className="px-12 py-6 bg-white text-blue-900 text-xl font-black border-2 border-white hover:bg-blue-50 hover:text-blue-800 transition-all shadow-lg"
                   >
                     {t('hero.cta.learn')}

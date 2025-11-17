@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
       },
       {
         hostname: "qingwuwei.github.io"
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com"
       }
     ]
   },

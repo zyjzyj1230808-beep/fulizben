@@ -1,13 +1,12 @@
 "use client";
 import { Code, Flex, Text } from "@radix-ui/themes";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { SparklesCore } from "@/components/ui/sparkles";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import EmailContactModal from '@/components/custom/EmailContactModal';
 import BrandName from '@/components/custom/BrandName';
 import BrandSlogans from '@/components/custom/BrandSlogans';
-import { FadeInSlide, ScaleFadeIn, HoverCard, PulseButton, FloatingBadge, StaggeredFadeIn } from '@/components/custom/AnimatedSection';
+import { FadeInSlide, ScaleFadeIn, HoverCard, PulseButton } from '@/components/custom/AnimatedSection';
 import Testimonials from '@/components/custom/Testimonials';
 import StatsSection from '@/components/custom/StatsSection';
 import InterviewCTA from '@/components/custom/InterviewCTA';

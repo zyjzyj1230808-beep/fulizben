@@ -102,38 +102,62 @@ export default function FuliSupportPage() {
 				</div>
 
 				<div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16 lg:pt-24 lg:pb-20">
-					<div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+					<div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] lg:items-center">
 						<div className="max-w-2xl space-y-8">
-							<div className="space-y-4">
+							<div className="space-y-6">
 								<span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold tracking-[0.3em] text-emerald-100 uppercase shadow-[0_18px_45px_rgba(16,185,129,0.55)]">
 									FULI SUPPORT · 梦想启航项目
 								</span>
 								<h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
 									梦想启航项目
 								</h1>
-								<p className="text-base md:text-lg text-slate-100/85 leading-relaxed">
-									通过赞助、奖金激励与严谨的申请机制，帮助通过考核的交易员快速启航，迈向职业化之路。
+								<p className="text-lg text-slate-100/80 leading-relaxed">
+									30 个工作日精准筛选，直接接入 10万-100万 无风险资金，并以 ≥60% 战利品分成启动你的职业交易旅程。
 								</p>
+								<div className="grid gap-4 sm:grid-cols-2">
+									<div className="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 backdrop-blur-lg shadow-[0_18px_45px_rgba(16,185,129,0.45)]">
+										<p className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-200/90 mb-1">
+											无风险资金账户
+										</p>
+										<p className="text-xl font-black text-white">
+											10万 - 100万 人民币挑战账号
+										</p>
+										<p className="text-xs text-slate-100/70 mt-1">
+											通过小额实盘考核当日即可领取，亏损由项目承保。
+										</p>
+									</div>
+									<div className="rounded-2xl border border-white/20 bg-white/5 px-5 py-4 backdrop-blur-lg shadow-[0_18px_45px_rgba(56,189,248,0.45)]">
+										<p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-200/90 mb-1">
+											战利品分成
+										</p>
+										<p className="text-xl font-black text-white">
+											收益分成 ≥ 60%
+										</p>
+										<p className="text-xs text-slate-100/70 mt-1">
+											独立交易，盈利六成以上归你，表现优异可升至 90%。
+										</p>
+									</div>
+								</div>
 							</div>
 
-							<div className="grid gap-4 sm:grid-cols-3">
-								<div className="rounded-2xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 backdrop-blur-xl shadow-[0_22px_60px_rgba(16,185,129,0.45)]">
-									<p className="text-xs font-semibold text-emerald-200/80 uppercase tracking-[0.22em] mb-1">
-										资金赞助
-									</p>
-									<p className="text-sm text-emerald-50">10万 - 100万 挑战账号资金支持。</p>
+							<div className="grid gap-3 sm:grid-cols-2 text-sm text-slate-100/75">
+								<div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur">
+									<span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-400/20 text-xs font-semibold text-emerald-200 uppercase tracking-[0.2em]">
+										01
+									</span>
+									<div>
+										<p className="font-semibold text-white">30 天双重考核</p>
+										<p className="text-xs text-slate-100/60">规则 + 模拟 + 心理测评一次完成</p>
+									</div>
 								</div>
-								<div className="rounded-2xl border border-sky-400/40 bg-sky-400/10 px-4 py-3 backdrop-blur-xl shadow-[0_22px_60px_rgba(56,189,248,0.4)]">
-									<p className="text-xs font-semibold text-sky-100/80 uppercase tracking-[0.22em] mb-1">
-										现金奖励
-									</p>
-									<p className="text-sm text-sky-50">挑战账户收益 60%+ 奖金激励。</p>
-								</div>
-								<div className="rounded-2xl border border-amber-400/40 bg-amber-400/10 px-4 py-3 backdrop-blur-xl shadow-[0_22px_60px_rgba(251,191,36,0.4)]">
-									<p className="text-xs font-semibold text-amber-100/80 uppercase tracking-[0.22em] mb-1">
-										严格甄选
-									</p>
-									<p className="text-sm text-amber-50">模拟考核 + 心理测评双重把关。</p>
+								<div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur">
+									<span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-400/20 text-xs font-semibold text-sky-100 uppercase tracking-[0.2em]">
+										02
+									</span>
+									<div>
+										<p className="font-semibold text-white">通过即刻上阵</p>
+										<p className="text-xs text-slate-100/60">直接配对无风险资金与专属教练</p>
+									</div>
 								</div>
 							</div>
 
@@ -161,8 +185,8 @@ export default function FuliSupportPage() {
 											A
 										</div>
 										<div className="flex-1">
-											<h3 className="text-sm font-semibold text-white">赞助</h3>
-											<p className="mt-1 text-xs text-white/80">提供 10万 - 100万 的挑战账号</p>
+											<h3 className="text-sm font-semibold text-white">考核节奏</h3>
+											<p className="mt-1 text-xs text-white/70">规则 → 盈利 → 小额实盘三段式完成于 30 个工作日内。</p>
 										</div>
 									</div>
 									<div className="group flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-white/40 hover:bg-white/10 transition-colors">
@@ -170,8 +194,8 @@ export default function FuliSupportPage() {
 											B
 										</div>
 										<div className="flex-1">
-											<h3 className="text-sm font-semibold text-white">奖金</h3>
-											<p className="mt-1 text-xs text-white/80">挑战账户收益的 60% 以上现金奖励</p>
+											<h3 className="text-sm font-semibold text-white">资金矩阵</h3>
+											<p className="mt-1 text-xs text-white/70">通过考核即接入 10万 - 100万 人民币无风险资金，按能力升级额度。</p>
 										</div>
 									</div>
 									<div className="group flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-white/40 hover:bg-white/10 transition-colors">
@@ -179,8 +203,8 @@ export default function FuliSupportPage() {
 											C
 										</div>
 										<div className="flex-1">
-											<h3 className="text-sm font-semibold text-white">申请资格</h3>
-											<p className="mt-1 text-xs text-white/80">模拟账户通过考核的交易员</p>
+											<h3 className="text-sm font-semibold text-white">收益分配</h3>
+											<p className="mt-1 text-xs text-white/70">基础战利品分成 60%，持续稳定可获更高等级。</p>
 										</div>
 									</div>
 									<div className="group flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 hover:border-white/40 hover:bg-white/10 transition-colors">
@@ -188,8 +212,8 @@ export default function FuliSupportPage() {
 											D
 										</div>
 										<div className="flex-1">
-											<h3 className="text-sm font-semibold text-white">合作机构推荐</h3>
-											<p className="mt-1 text-xs text-white/80">交易员孵化器</p>
+											<h3 className="text-sm font-semibold text-white">风险兜底</h3>
+											<p className="mt-1 text-xs text-white/70">挑战阶段亏损由项目承保，专注执行即可。</p>
 										</div>
 									</div>
 								</div>
@@ -444,4 +468,5 @@ export default function FuliSupportPage() {
 		</div>
 	);
 }
+
 

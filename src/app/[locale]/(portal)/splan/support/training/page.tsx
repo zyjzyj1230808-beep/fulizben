@@ -67,11 +67,11 @@ const theoryLearningContent: LearningModule[] = [
         title: "课程2：金融市场概览与武器库",
         lessons: [
           {
-            title: "股票、外汇、期货、加密货币市场简介",
+            title: "股票、金融、期货、加密货币市场简介",
             topics: ["点差、流动性、交易时间"],
           },
           {
-            title: "为什么我们选择外汇/CFD作为起点？",
+            title: "为什么我们选择金融/CFD作为起点？",
             topics: [],
           },
         ],

@@ -27,7 +27,7 @@ const WelcomeModal = forwardRef<WelcomeModalHandle>((props, ref) => {
   const isZh = language === 'zh';
 
   const emailAddress = "fennabaskett@gmail.com";
-  const siteUrl = "https://fxkiller.com";
+  const siteUrl = "https://fuliziben.com";
   // B站视频嵌入地址
   const bilibiliEmbedUrl = "//player.bilibili.com/player.html?isOutside=true&aid=258136585&bvid=BV19a411X7eY&cid=767139112&p=1";
 
@@ -77,13 +77,13 @@ const WelcomeModal = forwardRef<WelcomeModalHandle>((props, ref) => {
 
   useEffect(() => {
     // 检查是否是首次访问
-    const hasVisited = localStorage.getItem('fxkiller_welcome_shown');
+    const hasVisited = localStorage.getItem('fuliziben_welcome_shown');
     if (!hasVisited) {
       // 延迟 1 秒显示，让页面先加载
       setTimeout(() => {
         setModalState('expanded');
       }, 1000);
-      localStorage.setItem('fxkiller_welcome_shown', 'true');
+      localStorage.setItem('fuliziben_welcome_shown', 'true');
     }
   }, []);
 

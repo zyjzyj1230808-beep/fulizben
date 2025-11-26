@@ -2,11 +2,11 @@ import { EducationPageContent } from './forex-basics.content';
 
 export const spreadsCommissionsContent = {
   zh: {
-    title: '外汇点差与佣金完整指南 - 交易成本详解与优化策略 | Buoyancy Capital',
-    description: '全面解析外汇交易成本：点差类型（固定vs浮动）、佣金模式、隐藏费用、以及如何选择低成本经纪商。掌握降低交易成本的实用技巧，提升长期盈利能力。',
-    keywords: '外汇点差, 外汇佣金, 交易成本, 固定点差, 浮动点差, ECN账户, STP账户, 外汇经纪商对比',
+    title: '金融点差与佣金完整指南 - 交易成本详解与优化策略 | Buoyancy Capital',
+    description: '全面解析金融交易成本：点差类型（固定vs浮动）、佣金模式、隐藏费用、以及如何选择低成本经纪商。掌握降低交易成本的实用技巧，提升长期盈利能力。',
+    keywords: '金融点差, 金融佣金, 交易成本, 固定点差, 浮动点差, ECN账户, STP账户, 金融经纪商对比',
 
-    heroTitle: '外汇点差与佣金详解',
+    heroTitle: '金融点差与佣金详解',
     heroDescription: '理解交易成本构成，学会选择最具性价比的交易条件',
     readingTime: '16分钟',
     difficulty: '初级',
@@ -52,8 +52,8 @@ export const spreadsCommissionsContent = {
       {
         href: '/education/forex-basics',
         icon: '📚',
-        title: '外汇交易基础',
-        description: '从零开始了解外汇市场的基本概念和运作机制'
+        title: '金融交易基础',
+        description: '从零开始了解金融市场的基本概念和运作机制'
       },
       {
         href: '/tools/position-calculator',
@@ -65,7 +65,7 @@ export const spreadsCommissionsContent = {
         href: '/education/broker-selection-guide',
         icon: '🏦',
         title: '经纪商选择指南',
-        description: '学习如何选择安全可靠的外汇经纪商'
+        description: '学习如何选择安全可靠的金融经纪商'
       }
     ],
 

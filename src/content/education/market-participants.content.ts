@@ -2,11 +2,11 @@ import { EducationPageContent } from './forex-basics.content';
 
 export const marketParticipantsContent = {
   zh: {
-    title: '外汇市场参与者完整指南 - 央行、机构与散户交易者角色分析 | Buoyancy Capital',
-    description: '深入讲解外汇市场参与者：中央银行、商业银行、对冲基金、零售交易者的角色与影响。理解订单流动、市场结构、机构vs散户差异，提升交易胜率。',
-    keywords: '外汇市场参与者, 中央银行, 对冲基金, 机构交易者, 散户交易者, 订单流, 市场结构',
+    title: '金融市场参与者完整指南 - 央行、机构与散户交易者角色分析 | Buoyancy Capital',
+    description: '深入讲解金融市场参与者：中央银行、商业银行、对冲基金、零售交易者的角色与影响。理解订单流动、市场结构、机构vs散户差异，提升交易胜率。',
+    keywords: '金融市场参与者, 中央银行, 对冲基金, 机构交易者, 散户交易者, 订单流, 市场结构',
 
-    heroTitle: '外汇市场参与者',
+    heroTitle: '金融市场参与者',
     heroDescription: '理解市场参与者，洞察资金流动与价格驱动',
     readingTime: '28分钟',
     difficulty: '初级-中级',
@@ -14,7 +14,7 @@ export const marketParticipantsContent = {
 
     tocTitle: '本文目录',
     tableOfContents: [
-      { id: 'market-structure', title: '外汇市场结构与层级' },
+      { id: 'market-structure', title: '金融市场结构与层级' },
       { id: 'central-banks', title: '中央银行的角色与影响' },
       { id: 'institutional-participants', title: '机构参与者详解' },
       { id: 'retail-traders', title: '零售交易者的定位' },
@@ -39,7 +39,7 @@ export const marketParticipantsContent = {
       },
       {
         question: 'Q4: 对冲基金和商业银行在交易上有什么区别？',
-        answer: '商业银行：主要为客户提供外汇服务（企业进出口、旅行兑换），自营交易占比小，倾向于市场中性（做市商角色），持仓周期短（几分钟到几小时）。对冲基金：纯粹投机盈利，使用高杠杆，追求绝对收益，持仓周期长（几天到几周），倾向于趋势跟踪和套利策略。对散户启示：商业银行订单流可反映实际供需（企业避险需求），对冲基金订单流反映市场情绪和投机方向。COT报告（美国商品期货委员会）每周公布大型投机者（对冲基金）持仓，可作为参考。'
+        answer: '商业银行：主要为客户提供金融服务（企业进出口、旅行兑换），自营交易占比小，倾向于市场中性（做市商角色），持仓周期短（几分钟到几小时）。对冲基金：纯粹投机盈利，使用高杠杆，追求绝对收益，持仓周期长（几天到几周），倾向于趋势跟踪和套利策略。对散户启示：商业银行订单流可反映实际供需（企业避险需求），对冲基金订单流反映市场情绪和投机方向。COT报告（美国商品期货委员会）每周公布大型投机者（对冲基金）持仓，可作为参考。'
       },
       {
         question: 'Q5: 什么是"Smart Money"和"Dumb Money"？',
@@ -52,8 +52,8 @@ export const marketParticipantsContent = {
       {
         href: '/education/forex-basics',
         icon: '📚',
-        title: '外汇基础知识',
-        description: '了解外汇市场运作原理'
+        title: '金融基础知识',
+        description: '了解金融市场运作原理'
       },
       {
         href: '/education/trading-psychology',

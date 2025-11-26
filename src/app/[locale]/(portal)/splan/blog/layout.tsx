@@ -5,11 +5,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const lang = getLanguageFromLocale(locale);
 
   return generateBilingualMetadata(
-    'Buoyancy Capital 博客 - 外汇交易知识与市场洞察 | 浮力资本',
+    'Buoyancy Capital 博客 - 金融交易知识与市场洞察 | 浮力资本',
     'Buoyancy Capital Blog - Forex Trading Insights & Market Analysis',
-    '探索外汇交易的专业知识、市场分析、交易心理、职业交易员经验分享。涵盖外汇、黄金、数字货币等多个交易领域的深度文章。',
+    '探索金融交易的专业知识、市场分析、交易心理、职业交易员经验分享。涵盖金融、黄金、数字货币等多个交易领域的深度文章。',
     'Explore professional forex trading knowledge, market analysis, trading psychology, and professional trader insights. In-depth articles covering forex, gold, crypto, and more.',
-    '外汇博客, 交易知识, 市场分析, 交易心理, 职业交易员, 外汇交易技巧, 黄金交易, 数字货币交易, 交易策略分享, 市场洞察',
+    '金融博客, 交易知识, 市场分析, 交易心理, 职业交易员, 金融交易技巧, 黄金交易, 数字货币交易, 交易策略分享, 市场洞察',
     'forex blog, trading knowledge, market analysis, trading psychology, professional trader, forex trading tips, gold trading, crypto trading, trading strategy, market insights',
     lang,
     {

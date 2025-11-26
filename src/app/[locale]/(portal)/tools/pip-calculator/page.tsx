@@ -339,7 +339,7 @@ export default function PipCalculatorPage() {
               </h3>
               <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
                 {isZh
-                  ? 'Pip（Point in Percentage）是外汇市场价格变动的最小单位。对于大多数货币对，1 pip = 0.0001；对于日元货币对，1 pip = 0.01。'
+                  ? 'Pip（Point in Percentage）是金融市场价格变动的最小单位。对于大多数货币对，1 pip = 0.0001；对于日元货币对，1 pip = 0.01。'
                   : 'Pip (Point in Percentage) is the smallest price change unit in forex. For most pairs, 1 pip = 0.0001; for JPY pairs, 1 pip = 0.01.'}
               </p>
               <div className="bg-white dark:bg-gray-900 p-4 border border-gray-300 dark:border-gray-700">

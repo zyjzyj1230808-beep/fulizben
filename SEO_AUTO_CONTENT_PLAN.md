@@ -52,10 +52,10 @@
 #### 改写提示词模板
 
 ```
-请将以下外汇新闻改写为独特的中文内容，要求：
+请将以下金融新闻改写为独特的中文内容，要求：
 1. 保持核心信息不变
 2. 使用不同的表达方式
-3. 添加SEO关键词：外汇、交易、{货币对}
+3. 添加SEO关键词：金融、交易、{货币对}
 4. 字数控制在200-300字
 
 原文：{原始新闻内容}
@@ -105,14 +105,14 @@ description: "欧元兑美元(EUR/USD)今日上涨0.5%，最新报价1.0850。�
 keywords:
   - "欧元美元"
   - "EUR/USD"
-  - "外汇交易"
+  - "金融交易"
   - "货币对分析"
   - "今日汇率"
-category: "外汇分析"
+category: "金融分析"
 tags:
   - "EUR/USD"
   - "欧元"
-  - "外汇新闻"
+  - "金融新闻"
 source: "FXStreet"
 author: "Buoyancy Capital 编辑部"
 image: "/images/news/eurusd-chart.jpg"
@@ -144,7 +144,7 @@ image: "/images/news/eurusd-chart.jpg"
 ## 🔗 相关阅读
 
 - [EUR/USD技术分析](/education/eur-usd-analysis)
-- [外汇交易入门](/education/forex-basics)
+- [金融交易入门](/education/forex-basics)
 - [今日经济日历](/economic-calendar)
 
 ---
@@ -192,7 +192,7 @@ jobs:
       - name: Commit and push
         run: |
           git config --global user.name 'SEO Bot'
-          git config --global user.email 'seo@fxkiller.com'
+          git config --global user.email 'seo@fuliziben.com'
           git add src/content/news/
           git diff --quiet && git diff --staged --quiet || (
             git commit -m "chore: Auto-generate SEO content $(date +'%Y-%m-%d %H:%M')" &&
@@ -232,18 +232,18 @@ async function rewriteWithAI(content) {
         messages: [
           {
             role: 'system',
-            content: '你是一个专业的外汇分析师，擅长改写外汇新闻为SEO友好的中文内容。'
+            content: '你是一个专业的金融分析师，擅长改写金融新闻为SEO友好的中文内容。'
           },
           {
             role: 'user',
-            content: `请将以下外汇新闻改写为独特的中文内容：
+            content: `请将以下金融新闻改写为独特的中文内容：
 
 原文：${content}
 
 要求：
 1. 保持核心信息
 2. 添加专业分析
-3. 包含关键词：外汇、交易
+3. 包含关键词：金融、交易
 4. 字数200-300字
 5. 格式：标题 + 正文 + 3个要点`
           }
@@ -325,8 +325,8 @@ async function generateContent() {
 title: "${item.title}"
 date: "${dayjs().format('YYYY-MM-DD HH:mm:ss')}"
 description: "${item.contentSnippet?.substring(0, 150) || ''}"
-keywords: ["外汇", "交易", "市场分析"]
-category: "外汇新闻"
+keywords: ["金融", "交易", "市场分析"]
+category: "金融新闻"
 source: "${feed.title}"
 link: "${item.link}"
 ---
@@ -411,7 +411,7 @@ generateContent();
     "name": "Buoyancy Capital",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://fxkiller.com/logo.png"
+      "url": "https://fuliziben.com/logo.png"
     }
   }
 }

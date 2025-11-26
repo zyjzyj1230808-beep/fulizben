@@ -87,7 +87,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: isZh ? '新闻归档 - Buoyancy Capital' : 'News Archive - Buoyancy Capital',
     description: isZh
-      ? '按月份浏览Buoyancy Capital的所有外汇新闻文章归档'
+      ? '按月份浏览Buoyancy Capital的所有金融新闻文章归档'
       : 'Browse all Buoyancy Capital forex news articles by month',
   };
 }
@@ -121,7 +121,7 @@ export default async function NewsArchivePage() {
             {isZh ? '新闻归档' : 'News Archive'}
           </h1>
           <p className="text-xl text-gray-300">
-            {isZh ? '按月份浏览所有外汇新闻文章' : 'Browse all forex news articles by month'}
+            {isZh ? '按月份浏览所有金融新闻文章' : 'Browse all forex news articles by month'}
           </p>
         </div>
       </div>

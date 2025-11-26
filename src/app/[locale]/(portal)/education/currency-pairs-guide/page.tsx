@@ -4,7 +4,7 @@ import LocaleLink from '@/components/navigation/LocaleLink';
 // SEO Metadata
 export const metadata: Metadata = {
   title: '货币对分类与特点完整指南 - 主要货币对vs交叉货币对 | Buoyancy Capital',
-  description: '全面解析外汇市场货币对分类：主要货币对、次要货币对、交叉货币对、异国货币对的特点、波动性、点差对比。选择最适合你的交易货币对，提高交易成功率。',
+  description: '全面解析金融市场货币对分类：主要货币对、次要货币对、交叉货币对、异国货币对的特点、波动性、点差对比。选择最适合你的交易货币对，提高交易成功率。',
   keywords: '货币对分类, 主要货币对, 交叉货币对, 异国货币对, EUR/USD, GBP/USD, 货币对点差, 货币对波动性',
   openGraph: {
     title: '货币对分类与特点完整指南 - 主要货币对vs交叉货币对 | Buoyancy Capital',
@@ -104,7 +104,7 @@ export default function CurrencyPairsGuidePage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              在外汇市场中，货币总是<strong className="text-black dark:text-white">成对交易</strong>的。一个货币对由两种货币组成，表示用一种货币兑换另一种货币的汇率。理解货币对的结构和分类是外汇交易的基础。
+              在金融市场中，货币总是<strong className="text-black dark:text-white">成对交易</strong>的。一个货币对由两种货币组成，表示用一种货币兑换另一种货币的汇率。理解货币对的结构和分类是金融交易的基础。
             </p>
 
             <div className="bg-black dark:bg-white text-white dark:text-black p-6 my-6 border-2 border-black dark:border-white">
@@ -183,7 +183,7 @@ export default function CurrencyPairsGuidePage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              主要货币对（Major Pairs）是指<strong className="text-black dark:text-white">包含美元且交易量最大</strong>的7个货币对。它们占全球外汇交易量的80%以上，具有最高的流动性、最低的点差和最透明的价格。
+              主要货币对（Major Pairs）是指<strong className="text-black dark:text-white">包含美元且交易量最大</strong>的7个货币对。它们占全球金融交易量的80%以上，具有最高的流动性、最低的点差和最透明的价格。
             </p>
 
             <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">七大主要货币对</h3>
@@ -195,7 +195,7 @@ export default function CurrencyPairsGuidePage() {
                   <span className="bg-black dark:bg-white text-white dark:text-black px-3 py-1 text-sm font-bold">王者</span>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  <strong className="text-black dark:text-white">欧元/美元</strong> - 全球交易量最大的货币对，占外汇市场总交易量的约24%。
+                  <strong className="text-black dark:text-white">欧元/美元</strong> - 全球交易量最大的货币对，占金融市场总交易量的约24%。
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -1169,7 +1169,7 @@ export default function CurrencyPairsGuidePage() {
               </summary>
               <div className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p className="mb-3">
-                  大多数外汇经纪商提供的是<strong className="text-black dark:text-white">USD/CNH（离岸人民币）</strong>，而非USD/CNY（在岸人民币）：
+                  大多数金融经纪商提供的是<strong className="text-black dark:text-white">USD/CNH（离岸人民币）</strong>，而非USD/CNY（在岸人民币）：
                 </p>
                 <div className="space-y-3">
                   <div>
@@ -1186,7 +1186,7 @@ export default function CurrencyPairsGuidePage() {
                     <ul className="text-sm list-disc pl-6 space-y-1">
                       <li>在香港、新加坡等境外市场交易，市场化程度高</li>
                       <li>波动性更大，更自由</li>
-                      <li>大多数外汇经纪商提供USD/CNH交易</li>
+                      <li>大多数金融经纪商提供USD/CNH交易</li>
                       <li>典型点差：20-50点（远高于主要货币对）</li>
                     </ul>
                   </div>
@@ -1251,9 +1251,9 @@ export default function CurrencyPairsGuidePage() {
           <div className="grid md:grid-cols-3 gap-6">
             <LocaleLink href="/education/forex-basics" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
               <div className="text-3xl mb-4">📚</div>
-              <h3 className="text-xl font-bold mb-2">外汇交易基础</h3>
+              <h3 className="text-xl font-bold mb-2">金融交易基础</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
-                了解外汇市场的基本概念和运作机制
+                了解金融市场的基本概念和运作机制
               </p>
             </LocaleLink>
 
@@ -1269,7 +1269,7 @@ export default function CurrencyPairsGuidePage() {
               <div className="text-3xl mb-4">💰</div>
               <h3 className="text-xl font-bold mb-2">点差与佣金</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
-                理解外汇交易成本，选择最合适的经纪商
+                理解金融交易成本，选择最合适的经纪商
               </p>
             </LocaleLink>
           </div>
@@ -1310,7 +1310,7 @@ export default function CurrencyPairsGuidePage() {
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">上一课</p>
               <LocaleLink href="/education/market-participants" className="text-lg font-bold text-black dark:text-white hover:underline">
-                ← 外汇市场参与者
+                ← 金融市场参与者
               </LocaleLink>
             </div>
             <div className="text-right">

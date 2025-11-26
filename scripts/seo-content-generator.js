@@ -89,7 +89,7 @@ function isQualityContent(title, description) {
   const forexKeywords = [
     'eur', 'usd', 'gbp', 'jpy', 'forex', 'currency',
     'gold', 'silver', 'oil', 'bitcoin', 'crypto',
-    '外汇', '货币', '汇率', '黄金', '比特币'
+    '金融', '货币', '汇率', '黄金', '比特币'
   ];
 
   const text = (title + ' ' + description).toLowerCase();
@@ -129,7 +129,7 @@ async function rewriteWithGroqZh(content) {
         messages: [
           {
             role: 'user',
-            content: `你是专业的财经记者，请将以下外汇新闻改写成中文文章。
+            content: `你是专业的财经记者，请将以下金融新闻改写成中文文章。
 
 原文：
 ${content}
@@ -140,7 +140,7 @@ ${content}
 3. 正文2-3段，每段50-80字，总共200-250字
 4. 保留原文的核心数据、价格、百分比等关键信息
 5. 用自然流畅的中文表达，不要直接翻译
-6. 包含外汇交易相关词汇：货币对、汇率、交易、美元、欧元等
+6. 包含金融交易相关词汇：货币对、汇率、交易、美元、欧元等
 7. 不要加任何标签、说明或额外内容
 8. 货币对格式：欧元/美元、美元/日元、黄金/美元等
 
@@ -294,10 +294,10 @@ async function generateContent() {
           const zhBody = zhLines.slice(1).filter(line => line.trim()).join('\n\n');
 
           // 从中文正文中提取前150字作为描述，添加 SEO 关键词
-          const zhDescription = zhBody.replace(/\n/g, ' ').substring(0, 120) + '。Buoyancy Capital 提供免费外汇交易培训。';
+          const zhDescription = zhBody.replace(/\n/g, ' ').substring(0, 120) + '。Buoyancy Capital 提供免费金融交易培训。';
 
           // 生成中文 SEO 关键词
-          const zhKeywords = ["外汇", "交易", "市场分析", "外汇新闻", "外汇培训", "交易员孵化", "Buoyancy Capital"];
+          const zhKeywords = ["金融", "交易", "市场分析", "金融新闻", "金融培训", "交易员孵化", "Buoyancy Capital"];
 
           // 生成中文Markdown
           const markdownZh = `---
@@ -305,7 +305,7 @@ title: "${zhTitle.replace(/"/g, '\\"')}"
 date: "${dayjs().format('YYYY-MM-DD HH:mm:ss')}"
 description: "${zhDescription.replace(/"/g, '\\"')}"
 keywords: ${JSON.stringify(zhKeywords)}
-category: "外汇新闻"
+category: "金融新闻"
 source: "Buoyancy Capital 分析团队"
 language: "zh"
 ---
@@ -325,7 +325,7 @@ ${zhBody}
 **数据来源**: Buoyancy Capital 分析团队
 **更新时间**: ${dayjs().format('YYYY-MM-DD HH:mm')}
 
-**免责声明**: 本文仅供参考，不构成投资建议。外汇交易存在风险，请谨慎决策。
+**免责声明**: 本文仅供参考，不构成投资建议。金融交易存在风险，请谨慎决策。
 `;
 
           // 英文描述和关键词

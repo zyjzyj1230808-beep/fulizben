@@ -37,7 +37,7 @@ export default function BlogPostPage() {
   const getCategoryName = (cat: string) => {
     const names: Record<string, {zh: string, en: string}> = {
       about: {zh: '关于我们', en: 'About'},
-      forex: {zh: '外汇交易', en: 'Forex'},
+      forex: {zh: '金融交易', en: 'Forex'},
       gold: {zh: '黄金交易', en: 'Gold'},
       crypto: {zh: '数字货币', en: 'Crypto'},
       psychology: {zh: '交易心理', en: 'Psychology'},

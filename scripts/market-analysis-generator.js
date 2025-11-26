@@ -9,7 +9,7 @@ const OPENAI_API_KEY = process.env.SKEY;
 const OPENAI_BASE_URL = 'https://api.oneabc.org';
 const ANALYSIS_DIR = path.join(__dirname, '../src/content/analysis');
 
-// 主要外汇品种配置
+// 主要金融品种配置
 const FOREX_PAIRS = [
   { symbol: 'EUR/USD', name: 'Euro vs US Dollar', nameCn: '欧元/美元' },
   { symbol: 'GBP/USD', name: 'British Pound vs US Dollar', nameCn: '英镑/美元' },
@@ -79,7 +79,7 @@ async function generateAnalysisZh(pairInfo, marketData) {
   const { symbol, nameCn } = pairInfo;
   const { price, rsi, macd, sma } = marketData;
 
-  const prompt = `你是专业的外汇交易分析师。请对 ${nameCn}(${symbol}) 进行技术分析。
+  const prompt = `你是专业的金融交易分析师。请对 ${nameCn}(${symbol}) 进行技术分析。
 
 当前市场数据：
 - 最新价格: ${price.close}

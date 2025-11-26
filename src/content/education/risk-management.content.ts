@@ -2,11 +2,11 @@ import { EducationPageContent } from './forex-basics.content';
 
 export const riskManagementContent = {
   zh: {
-    title: '外汇风险管理基础 - 仓位控制与资金管理完整指南 | Buoyancy Capital',
-    description: '深入讲解外汇交易风险管理核心知识：2%规则、风险回报比、仓位控制、最大回撤、风险承受能力评估。专业交易员分享实战风险管理策略，助你长期稳定盈利。',
-    keywords: '风险管理, 仓位控制, 资金管理, 止损设置, 风险回报比, 2%规则, 最大回撤, 外汇风险管理',
+    title: '金融风险管理基础 - 仓位控制与资金管理完整指南 | Buoyancy Capital',
+    description: '深入讲解金融交易风险管理核心知识：2%规则、风险回报比、仓位控制、最大回撤、风险承受能力评估。专业交易员分享实战风险管理策略，助你长期稳定盈利。',
+    keywords: '风险管理, 仓位控制, 资金管理, 止损设置, 风险回报比, 2%规则, 最大回撤, 金融风险管理',
 
-    heroTitle: '外汇风险管理基础',
+    heroTitle: '金融风险管理基础',
     heroDescription: '掌握风险管理核心原则，保护资金实现长期盈利',
     readingTime: '30分钟',
     difficulty: '初级-中级',
@@ -77,7 +77,7 @@ export const riskManagementContent = {
     ctaPrimaryButton: '了解培训计划',
     ctaSecondaryButton: '免费心理测评',
 
-    footerPrevText: '← 外汇基础',
+    footerPrevText: '← 金融基础',
     footerNextText: '仓位控制 →',
     footerPrevHref: '/education/forex-basics',
     footerNextHref: '/education/position-sizing',

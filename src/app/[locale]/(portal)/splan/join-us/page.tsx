@@ -459,7 +459,7 @@ export default function JoinUsPage() {
       <EmailContactModal
         isOpen={isEmailModalOpen}
         onClose={() => setIsEmailModalOpen(false)}
-        title={language === 'zh' ? '外汇交易员面试' : 'Forex Trader Interview'}
+        title={language === 'zh' ? '金融交易员面试' : 'Forex Trader Interview'}
       />
     </div>
   );

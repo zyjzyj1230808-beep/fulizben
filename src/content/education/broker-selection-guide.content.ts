@@ -2,11 +2,11 @@ import { EducationPageContent } from './forex-basics.content';
 
 export const brokerSelectionContent = {
   zh: {
-    title: '外汇经纪商选择完整指南 - 如何识别安全可靠的外汇平台 | Buoyancy Capital',
-    description: '全面讲解外汇经纪商选择标准：监管资质识别、平台类型对比（MM/STP/ECN）、资金安全保障、交易条件评估。避开黑平台陷阱，选择最适合你的外汇经纪商。',
-    keywords: '外汇经纪商, 外汇平台选择, 经纪商监管, 黑平台识别, ECN经纪商, STP经纪商, 外汇平台安全',
+    title: '金融经纪商选择完整指南 - 如何识别安全可靠的金融平台 | Buoyancy Capital',
+    description: '全面讲解金融经纪商选择标准：监管资质识别、平台类型对比（MM/STP/ECN）、资金安全保障、交易条件评估。避开黑平台陷阱，选择最适合你的金融经纪商。',
+    keywords: '金融经纪商, 金融平台选择, 经纪商监管, 黑平台识别, ECN经纪商, STP经纪商, 金融平台安全',
 
-    heroTitle: '外汇经纪商选择指南',
+    heroTitle: '金融经纪商选择指南',
     heroDescription: '掌握选择安全可靠经纪商的核心标准，避开黑平台陷阱',
     readingTime: '25分钟',
     difficulty: '初级',
@@ -26,8 +26,8 @@ export const brokerSelectionContent = {
     faqTitle: '常见问题解答',
     faqs: [
       {
-        question: 'Q1: 国内可以合法进行外汇保证金交易吗？',
-        answer: '中国目前不允许境内机构开展外汇保证金交易业务。但个人通过境外持牌经纪商进行外汇交易属于个人境外投资行为，不违法。关键是选择受严格监管的国际经纪商，如英国FCA、澳洲ASIC、美国NFA等。务必确认经纪商的真实监管牌照。'
+        question: 'Q1: 国内可以合法进行金融保证金交易吗？',
+        answer: '中国目前不允许境内机构开展金融保证金交易业务。但个人通过境外持牌经纪商进行金融交易属于个人境外投资行为，不违法。关键是选择受严格监管的国际经纪商，如英国FCA、澳洲ASIC、美国NFA等。务必确认经纪商的真实监管牌照。'
       },
       {
         question: 'Q2: 点差低就是好经纪商吗？',
@@ -35,7 +35,7 @@ export const brokerSelectionContent = {
       },
       {
         question: 'Q3: 如何验证经纪商的监管牌照真伪？',
-        answer: '三步验证法：1) 访问监管机构官网（如FCA官网www.fca.org.uk）；2) 在监管机构的查询系统中输入经纪商名称或牌照号；3) 确认监管范围包括"外汇保证金交易"。警惕：一些平台虚假宣称受监管，或使用"套牌"（盗用其他公司的监管信息）。'
+        answer: '三步验证法：1) 访问监管机构官网（如FCA官网www.fca.org.uk）；2) 在监管机构的查询系统中输入经纪商名称或牌照号；3) 确认监管范围包括"金融保证金交易"。警惕：一些平台虚假宣称受监管，或使用"套牌"（盗用其他公司的监管信息）。'
       },
       {
         question: 'Q4: MM、STP、ECN，新手应该选择哪种？',
@@ -58,8 +58,8 @@ export const brokerSelectionContent = {
       {
         href: '/education/forex-basics',
         icon: '📚',
-        title: '外汇交易基础',
-        description: '从零开始学习外汇市场基础知识'
+        title: '金融交易基础',
+        description: '从零开始学习金融市场基础知识'
       },
       {
         href: '/partners/magic-university',
@@ -69,7 +69,7 @@ export const brokerSelectionContent = {
       }
     ],
 
-    ctaTitle: '寻找可靠的外汇经纪商？',
+    ctaTitle: '寻找可靠的金融经纪商？',
     ctaDescription: 'Buoyancy Capital只推荐受严格监管、信誉良好的合作经纪商',
     ctaPrimaryButton: '查看合作经纪商',
     ctaSecondaryButton: '免费心理测评',

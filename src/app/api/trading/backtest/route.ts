@@ -167,14 +167,14 @@ export async function POST(request: NextRequest) {
                                (tradingConfig.strategy.aggressiveness === 1 ||
                                 tradingConfig.strategy.aggressiveness === 2);
 
-    // 优先级: 外汇数据提供商 -> Binance -> 模拟数据
-    // 对于XAUUSDT等外汇品种，使用专门的外汇数据源
+    // 优先级: 金融数据提供商 -> Binance -> 模拟数据
+    // 对于XAUUSDT等金融品种，使用专门的金融数据源
     const isForexSymbol = tradingConfig.symbol.toUpperCase().includes('XAU') ||
                           tradingConfig.symbol.toUpperCase().includes('XAG') ||
                           tradingConfig.symbol.toUpperCase().includes('EUR') ||
                           tradingConfig.symbol.toUpperCase().includes('GBP');
 
-    // 尝试从外汇数据提供商获取数据（免费API）
+    // 尝试从金融数据提供商获取数据（免费API）
     if (isForexSymbol) {
       try {
         console.log(`🌍 Fetching ${tradingConfig.symbol} from free forex data providers...`);
@@ -265,7 +265,7 @@ export async function POST(request: NextRequest) {
     if (candles1m.length === 0) {
       console.log('⚠️  All external data sources failed, using high-quality simulated data...');
 
-      // 对于外汇，使用专门的外汇模拟数据生成器
+      // 对于金融，使用专门的金融模拟数据生成器
       if (isForexSymbol) {
         const forexProvider = new ForexDataProvider();
         const intervalMs = getIntervalMs(tradingConfig.interval);

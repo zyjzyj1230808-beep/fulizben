@@ -109,11 +109,11 @@ function isQualityContent(title, description) {
     return false;
   }
 
-  // 必须包含外汇相关关键词
+  // 必须包含金融相关关键词
   const forexKeywords = [
     'eur', 'usd', 'gbp', 'jpy', 'forex', 'currency',
     'gold', 'silver', 'oil', 'bitcoin', 'crypto',
-    '外汇', '货币', '汇率', '黄金', '比特币'
+    '金融', '货币', '汇率', '黄金', '比特币'
   ];
 
   const text = (title + ' ' + description).toLowerCase();
@@ -187,11 +187,11 @@ export default {
         messages: [
           {
             role: 'system',
-            content: '你是专业的外汇分析师，擅长改写外汇新闻为SEO友好的内容。'
+            content: '你是专业的金融分析师，擅长改写金融新闻为SEO友好的内容。'
           },
           {
             role: 'user',
-            content: `请将以下外汇新闻改写为独特的${language === 'zh' ? '中文' : '英文'}内容：
+            content: `请将以下金融新闻改写为独特的${language === 'zh' ? '中文' : '英文'}内容：
 
 原文：
 ${content}
@@ -199,7 +199,7 @@ ${content}
 要求：
 1. 保持核心信息不变
 2. 改变表达方式
-3. 添加关键词：外汇、交易
+3. 添加关键词：金融、交易
 4. 字数：200-300字
 5. 不包含任何推广链接或广告
 6. 只返回改写后的内容，不要其他说明`
@@ -281,7 +281,7 @@ function isQualityContent(title, description) {
   const forexKeywords = [
     'eur', 'usd', 'gbp', 'jpy', 'forex', 'currency',
     'gold', 'silver', 'oil', 'bitcoin', 'crypto',
-    '外汇', '货币', '汇率', '黄金', '比特币'
+    '金融', '货币', '汇率', '黄金', '比特币'
   ];
 
   const text = (title + ' ' + description).toLowerCase();
@@ -420,8 +420,8 @@ async function generateContent() {
 title: "${cleanTitle}"
 date: "${dayjs().format('YYYY-MM-DD HH:mm:ss')}"
 description: "${cleanDesc.substring(0, 150)}"
-keywords: ["外汇", "交易", "市场分析"]
-category: "外汇新闻"
+keywords: ["金融", "交易", "市场分析"]
+category: "金融新闻"
 source: "${feed.title}"
 link: "${item.link}"
 ---
@@ -433,7 +433,7 @@ ${rewritten}
 **数据来源**: ${feed.title}
 **更新时间**: ${dayjs().format('YYYY-MM-DD HH:mm')}
 
-**免责声明**: 本文仅供参考，不构成投资建议。外汇交易存在风险，请谨慎决策。
+**免责声明**: 本文仅供参考，不构成投资建议。金融交易存在风险，请谨慎决策。
 `;
 
         fs.writeFileSync(filePath, markdown, 'utf8');
@@ -510,7 +510,7 @@ jobs:
       - name: Commit and push
         run: |
           git config --global user.name 'SEO Content Bot'
-          git config --global user.email 'seo@fxkiller.com'
+          git config --global user.email 'seo@fuliziben.com'
           git add src/content/news/
           git diff --quiet && git diff --staged --quiet || (
             git commit -m "chore: Auto-generate forex news $(date +'%Y-%m-%d %H:%M')" &&
@@ -524,7 +524,7 @@ jobs:
 
 ```
 ✅ 过滤推广内容
-✅ 只保留高质量外汇新闻
+✅ 只保留高质量金融新闻
 ✅ AI改写避免重复
 ✅ SEO优化完整
 ✅ 完全免费

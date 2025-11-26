@@ -34,7 +34,7 @@ export default async function TradingSessionsGuidePage({ params }: { params: Pro
         <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
           <p>
             {isZh
-              ? '外汇市场虽然是24小时运行，但并非所有时段都同样适合交易。不同交易时段有着截然不同的市场特征：'
+              ? '金融市场虽然是24小时运行，但并非所有时段都同样适合交易。不同交易时段有着截然不同的市场特征：'
               : 'While the forex market operates 24 hours, not all periods are equally suitable for trading. Different sessions have distinctly different market characteristics:'}
           </p>
           <ul className="list-disc pl-6 space-y-2">
@@ -171,7 +171,7 @@ export default async function TradingSessionsGuidePage({ params }: { params: Pro
             <ul className="list-disc pl-6 space-y-1">
               <li>
                 {isZh
-                  ? '全球最大的外汇交易中心，占全球交易量约35%'
+                  ? '全球最大的金融交易中心，占全球交易量约35%'
                   : 'World\'s largest forex center, ~35% of global volume'}
               </li>
               <li>

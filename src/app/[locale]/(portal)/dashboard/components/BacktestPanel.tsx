@@ -199,7 +199,7 @@ export default function BacktestPanel({ tradingConfig: initialConfig, onConfigCh
                 使用真实历史数据
               </p>
               <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                外汇品种(XAUUSDT等)使用Twelve Data/Alpha Vantage真实数据，加密货币使用Binance真实数据，均无需API密钥
+                金融品种(XAUUSDT等)使用Twelve Data/Alpha Vantage真实数据，加密货币使用Binance真实数据，均无需API密钥
               </p>
             </div>
           </div>
@@ -261,13 +261,13 @@ export default function BacktestPanel({ tradingConfig: initialConfig, onConfigCh
                   数据来源: {(() => {
                     switch (results.dataSource) {
                       case 'twelve-data':
-                        return 'Twelve Data API (外汇真实数据)';
+                        return 'Twelve Data API (金融真实数据)';
                       case 'alpha-vantage':
-                        return 'Alpha Vantage API (外汇真实数据)';
+                        return 'Alpha Vantage API (金融真实数据)';
                       case 'binance-public':
                         return 'Binance API (加密货币真实数据)';
                       case 'simulated-forex':
-                        return '模拟外汇数据 (确定性生成)';
+                        return '模拟金融数据 (确定性生成)';
                       case 'simulated-crypto':
                         return '模拟加密货币数据 (确定性生成)';
                       case 'generated':

@@ -80,7 +80,7 @@ jobs:
       - name: Commit and push if changed
         run: |
           git config --global user.name 'Buoyancy Capital News Bot'
-          git config --global user.email 'bot@fxkiller.com'
+          git config --global user.email 'bot@fuliziben.com'
           git add src/app/\\[locale\\]/news/
           git diff --quiet && git diff --staged --quiet || (git commit -m "📰 Auto: Add latest forex news" && git push)
 \`\`\`
@@ -288,7 +288,7 @@ export default async function NewsPage({
 
   return (
     <div>
-      <h1>{lang === 'zh' ? '外汇新闻' : 'Forex News'}</h1>
+      <h1>{lang === 'zh' ? '金融新闻' : 'Forex News'}</h1>
       {articles.map(article => (
         <NewsCard key={article.slug} article={article} language={lang} />
       ))}

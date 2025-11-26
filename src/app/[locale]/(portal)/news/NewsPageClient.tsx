@@ -87,12 +87,12 @@ export default function NewsPageClient({ initialNews }: NewsPageClientProps) {
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="font-black">
-              {isZh ? '外汇新闻' : 'Forex News'}
+              {isZh ? '金融新闻' : 'Forex News'}
             </span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             {isZh
-              ? '每日更新全球外汇市场最新动态，助您把握交易机会'
+              ? '每日更新全球金融市场最新动态，助您把握交易机会'
               : 'Daily updates on global forex market news to help you seize trading opportunities'}
           </p>
         </div>

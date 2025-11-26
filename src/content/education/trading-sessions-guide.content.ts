@@ -2,12 +2,12 @@ import { EducationPageContent } from './forex-basics.content';
 
 export const tradingSessionsContent = {
   zh: {
-    title: '外汇交易时段完整指南 - 全球外汇市场交易时间解析 | Buoyancy Capital',
-    description: '深入解析全球外汇市场四大交易时段：悉尼、东京、伦敦、纽约。掌握最佳交易时间窗口、主要货币对活跃时段、市场流动性分布，助你选择最优交易时机。',
-    keywords: '外汇交易时段, 外汇交易时间, 伦敦交易时段, 纽约交易时段, 东京交易时段, 最佳交易时间, 外汇市场开盘时间',
+    title: '金融交易时段完整指南 - 全球金融市场交易时间解析 | Buoyancy Capital',
+    description: '深入解析全球金融市场四大交易时段：悉尼、东京、伦敦、纽约。掌握最佳交易时间窗口、主要货币对活跃时段、市场流动性分布，助你选择最优交易时机。',
+    keywords: '金融交易时段, 金融交易时间, 伦敦交易时段, 纽约交易时段, 东京交易时段, 最佳交易时间, 金融市场开盘时间',
 
-    heroTitle: '全球外汇交易时段详解',
-    heroDescription: '掌握全球24小时外汇市场的交易时段规律，找到最佳交易时机',
+    heroTitle: '全球金融交易时段详解',
+    heroDescription: '掌握全球24小时金融市场的交易时段规律，找到最佳交易时机',
     readingTime: '18分钟',
     difficulty: '初级',
     lastUpdated: '2024-01-15',
@@ -26,8 +26,8 @@ export const tradingSessionsContent = {
     faqTitle: '常见问题解答',
     faqs: [
       {
-        question: 'Q1: 外汇市场真的是24小时交易吗？',
-        answer: '是的，但有细微差别。外汇市场从周一悉尼开盘到周五纽约收盘，连续运行约120小时。周末（周六和周日）全球主要市场都关闭。实际上，从北京时间周一早上6点到周六早上6点，市场基本是连续运行的。'
+        question: 'Q1: 金融市场真的是24小时交易吗？',
+        answer: '是的，但有细微差别。金融市场从周一悉尼开盘到周五纽约收盘，连续运行约120小时。周末（周六和周日）全球主要市场都关闭。实际上，从北京时间周一早上6点到周六早上6点，市场基本是连续运行的。'
       },
       {
         question: 'Q2: 新手应该选择哪个时段交易？',
@@ -74,7 +74,7 @@ export const tradingSessionsContent = {
     ctaPrimaryButton: '了解培训计划',
     ctaSecondaryButton: '免费心理测评',
 
-    footerPrevText: '← 外汇交易基础',
+    footerPrevText: '← 金融交易基础',
     footerNextText: '点差与佣金 →',
     footerPrevHref: '/education/forex-basics',
     footerNextHref: '/education/spreads-and-commissions',

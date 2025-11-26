@@ -42,7 +42,7 @@ export function generateBilingualMetadata(
   const title = language === 'zh' ? zhTitle : enTitle;
   const description = language === 'zh' ? zhDescription : enDescription;
   const keywords = language === 'zh' ? zhKeywords : enKeywords;
-  const baseUrl = 'https://fxkiller.com';
+  const baseUrl = 'https://fuliziben.com';
   const locale = language === 'zh' ? 'zh' : 'en';
   const url = options?.url || '';
 
@@ -78,7 +78,7 @@ export function generateBilingualMetadata(
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Buoyancy Capital - Professional FX Trader Training Platform',
+        alt: 'Buoyancy Capital - Professional  Training Platform',
       }],
       ...(options?.type === 'article' && {
         publishedTime: options.publishedTime,

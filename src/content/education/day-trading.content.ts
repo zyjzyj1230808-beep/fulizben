@@ -4,7 +4,7 @@ export const dayTradingContent = {
   zh: {
     title: '日内交易完整指南 - Day Trading策略与风险管理实战技巧 | Buoyancy Capital',
     description: '深入讲解日内交易（Day Trading）：时间框架选择、入场出场策略、仓位控制、止损设置、交易时段分析。结合实战案例，掌握M5、M15、H1图表的短线交易技巧。',
-    keywords: '日内交易, Day Trading, 短线交易, M5交易, M15交易, H1交易, 日内策略, 外汇日内交易',
+    keywords: '日内交易, Day Trading, 短线交易, M5交易, M15交易, H1交易, 日内策略, 金融日内交易',
 
     heroTitle: '日内交易完整指南',
     heroDescription: '掌握短线交易精髓，实现日内稳定盈利',
@@ -74,7 +74,7 @@ export const dayTradingContent = {
     ctaPrimaryButton: '了解培训计划',
     ctaSecondaryButton: '免费心理测评',
 
-    footerPrevText: '← 外汇基础',
+    footerPrevText: '← 金融基础',
     footerNextText: '波段交易 →',
     footerPrevHref: '/education/forex-basics',
     footerNextHref: '/education/swing-trading',

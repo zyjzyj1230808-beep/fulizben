@@ -13,20 +13,20 @@ export default function StructuredData() {
     "@type": "EducationalOrganization",
     "name": language === 'zh' ? "浮力资本 Buoyancy Capital" : "Buoyancy Capital",
     "alternateName": language === 'zh' ? "Buoyancy Capital" : "浮力资本",
-    "url": "https://fxkiller.com",
-    "logo": "https://fxkiller.com/logo.png",
+    "url": "https://fuliziben.com",
+    "logo": "https://fuliziben.com/logo.png",
     "description": language === 'zh'
-      ? "专注于外汇交易的职业交易员培训平台。提供系统化外汇交易培训、实战训练和资金支持。通过专业考核即可获得资金管理权限，分润比例高达90%。"
-      : "Professional FX trader training platform. Systematic forex trading education, practical training, and funded trading accounts. Pass professional assessment to get fund management privileges with up to 90% profit split.",
+      ? "专注于金融交易的职业交易员培训平台。提供系统化金融交易培训、实战训练和资金支持。通过专业考核即可获得资金管理权限，分润比例高达90%。"
+      : "Professional  training platform. Systematic forex trading education, practical training, and funded trading accounts. Pass professional assessment to get fund management privileges with up to 90% profit split.",
     "sameAs": [
-      "https://twitter.com/fxkiller",
-      "https://www.linkedin.com/company/fxkiller",
-      "https://www.youtube.com/@fxkiller"
+      "https://twitter.com/fuliziben",
+      "https://www.linkedin.com/company/fuliziben",
+      "https://www.youtube.com/@fuliziben"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Service",
-      "email": "contact@fxkiller.com"
+      "email": "contact@fuliziben.com"
     }
   };
 
@@ -35,12 +35,12 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Buoyancy Capital",
-    "url": "https://fxkiller.com",
+    "url": "https://fuliziben.com",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://fxkiller.com/search?q={search_term_string}"
+        "urlTemplate": "https://fuliziben.com/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -52,7 +52,7 @@ export default function StructuredData() {
     "@type": "Course",
     "name": language === 'zh' ? "Buoyancy Capital 职业交易员培训课程" : "Buoyancy Capital Professional Trader Training Course",
     "description": language === 'zh'
-      ? "全面系统的外汇交易培训课程，涵盖基础知识、技术分析、风险管理、交易心理等"
+      ? "全面系统的金融交易培训课程，涵盖基础知识、技术分析、风险管理、交易心理等"
       : "Comprehensive forex trading training course covering fundamentals, technical analysis, risk management, and trading psychology",
     "provider": {
       "@type": "Organization",

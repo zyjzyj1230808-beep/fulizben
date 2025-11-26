@@ -4,7 +4,7 @@ export const scalpingContent = {
   zh: {
     title: '剥头皮交易完整指南 - Scalping超短线策略与快速执行技巧 | Buoyancy Capital',
     description: '深入讲解剥头皮交易（Scalping）：M1/M5超短线分析、快速入场出场、点差成本控制、执行速度优化。掌握专业剥头皮交易的完整系统。',
-    keywords: '剥头皮交易, Scalping, M1交易, M5交易, 超短线交易, 快速交易, 剥头皮策略, 外汇剥头皮',
+    keywords: '剥头皮交易, Scalping, M1交易, M5交易, 超短线交易, 快速交易, 剥头皮策略, 金融剥头皮',
 
     heroTitle: '剥头皮交易完整指南',
     heroDescription: '掌握超短线交易技巧，实现快进快出盈利',

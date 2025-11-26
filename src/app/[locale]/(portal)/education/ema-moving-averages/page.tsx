@@ -33,7 +33,7 @@ export default async function EMAMovingAveragesPage({ params }: { params: Promis
         <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
           <p>
             {isZh
-              ? 'EMA（Exponential Moving Average，指数移动平均线）是一种给予近期价格更大权重的移动平均线。与简单移动平均线（SMA）相比，EMA对最新价格变化更加敏感，能更快地反映市场趋势的变化，因此成为外汇和股票交易中最受欢迎的技术指标之一。'
+              ? 'EMA（Exponential Moving Average，指数移动平均线）是一种给予近期价格更大权重的移动平均线。与简单移动平均线（SMA）相比，EMA对最新价格变化更加敏感，能更快地反映市场趋势的变化，因此成为金融和股票交易中最受欢迎的技术指标之一。'
               : 'EMA (Exponential Moving Average) is a moving average that gives greater weight to recent prices. Compared to Simple Moving Average (SMA), EMA is more sensitive to latest price changes, reflects market trend changes faster, making it one of the most popular technical indicators in forex and stock trading.'}
           </p>
 
@@ -178,7 +178,7 @@ export default async function EMAMovingAveragesPage({ params }: { params: Promis
                 </tr>
                 <tr className="bg-gray-50 dark:bg-gray-800">
                   <td className="border-2 border-black dark:border-white p-3 font-bold">
-                    {isZh ? '外汇交易' : 'Forex Trading'}
+                    {isZh ? '金融交易' : 'Forex Trading'}
                   </td>
                   <td className="border-2 border-black dark:border-white p-3">
                     {isZh ? '更受欢迎，适合快速市场' : 'More popular, suits fast markets'}

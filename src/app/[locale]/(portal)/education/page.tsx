@@ -7,11 +7,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const lang = getLanguageFromLocale(locale);
 
   return generateBilingualMetadata(
-    '外汇交易教育中心 - 学习路径总览 | Buoyancy Capital',
+    '金融交易教育中心 - 学习路径总览 | Buoyancy Capital',
     'Forex Trading Education Hub - Overview | Buoyancy Capital',
     '浮力教育中心总览页面，概览行业介绍、入门学习、职业之路等核心专题，快速导航至对应课程与资源。',
     'Discover the Buoyancy education overview covering industry insights, beginner learning, and career development with quick access to dedicated resources.',
-    '外汇教育总览, 浮力教育中心, 行业介绍, 外汇入门, 职业交易员发展, 学习路径导航',
+    '金融教育总览, 浮力教育中心, 行业介绍, 金融入门, 职业交易员发展, 学习路径导航',
     'forex education overview, Buoyancy education hub, industry insights, beginner forex learning, trading career development, learning path navigation',
     lang,
     {
@@ -29,7 +29,7 @@ const featurePages = [
     icon: '🌍',
     title: { zh: '行业介绍', en: 'Industry Overview' },
     description: {
-      zh: '洞悉全球外汇市场格局、主要参与者、经典影视與傳奇人物故事。',
+      zh: '洞悉全球金融市场格局、主要参与者、经典影视與傳奇人物故事。',
       en: 'Understand the global forex landscape, key participants, curated media, and trader stories.',
     },
     href: '/education/industry',
@@ -88,12 +88,12 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
             <span className="text-sm font-semibold tracking-wider">{isZh ? '专业交易教育' : 'Professional Trading Education'}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="font-black">{isZh ? '外汇交易教育中心' : 'Forex Trading Education Center'}</span>
+            <span className="font-black">{isZh ? '金融交易教育中心' : 'Forex Trading Education Center'}</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             {isZh ? (
               <>
-                系统化学习外汇交易知识，从零基础到职业交易员<br />
+                系统化学习金融交易知识，从零基础到职业交易员<br />
                 专业、实战、高效的学习路径
               </>
             ) : (
@@ -186,11 +186,11 @@ export default async function EducationPage({ params }: { params: Promise<{ loca
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
               {isZh
-                ? '我们提供系统化的外汇交易教育，由职业交易员编写，注重实战应用。所有课程完全免费，24/7随时访问，配套专业交易工具支持。'
+                ? '我们提供系统化的金融交易教育，由职业交易员编写，注重实战应用。所有课程完全免费，24/7随时访问，配套专业交易工具支持。'
                 : 'We provide systematic forex trading education written by professional traders with focus on practical application. All courses are completely free, accessible 24/7, with professional trading tools support.'}
             </p>
             <p className="text-xl font-bold text-black dark:text-white">
-              {isZh ? '从零基础到职业交易员，助你在外汇市场稳定盈利' : 'From beginner to professional trader, helping you achieve consistent profits in forex markets'}
+              {isZh ? '从零基础到职业交易员，助你在金融市场稳定盈利' : 'From beginner to professional trader, helping you achieve consistent profits in forex markets'}
             </p>
           </div>
         </div>

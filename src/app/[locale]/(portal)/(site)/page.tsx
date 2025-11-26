@@ -101,7 +101,7 @@ const DummyContent = () => {
                   </ShineButton>
                 </PulseButton>
                 <button
-                  onClick={() => router.push(`/${language}/dashboard`)}
+                  onClick={() => router.push(`/${language}/splan/support`)}
                   className="px-12 py-6 bg-transparent text-white text-xl font-black border-2 border-white hover:bg-white hover:text-blue-900 transition-all"
                 >
                   {t('hero.cta.dashboard')}
@@ -179,7 +179,7 @@ const DummyContent = () => {
             {/* Buoyancy Capital */}
             <div className="bg-white dark:bg-gray-800 p-6 border-l-4 border-[#0b1f4a] dark:border-white">
               <h4 className="text-xl font-bold mb-4 text-[#0b1f4a] dark:text-white flex items-center gap-2">
-                <span className="text-2xl"></span> {t('comparison.fxkiller')}
+                <span className="text-2xl"></span> {t('comparison.fuliziben')}
               </h4>
               <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                 <li className="flex items-start gap-2">
@@ -381,28 +381,50 @@ const DummyContent = () => {
 
         {/* 条件卡片 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* 人群画像 */}
+          {/* 心理测评 CTA */}
           <div className="bg-gradient-to-br from-[#08112a] to-[#0b1f4a] dark:from-gray-100 dark:to-white p-8 border-2 border-[#0b1f4a] dark:border-white shadow-lg hover:shadow-2xl transition-shadow">
             <div className="text-white dark:text-black">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white dark:bg-[#0b1f4a] flex items-center justify-center">
-                  <span className="text-2xl">👥</span>
+                <div className="w-12 h-12 bg-white dark:bg-[#0b1f4a] flex items-center justify-center rounded-full">
+                  <span className="text-2xl">🧠</span>
                 </div>
                 <h3 className="text-2xl font-bold">{t('req.profile.title')}</h3>
               </div>
+              <p className="text-sm text-gray-200 dark:text-gray-600 leading-relaxed mb-6">{t('req.profile.desc')}</p>
               <div className="space-y-5">
                 <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
-                  <p className="font-bold text-lg mb-1">{t('req.profile.education')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.profile.education.desc')}</p>
+                  <p className="font-bold text-lg mb-2">
+                    {language === 'zh'
+                      ? '标准化测评 · 3 分钟完成，实时生成心理画像'
+                      : 'Standardized test · 3 minutes to get your profile'}
+                  </p>
+                  <p className="text-sm text-gray-300 dark:text-gray-600">
+                    {language === 'zh'
+                      ? '由交易心理导师设计题库，快速定位你的稳定性、纪律性与压力承受能力。'
+                      : 'Designed by trading psychologists to surface discipline, composure, and stress tolerance fast.'}
+                  </p>
                 </div>
                 <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
-                  <p className="font-bold text-lg mb-1">{t('req.profile.psychology')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.profile.psychology.desc')}</p>
+                  <p className="font-bold text-lg mb-2">
+                    {language === 'zh'
+                      ? '匹配浮力选拔标准 · 给出下一步建议'
+                      : 'Benchmarked to Fuli standards · Clear next steps'}
+                  </p>
+                  <p className="text-sm text-gray-300 dark:text-gray-600">
+                    {language === 'zh'
+                      ? '测评报告直接对标浮力交易员要求，并提示下一阶段需要提升的项目。'
+                      : 'Your report maps to Fuli’s trader criteria and highlights where to improve.'}
+                  </p>
                 </div>
-                <div className="border-l-4 border-white dark:border-black pl-4 hover:pl-6 transition-all">
-                  <p className="font-bold text-lg mb-1">{t('req.profile.character')}</p>
-                  <p className="text-sm text-gray-300 dark:text-gray-600">{t('req.profile.character.desc')}</p>
-                </div>
+                <button
+                  onClick={() => router.push(`/${language}/splan/psychology-test`)}
+                  className="w-full py-3 bg-white dark:bg-[#0b1f4a] text-[#0b1f4a] dark:text-white font-black text-lg border-2 border-white dark:border-[#0b1f4a] hover:-translate-y-0.5 hover:shadow-xl transition-all"
+                >
+                  {t('req.profile.cta')}
+                </button>
+                <p className="text-xs text-gray-300 dark:text-gray-500 tracking-wide">
+                  {t('req.profile.note')}
+                </p>
               </div>
             </div>
           </div>

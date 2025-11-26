@@ -257,7 +257,7 @@ export default function PositionCalculatorPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-black dark:text-white mb-4">
-            {isZh ? '外汇仓位计算器' : 'Forex Position Size Calculator'}
+            {isZh ? '金融仓位计算器' : 'Forex Position Size Calculator'}
           </h1>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             {isZh
@@ -548,7 +548,7 @@ export default function PositionCalculatorPage() {
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-500 mt-3">
                   {isZh
-                    ? '外汇：100,000单位/手；黄金：100盎司/手'
+                    ? '金融：100,000单位/手；黄金：100盎司/手'
                     : 'Forex: 100,000 units/lot; Gold: 100 oz/lot'}
                 </p>
               </div>

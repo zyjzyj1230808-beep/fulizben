@@ -33,7 +33,7 @@ export default async function StopLossStrategiesPage({ params }: { params: Promi
         <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
           <p>
             {isZh
-              ? '止损（Stop-Loss）是外汇交易中最重要的风险控制工具。它是预先设定的价格水平，当市场价格达到该水平时，交易平台会自动平仓，限制你的最大亏损。简单来说：止损是你的保险，是防止小亏变爆仓的最后防线。'
+              ? '止损（Stop-Loss）是金融交易中最重要的风险控制工具。它是预先设定的价格水平，当市场价格达到该水平时，交易平台会自动平仓，限制你的最大亏损。简单来说：止损是你的保险，是防止小亏变爆仓的最后防线。'
               : 'Stop-Loss is the most important risk control tool in forex trading. It\'s a pre-set price level where, when market price reaches it, the trading platform automatically closes the position, limiting your maximum loss. Simply put: stop-loss is your insurance, the last line of defense preventing small losses from becoming account blowup.'}
           </p>
 
@@ -43,7 +43,7 @@ export default async function StopLossStrategiesPage({ params }: { params: Promi
               <li>
                 <strong>{isZh ? '1. 防止灾难性亏损：' : '1. Prevent Catastrophic Loss:'}</strong>{' '}
                 {isZh
-                  ? '外汇市场波动剧烈，重大新闻、央行决议、地缘政治事件可能导致瞬间暴涨暴跌数百点。2015年瑞郎黑天鹅事件，EUR/CHF在15分钟内暴跌3000点，无数未设止损的交易者账户爆仓，甚至产生负余额欠经纪商钱。止损能确保即使遭遇黑天鹅，亏损也在可控范围内。'
+                  ? '金融市场波动剧烈，重大新闻、央行决议、地缘政治事件可能导致瞬间暴涨暴跌数百点。2015年瑞郎黑天鹅事件，EUR/CHF在15分钟内暴跌3000点，无数未设止损的交易者账户爆仓，甚至产生负余额欠经纪商钱。止损能确保即使遭遇黑天鹅，亏损也在可控范围内。'
                   : 'Forex market is highly volatile, major news, central bank decisions, geopolitical events can cause instant surges/drops of hundreds of pips. 2015 Swiss Franc black swan event, EUR/CHF plummeted 3000 pips in 15 minutes, countless traders without stops had accounts blown up, even negative balances owing brokers. Stop-loss ensures even during black swan events, losses remain controllable.'}
               </li>
               <li>
@@ -183,7 +183,7 @@ export default async function StopLossStrategiesPage({ params }: { params: Promi
               <p className="text-sm">
                 <strong>{isZh ? '适用场景：' : 'Applicable Scenarios:'}</strong>{' '}
                 {isZh
-                  ? '股票、加密货币等价格差异大的市场。外汇市场因为货币对价格相对稳定（EUR/USD在1.0-1.2区间），百分比止损与固定点数止损差异不大，较少使用。'
+                  ? '股票、加密货币等价格差异大的市场。金融市场因为货币对价格相对稳定（EUR/USD在1.0-1.2区间），百分比止损与固定点数止损差异不大，较少使用。'
                   : 'Markets with large price differences like stocks, cryptocurrencies. Forex market because currency pair prices relatively stable (EUR/USD in 1.0-1.2 range), percentage stop and fixed pip stop difference not large, rarely used.'}
               </p>
             </div>

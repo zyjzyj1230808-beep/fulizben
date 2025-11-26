@@ -54,16 +54,16 @@ export default async function LeverageMarginPage({ params }: { params: Promise<{
 
           <div className="p-6 bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-bold mb-3 text-black dark:text-white">
-              {isZh ? '外汇交易中的杠杆' : 'Leverage in Forex Trading'}
+              {isZh ? '金融交易中的杠杆' : 'Leverage in Forex Trading'}
             </h3>
             <p className="mb-3">
               {isZh
-                ? '外汇市场的杠杆通常远高于其他市场：'
+                ? '金融市场的杠杆通常远高于其他市场：'
                 : 'Forex market leverage is typically much higher than other markets:'}
             </p>
             <ul className="list-disc pl-6 space-y-1">
               <li>
-                {isZh ? '外汇：' : 'Forex:'} 1:50 - 1:500 ({isZh ? '常见1:100' : 'commonly 1:100'})
+                {isZh ? '金融：' : 'Forex:'} 1:50 - 1:500 ({isZh ? '常见1:100' : 'commonly 1:100'})
               </li>
               <li>
                 {isZh ? '股票：' : 'Stocks:'} 1:2 - 1:5
@@ -74,7 +74,7 @@ export default async function LeverageMarginPage({ params }: { params: Promise<{
             </ul>
             <p className="mt-3 text-sm">
               {isZh
-                ? '⚠️ 高杠杆意味着高风险。外汇市场的高杠杆是导致许多新手快速亏损的主要原因之一。'
+                ? '⚠️ 高杠杆意味着高风险。金融市场的高杠杆是导致许多新手快速亏损的主要原因之一。'
                 : '⚠️ High leverage means high risk. High forex leverage is a major reason many beginners lose quickly.'}
             </p>
           </div>

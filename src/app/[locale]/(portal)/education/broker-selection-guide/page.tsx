@@ -34,7 +34,7 @@ export default async function BrokerSelectionGuidePage({ params }: { params: Pro
         <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
           <p>
             {isZh
-              ? '选择经纪商是外汇交易中最重要的决定之一。一个错误的选择可能导致资金全部损失，即使你的交易策略完全正确。'
+              ? '选择经纪商是金融交易中最重要的决定之一。一个错误的选择可能导致资金全部损失，即使你的交易策略完全正确。'
               : 'Choosing a broker is one of the most critical decisions in forex trading. A wrong choice could lead to total capital loss, even with a perfect trading strategy.'}
           </p>
 
@@ -204,7 +204,7 @@ export default async function BrokerSelectionGuidePage({ params }: { params: Pro
               <p>
                 <strong>{isZh ? '步骤3：' : 'Step 3:'}</strong>{' '}
                 {isZh
-                  ? '确认监管范围包含"外汇保证金交易"或"CFD交易"'
+                  ? '确认监管范围包含"金融保证金交易"或"CFD交易"'
                   : 'Confirm regulatory scope includes "forex margin trading" or "CFD trading"'}
               </p>
 

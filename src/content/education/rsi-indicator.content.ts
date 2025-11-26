@@ -3,7 +3,7 @@ import { EducationPageContent } from './forex-basics.content';
 export const rsiIndicatorContent = {
   zh: {
     title: 'RSI相对强弱指标完整指南 - RSI交易策略与实战技巧 | Buoyancy Capital',
-    description: '深入讲解RSI相对强弱指标：计算公式、超买超卖区域(70/30)、RSI背离形态。掌握RSI在外汇交易中的应用，配合布林带等指标提升交易胜率。',
+    description: '深入讲解RSI相对强弱指标：计算公式、超买超卖区域(70/30)、RSI背离形态。掌握RSI在金融交易中的应用，配合布林带等指标提升交易胜率。',
     keywords: 'RSI指标, 相对强弱指标, RSI策略, RSI背离, 超买超卖, 技术分析指标, 动能指标',
 
     heroTitle: 'RSI相对强弱指标完整指南',

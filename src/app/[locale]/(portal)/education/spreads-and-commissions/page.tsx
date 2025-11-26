@@ -34,7 +34,7 @@ export default async function SpreadsCommissionsPage({ params }: { params: Promi
         <div className="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
           <p>
             {isZh
-              ? '点差（Spread）是外汇交易中买入价（Ask）和卖出价（Bid）之间的差额，是交易者每次开仓必须支付的成本。'
+              ? '点差（Spread）是金融交易中买入价（Ask）和卖出价（Bid）之间的差额，是交易者每次开仓必须支付的成本。'
               : 'The spread is the difference between the buying price (Ask) and selling price (Bid) in forex trading, a cost traders must pay on every position opened.'}
           </p>
 

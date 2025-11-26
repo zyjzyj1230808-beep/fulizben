@@ -3,8 +3,8 @@ import { EducationPageContent } from './forex-basics.content';
 export const currencyPairsGuideContent = {
   zh: {
     title: '货币对完整解析 - 主要、次要与异国货币对交易指南 | Buoyancy Capital',
-    description: '深入讲解外汇货币对：EUR/USD、GBP/USD、USD/JPY等主要货币对特性，货币对相关性分析，点值计算方法，最佳交易时段选择。掌握货币对选择与交易技巧。',
-    keywords: '货币对, 主要货币对, EUR/USD, GBP/USD, USD/JPY, 货币对相关性, 点值计算, 外汇货币对',
+    description: '深入讲解金融货币对：EUR/USD、GBP/USD、USD/JPY等主要货币对特性，货币对相关性分析，点值计算方法，最佳交易时段选择。掌握货币对选择与交易技巧。',
+    keywords: '货币对, 主要货币对, EUR/USD, GBP/USD, USD/JPY, 货币对相关性, 点值计算, 金融货币对',
 
     heroTitle: '货币对完整解析',
     heroDescription: '理解货币对特性，选择最适合你的交易品种',
@@ -31,7 +31,7 @@ export const currencyPairsGuideContent = {
       },
       {
         question: 'Q2: 为什么EUR/USD的点差比GBP/JPY小那么多？',
-        answer: '点差取决于流动性和交易量。EUR/USD日交易量占全球外汇市场30%，买卖双方极多，供需匹配快，点差自然小（0.5-1点）。GBP/JPY是交叉货币对，需要通过GBP/USD和USD/JPY合成计算，流动性较低，点差通常2-4点。流动性越高，点差越小，交易成本越低。'
+        answer: '点差取决于流动性和交易量。EUR/USD日交易量占全球金融市场30%，买卖双方极多，供需匹配快，点差自然小（0.5-1点）。GBP/JPY是交叉货币对，需要通过GBP/USD和USD/JPY合成计算，流动性较低，点差通常2-4点。流动性越高，点差越小，交易成本越低。'
       },
       {
         question: 'Q3: 如何计算不同货币对的点值？',
@@ -52,14 +52,14 @@ export const currencyPairsGuideContent = {
       {
         href: '/education/forex-basics',
         icon: '📚',
-        title: '外汇基础知识',
-        description: '了解外汇市场的基本概念'
+        title: '金融基础知识',
+        description: '了解金融市场的基本概念'
       },
       {
         href: '/education/trading-sessions-guide',
         icon: '🕐',
         title: '交易时段指南',
-        description: '掌握全球外汇交易时间'
+        description: '掌握全球金融交易时间'
       },
       {
         href: '/partners/magic-university',
@@ -70,11 +70,11 @@ export const currencyPairsGuideContent = {
     ],
 
     ctaTitle: '想要找到最适合你的货币对？',
-    ctaDescription: '对比顶级外汇经纪商，找到点差最低、执行最快的交易平台',
+    ctaDescription: '对比顶级金融经纪商，找到点差最低、执行最快的交易平台',
     ctaPrimaryButton: '对比经纪商',
     ctaSecondaryButton: '免费模拟账户',
 
-    footerPrevText: '← 外汇基础',
+    footerPrevText: '← 金融基础',
     footerNextText: '市场参与者 →',
     footerPrevHref: '/education/forex-basics',
     footerNextHref: '/education/market-participants',

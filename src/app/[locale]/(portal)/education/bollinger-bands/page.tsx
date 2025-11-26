@@ -246,7 +246,7 @@ export default async function BollingerBandsPage({ params }: { params: Promise<{
             <ul className="list-disc pl-6 space-y-1 text-sm">
               <li>
                 {isZh
-                  ? '不同市场特性：股票通常(20, 2)，外汇可尝试(20, 2.5)，加密货币可能需要(20, 3)'
+                  ? '不同市场特性：股票通常(20, 2)，金融可尝试(20, 2.5)，加密货币可能需要(20, 3)'
                   : 'Different market characteristics: stocks typically (20, 2), forex try (20, 2.5), crypto may need (20, 3)'}
               </li>
               <li>

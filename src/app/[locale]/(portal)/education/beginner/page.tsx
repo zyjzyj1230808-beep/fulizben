@@ -8,9 +8,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return generateBilingualMetadata(
     '浮力教育｜入门学习路径',
     'Fuli Education | Beginner Learning Path',
-    '从基础知识、技术分析到风险管理，30 天构建完整的外汇交易知识体系，配套精选课程与实战练习。',
+    '从基础知识、技术分析到风险管理，30 天构建完整的金融交易知识体系，配套精选课程与实战练习。',
     'Build a complete forex knowledge system in 30 days—from fundamentals and technical analysis to risk management—with curated lessons and practical drills.',
-    '外汇入门课程, 外汇基础知识, 技术分析入门, 交易策略学习, 风险管理教程',
+    '金融入门课程, 金融基础知识, 技术分析入门, 交易策略学习, 风险管理教程',
     'beginner forex course, forex fundamentals, technical analysis basics, trading strategies, risk management training',
     lang,
     {
@@ -28,17 +28,17 @@ const beginnerCourseGroups = [
     icon: '📚',
     title: { zh: '基础知识', en: 'Basic Knowledge' },
     description: {
-      zh: '掌握外汇市场的核心概念、交易规则与主要参与者。',
+      zh: '掌握金融市场的核心概念、交易规则与主要参与者。',
       en: 'Master the core concepts, trading rules, and key participants of the forex market.',
     },
     courses: [
-      { title: { zh: '外汇交易基础', en: 'Forex Trading Basics' }, slug: 'forex-basics', status: { zh: '热门', en: 'Popular' } },
-      { title: { zh: '外汇市场交易时段', en: 'Trading Sessions Guide' }, slug: 'trading-sessions-guide', status: { zh: '新', en: 'New' } },
+      { title: { zh: '金融交易基础', en: 'Forex Trading Basics' }, slug: 'forex-basics', status: { zh: '热门', en: 'Popular' } },
+      { title: { zh: '金融市场交易时段', en: 'Trading Sessions Guide' }, slug: 'trading-sessions-guide', status: { zh: '新', en: 'New' } },
       { title: { zh: '点差与佣金详解', en: 'Spreads and Commissions' }, slug: 'spreads-and-commissions', status: { zh: '新', en: 'New' } },
       { title: { zh: '杠杆与保证金', en: 'Leverage and Margin' }, slug: 'leverage-and-margin', status: { zh: '新', en: 'New' } },
       { title: { zh: '经纪商选择指南', en: 'Broker Selection Guide' }, slug: 'broker-selection-guide', status: { zh: '新', en: 'New' } },
       { title: { zh: '货币对完整解析', en: 'Currency Pairs Guide' }, slug: 'currency-pairs-guide', status: { zh: '新', en: 'New' } },
-      { title: { zh: '外汇市场参与者', en: 'Market Participants' }, slug: 'market-participants', status: { zh: '新', en: 'New' } },
+      { title: { zh: '金融市场参与者', en: 'Market Participants' }, slug: 'market-participants', status: { zh: '新', en: 'New' } },
     ],
   },
   {
@@ -112,7 +112,7 @@ export default async function BeginnerPage({ params }: { params: Promise<{ local
             {isZh ? '入门学习' : 'Beginner Path'}
           </div>
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
-            {isZh ? '30 天构建外汇交易基础框架' : 'Build Your Forex Foundation in 30 Days'}
+            {isZh ? '30 天构建金融交易基础框架' : 'Build Your Forex Foundation in 30 Days'}
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
             {isZh

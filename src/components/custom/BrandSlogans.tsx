@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 // 品牌标语集合 - 体现力量、精准、专业
 const slogans = [
   {
-    zh: "浮力资本，外汇交易市场的资本力量",
+    zh: "浮力资本，金融交易市场的资本力量",
     en: "Buoyancy Capital, the capital force in forex trading"
   },
   {

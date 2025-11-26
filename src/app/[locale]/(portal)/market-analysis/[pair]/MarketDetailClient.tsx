@@ -223,7 +223,7 @@ export default function MarketDetailClient({ analysis, language }: MarketDetailC
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   <strong>{isZh ? '免责声明：' : 'Disclaimer: '}</strong>
                   {isZh
-                    ? '本分析仅供参考，不构成投资建议。外汇交易存在风险，请谨慎决策。'
+                    ? '本分析仅供参考，不构成投资建议。金融交易存在风险，请谨慎决策。'
                     : 'This analysis is for reference only and does not constitute investment advice. Forex trading involves risks; please make decisions carefully.'}
                 </p>
               </div>

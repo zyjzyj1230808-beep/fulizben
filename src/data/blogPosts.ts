@@ -27,17 +27,17 @@ export const blogPosts: BlogPost[] = [
  id: '1',
  slug: 'about-fx-killer',
  title: {
- zh: '关于浮力资本 (Buoyancy Capital) - 军事化外汇交易员训练营',
+ zh: '关于浮力资本 (Buoyancy Capital) - 军事化金融交易员训练营',
  en: 'About Buoyancy Capital - Military-Style Forex Trader Training Camp'
  },
  excerpt: {
- zh: '浮力资本 (Buoyancy Capital) 是一个专注于筛选和培养外汇交易员的训练营。我们的理念：培养真正适合的人，留下极少数，劝返大多数。通过率10%-15%，30个工作日完整培训，盈利分成60%-90%。',
+ zh: '浮力资本 (Buoyancy Capital) 是一个专注于筛选和培养金融交易员的训练营。我们的理念：培养真正适合的人，留下极少数，劝返大多数。通过率10%-15%，30个工作日完整培训，盈利分成60%-90%。',
  en: 'Buoyancy Capital is a training camp focused on selecting and cultivating forex traders. Our philosophy: cultivating those truly suited, retaining the few, advising the majority. Pass rate 10%-15%, 30 working days complete training, 60%-90% profit share.'
  },
  content: {
  zh: `<h1 class="text-4xl font-bold text-center mb-8 text-black dark:text-white">关于浮力资本 (Buoyancy Capital)</h1>
 
-<p class="text-base leading-relaxed mb-8 text-center text-gray-700 dark:text-gray-300">浮力资本是一个专注于筛选和培养顶尖外汇交易员的军事化训练营。我们不追求数量，只培养真正适合的人。这是一个严格、高强度、高淘汰率的专业训练项目。</p>
+<p class="text-base leading-relaxed mb-8 text-center text-gray-700 dark:text-gray-300">浮力资本是一个专注于筛选和培养顶尖金融交易员的军事化训练营。我们不追求数量，只培养真正适合的人。这是一个严格、高强度、高淘汰率的专业训练项目。</p>
 
 <div class="bg-black dark:bg-white text-white dark:text-black p-8 mb-8 border-2 border-black dark:border-white">
 <p class="text-3xl font-bold mb-4 text-white dark:text-black text-center">培养真正适合的人，留下极少数，劝返大多数</p>
@@ -1043,22 +1043,22 @@ export const blogPosts: BlogPost[] = [
  featured: true
  },
 
- // 2. 外汇交易入门 - 扩展版本
+ // 2. 金融交易入门 - 扩展版本
  {
  id: '2',
  slug: 'forex-trading-beginner-guide',
  title: {
- zh: '外汇交易入门指南：从零开始的交易之路',
+ zh: '金融交易入门指南：从零开始的交易之路',
  en: 'Forex Trading Beginner Guide: Starting Your Trading Journey from Zero'
  },
  excerpt: {
- zh: '外汇市场是全球最大的金融市场，日交易量超过6万亿美元。本文将系统地带你了解外汇交易的基础知识，帮助你迈出交易生涯的第一步。',
+ zh: '金融市场是全球最大的金融市场，日交易量超过6万亿美元。本文将系统地带你了解金融交易的基础知识，帮助你迈出交易生涯的第一步。',
  en: 'The forex market is the world\'s largest financial market with daily volume exceeding $6 trillion. This comprehensive guide covers fundamental forex knowledge to help you take your first trading steps.'
  },
  content: {
- zh: `<h1 class="text-4xl font-bold text-center mb-8 text-black dark:text-white">外汇市场基础知识</h1>
+ zh: `<h1 class="text-4xl font-bold text-center mb-8 text-black dark:text-white">金融市场基础知识</h1>
 
-<p class="text-base leading-relaxed mb-8 text-center text-gray-700 dark:text-gray-300">外汇市场(Forex/FX)是全球最大、流动性最强的金融市场。了解外汇市场的基础知识，是成为职业交易员的第一步。</p>
+<p class="text-base leading-relaxed mb-8 text-center text-gray-700 dark:text-gray-300">金融市场(Forex/FX)是全球最大、流动性最强的金融市场。了解金融市场的基础知识，是成为职业交易员的第一步。</p>
 
 <h2 class="text-3xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">市场概览</h2>
 
@@ -1093,9 +1093,9 @@ export const blogPosts: BlogPost[] = [
 </div>
 </div>
 
-<h2 class="text-3xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">什么是外汇交易</h2>
+<h2 class="text-3xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">什么是金融交易</h2>
 
-<p class="text-base leading-relaxed mb-6 text-gray-700 dark:text-gray-300">外汇交易(Foreign Exchange Trading)是指同时买入一种货币并卖出另一种货币的交易行为。货币总是成对交易的，例如EUR/USD表示欧元兑美元。</p>
+<p class="text-base leading-relaxed mb-6 text-gray-700 dark:text-gray-300">金融交易(Foreign Exchange Trading)是指同时买入一种货币并卖出另一种货币的交易行为。货币总是成对交易的，例如EUR/USD表示欧元兑美元。</p>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 <div class="bg-white dark:bg-gray-800 p-6 border-2 border-gray-200 dark:border-gray-700">
@@ -1121,7 +1121,7 @@ export const blogPosts: BlogPost[] = [
 <span class="text-2xl text-white dark:text-black font-bold">3</span>
 </div>
 <p class="text-xl font-bold mb-3 text-black dark:text-white">点数(Pip)</p>
-<p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-2">外汇价格变动的最小单位，通常是小数点后第四位。</p>
+<p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-2">金融价格变动的最小单位，通常是小数点后第四位。</p>
 <p class="text-sm text-gray-500 dark:text-gray-500 mt-3">EUR/USD从1.1000到1.1001<br/>= 上涨1个点</p>
 </div>
 </div>
@@ -1167,7 +1167,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2 class="text-3xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">全球交易时段</h2>
 
-<p class="text-base leading-relaxed mb-6 text-gray-700 dark:text-gray-300">由于外汇市场是全球性的，不同地区的交易时段有重叠，这些重叠时段通常是最活跃的交易时间。</p>
+<p class="text-base leading-relaxed mb-6 text-gray-700 dark:text-gray-300">由于金融市场是全球性的，不同地区的交易时段有重叠，这些重叠时段通常是最活跃的交易时间。</p>
 
 <div class="overflow-x-auto mb-8">
 <table class="w-full border-2 border-black dark:border-white">
@@ -1219,7 +1219,7 @@ export const blogPosts: BlogPost[] = [
 <p class="text-center text-white dark:text-black">这4个小时是全天交易量最大、波动最剧烈的时段，也是最佳交易时机</p>
 </div>
 
-<h2 class="text-3xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">外汇交易优势</h2>
+<h2 class="text-3xl font-bold text-center mb-4 text-black dark:text-white border-b-4 border-black dark:border-white inline-block pb-2 w-full">金融交易优势</h2>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 <div class="bg-white dark:bg-gray-800 p-6 border-2 border-gray-200 dark:border-gray-700">
@@ -1349,8 +1349,8 @@ export const blogPosts: BlogPost[] = [
 </div>
 <div class="flex-grow">
 <p class="text-xl font-bold mb-2 text-black dark:text-white">基础知识学习（1-2周）</p>
-<p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-2">学习外汇市场基本概念、货币对、点数、杠杆、保证金等基础知识。</p>
-<p class="text-sm text-gray-600 dark:text-gray-400">推荐资源：交易平台教程、外汇基础书籍、在线课程</p>
+<p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-2">学习金融市场基本概念、货币对、点数、杠杆、保证金等基础知识。</p>
+<p class="text-sm text-gray-600 dark:text-gray-400">推荐资源：交易平台教程、金融基础书籍、在线课程</p>
 </div>
 </div>
 </div>
@@ -1397,7 +1397,7 @@ export const blogPosts: BlogPost[] = [
 
 <div class="bg-black dark:bg-white text-white dark:text-black p-8 mb-8 border-2 border-black dark:border-white">
 <p class="text-2xl font-bold mb-4 text-white dark:text-black text-center">关键提示</p>
-<p class="text-lg text-center text-white dark:text-black">外汇交易不是快速致富的捷径，而是需要长期学习和实践的专业技能。保持耐心，控制风险，持续学习，才能在这个市场中生存并盈利。</p>
+<p class="text-lg text-center text-white dark:text-black">金融交易不是快速致富的捷径，而是需要长期学习和实践的专业技能。保持耐心，控制风险，持续学习，才能在这个市场中生存并盈利。</p>
 </div>`,
  en: `<h1 class="text-4xl font-bold text-center mb-8 text-black dark:text-white">Forex Market Fundamentals</h1>
 
@@ -1751,12 +1751,12 @@ export const blogPosts: BlogPost[] = [
  featured: true
  },
 
- // 3. 外汇风险管理
+ // 3. 金融风险管理
  {
  id: '3',
  slug: 'forex-risk-management',
  title: {
- zh: '外汇交易的风险管理策略：保护你的交易资本',
+ zh: '金融交易的风险管理策略：保护你的交易资本',
  en: 'Forex Risk Management Strategies: Protecting Your Capital'
  },
  excerpt: {
@@ -1764,7 +1764,7 @@ export const blogPosts: BlogPost[] = [
  en: 'Risk management is the foundation of trading success. Learning to control risk is more important than learning to make money. Professional risk management techniques revealed.'
  },
  content: {
- zh: `<h1 class="text-4xl font-bold text-center mb-8 text-black dark:text-white">外汇交易的风险管理策略</h1>
+ zh: `<h1 class="text-4xl font-bold text-center mb-8 text-black dark:text-white">金融交易的风险管理策略</h1>
 
 <p class="text-base leading-relaxed mb-8 text-center text-gray-700 dark:text-gray-300">成功的交易员不是因为从不亏损，而是因为懂得控制风险。风险管理是交易的生命线，决定了你能在市场中存活多久。</p>
 
@@ -4945,7 +4945,7 @@ export const blogPosts: BlogPost[] = [
 
 <div class="bg-black dark:bg-white text-white dark:text-black p-8 mb-8 border-2 border-black dark:border-white">
 <p class="text-2xl font-bold mb-4 text-white dark:text-black">⚡ 黄金交易时段：20:00-24:00</p>
-<p class="text-lg leading-relaxed mb-4 text-white dark:text-black">这是外汇市场最活跃的4小时，欧洲和美洲市场同时开放，流动性达到顶峰。</p>
+<p class="text-lg leading-relaxed mb-4 text-white dark:text-black">这是金融市场最活跃的4小时，欧洲和美洲市场同时开放，流动性达到顶峰。</p>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 <div>
 <p class="text-xl font-bold mb-2 text-white dark:text-black">70%+</p>

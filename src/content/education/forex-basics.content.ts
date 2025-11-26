@@ -50,23 +50,23 @@ export interface EducationPageContent {
 
 export const forexBasicsContent = {
   zh: {
-    title: '外汇交易基础知识完整指南 - 从零开始学习外汇交易 | Buoyancy Capital',
-    description: '完整的外汇交易入门教程，涵盖外汇市场基础、交易术语、技术分析、风险管理等核心知识。适合零基础新手，由职业交易员编写，助你快速掌握外汇交易essentials。',
-    keywords: '外汇交易基础, 外汇入门, 外汇教程, 外汇市场, 外汇交易知识, 新手学外汇, FX交易教程',
+    title: '金融交易基础知识完整指南 - 从零开始学习金融交易 | Buoyancy Capital',
+    description: '完整的金融交易入门教程，涵盖金融市场基础、交易术语、技术分析、风险管理等核心知识。适合零基础新手，由职业交易员编写，助你快速掌握金融交易essentials。',
+    keywords: '金融交易基础, 金融入门, 金融教程, 金融市场, 金融交易知识, 新手学金融, FX交易教程',
 
-    heroTitle: '外汇交易基础知识',
-    heroDescription: '完整的外汇交易入门指南，从零开始掌握外汇市场核心概念',
+    heroTitle: '金融交易基础知识',
+    heroDescription: '完整的金融交易入门指南，从零开始掌握金融市场核心概念',
     readingTime: '15分钟',
     difficulty: '初级',
     lastUpdated: '2024-01-15',
 
     tocTitle: '本文目录',
     tableOfContents: [
-      { id: 'what-is-forex', title: '什么是外汇交易？' },
-      { id: 'how-it-works', title: '外汇市场的运作机制' },
+      { id: 'what-is-forex', title: '什么是金融交易？' },
+      { id: 'how-it-works', title: '金融市场的运作机制' },
       { id: 'currency-pairs', title: '货币对：交易的基础单位' },
       { id: 'terminology', title: '核心交易术语解析' },
-      { id: 'how-to-trade', title: '外汇交易如何进行？' },
+      { id: 'how-to-trade', title: '金融交易如何进行？' },
       { id: 'practical-tips', title: '新手实战技巧' },
       { id: 'faq', title: '常见问题解答' },
     ],
@@ -74,15 +74,15 @@ export const forexBasicsContent = {
     faqTitle: '常见问题解答',
     faqs: [
       {
-        question: 'Q1: 外汇交易需要多少资金才能开始？',
+        question: 'Q1: 金融交易需要多少资金才能开始？',
         answer: '理论上，100美元即可开始交易微型手。但从风险管理角度，我们建议至少准备1000-2000美元，这样可以更好地承受市场波动，设置合理的止损，并有足够的资金进行多次交易学习。'
       },
       {
-        question: 'Q2: 外汇交易合法吗？风险大吗？',
-        answer: '外汇交易在中国是合法的，但需要选择受监管的国际经纪商。风险确实存在，因为使用了杠杆。但通过严格的风险管理（设置止损、控制仓位、使用合理杠杆），风险是可控的。'
+        question: 'Q2: 金融交易合法吗？风险大吗？',
+        answer: '金融交易在中国是合法的，但需要选择受监管的国际经纪商。风险确实存在，因为使用了杠杆。但通过严格的风险管理（设置止损、控制仓位、使用合理杠杆），风险是可控的。'
       },
       {
-        question: 'Q3: 什么时间交易外汇最好？',
+        question: 'Q3: 什么时间交易金融最好？',
         answer: '最佳交易时段是伦敦-纽约重叠时段（北京时间20:00-24:00），此时市场流动性最强，点差最小。但不同货币对有不同的活跃时间，需要根据交易品种选择。'
       },
       {
@@ -117,7 +117,7 @@ export const forexBasicsContent = {
       }
     ],
 
-    ctaTitle: '准备开始你的外汇交易之旅？',
+    ctaTitle: '准备开始你的金融交易之旅？',
     ctaDescription: '加入 Buoyancy Capital 30天系统化培训，从零基础到职业交易员',
     ctaPrimaryButton: '了解培训计划',
     ctaSecondaryButton: '免费心理测评',

@@ -4,8 +4,8 @@ import type { Candle } from '../types';
  * Forex & Precious Metals Data Provider
  *
  * 支持多个免费数据源：
- * 1. Alpha Vantage (外汇专家，500次/天免费)
- * 2. Twelve Data (外汇+加密货币)
+ * 1. Alpha Vantage (金融专家，500次/天免费)
+ * 2. Twelve Data (金融+加密货币)
  * 3. Metals-API (贵金属专用，免费100次/月)
  * 4. 模拟数据 (fallback)
  */
@@ -14,7 +14,7 @@ export class ForexDataProvider {
   private twelveDataKey: string = process.env.TWELVE_DATA_KEY || 'd8da62e4500440e88a6b400ea76f5f68'; // Twelve Data API密钥
 
   /**
-   * 主方法：获取外汇历史数据
+   * 主方法：获取金融历史数据
    * 自动尝试多个数据源，按优先级fallback
    */
   public async fetchHistoricalData(
@@ -51,7 +51,7 @@ export class ForexDataProvider {
       }
     }
 
-    // 3. 尝试 Alpha Vantage (通用外汇)
+    // 3. 尝试 Alpha Vantage (通用金融)
     try {
       const candles = await this.fetchFromAlphaVantage(symbol, interval);
       if (candles.length > 0) {
@@ -177,7 +177,7 @@ export class ForexDataProvider {
   }
 
   /**
-   * Alpha Vantage: 外汇数据 (500次/天免费)
+   * Alpha Vantage: 金融数据 (500次/天免费)
    * https://www.alphavantage.co
    */
   private async fetchFromAlphaVantage(symbol: string, interval: string): Promise<Candle[]> {
@@ -235,7 +235,7 @@ export class ForexDataProvider {
   }
 
   /**
-   * Twelve Data: 外汇+加密货币 (免费800次/天)
+   * Twelve Data: 金融+加密货币 (免费800次/天)
    * https://twelvedata.com
    */
   private async fetchFromTwelveData(symbol: string, interval: string): Promise<Candle[]> {
@@ -290,7 +290,7 @@ export class ForexDataProvider {
   }
 
   /**
-   * 生成高质量的外汇模拟数据
+   * 生成高质量的金融模拟数据
    * 特别针对XAUUSDT优化，模拟真实的金价波动特征
    */
   public async generateRealisticForexData(
@@ -307,7 +307,7 @@ export class ForexDataProvider {
     // 获取基础价格（XAUUSDT约2000左右）
     let currentPrice = basePrice || this.getBasePrice(symbol);
 
-    // 外汇市场的特征参数
+    // 金融市场的特征参数
     const volatility = this.getVolatility(symbol); // 黄金约0.5-1%每日
     const trendStrength = 0.00005; // 微弱趋势
     const meanReversionStrength = 0.02; // 均值回归强度

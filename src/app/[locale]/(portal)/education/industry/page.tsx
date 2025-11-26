@@ -8,9 +8,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return generateBilingualMetadata(
     '浮力教育｜行业介绍与市场洞察',
     'Fuli Education | Industry Insights & Market Overview',
-    '深入了解全球外汇市场结构、主要参与者、经典影视与传奇交易员故事，为你的交易旅程打下宏观基础。',
+    '深入了解全球金融市场结构、主要参与者、经典影视与传奇交易员故事，为你的交易旅程打下宏观基础。',
     'Understand the global forex market structure, key participants, iconic media, and legendary trader stories to build a solid macro foundation.',
-    '外汇行业介绍, 市场结构, 外汇历史, 经典交易影视, 传奇交易员故事',
+    '金融行业介绍, 市场结构, 金融历史, 经典交易影视, 传奇交易员故事',
     'forex industry overview, market structure, forex history, trading movies, legendary traders',
     lang,
     {
@@ -94,7 +94,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
             {isZh ? '行业洞察' : 'Industry Insight'}
           </div>
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
-            {isZh ? '外汇行业介绍与市场格局' : 'Forex Industry Overview & Market Landscape'}
+            {isZh ? '金融行业介绍与市场格局' : 'Forex Industry Overview & Market Landscape'}
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed">
             {isZh
@@ -124,7 +124,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
               {isZh
-                ? '外汇市场日均成交量超过 6 万亿美元，由银行间交易、对冲基金、机构投资者与散户共同构成。理解各参与者的动机与操作工具，有助于判断市场流动性与波动。'
+                ? '金融市场日均成交量超过 6 万亿美元，由银行间交易、对冲基金、机构投资者与散户共同构成。理解各参与者的动机与操作工具，有助于判断市场流动性与波动。'
                 : 'With daily turnover exceeding $6 trillion, the forex market is shaped by interbank flows, hedge funds, institutional investors, and retail participants. Understanding their motivations and tools helps you read liquidity and volatility.'}
             </p>
             <ul className="space-y-3 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
@@ -140,11 +140,11 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
               {isZh
-                ? '从布雷顿森林体系解体到自由浮动汇率诞生，再到亚洲金融危机，外汇市场不断演进，影响全球资产配置。'
+                ? '从布雷顿森林体系解体到自由浮动汇率诞生，再到亚洲金融危机，金融市场不断演进，影响全球资产配置。'
                 : 'From the collapse of Bretton Woods to the rise of free-floating exchange rates and the Asian financial crisis, forex markets have continually reshaped global capital flows.'}
             </p>
             <ul className="space-y-3 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-              <li>• {isZh ? '1971 年：美元与黄金脱钩，外汇市场自由化' : '1971: USD decouples from gold, leading to market liberalization'}</li>
+              <li>• {isZh ? '1971 年：美元与黄金脱钩，金融市场自由化' : '1971: USD decouples from gold, leading to market liberalization'}</li>
               <li>• {isZh ? '1992 年：英镑黑色星期三事件' : '1992: Black Wednesday and the pound crisis'}</li>
               <li>• {isZh ? '2008 年：全球金融危机触发避险行情' : '2008: Global financial crisis sparks flight to safety'}</li>
             </ul>

@@ -37,16 +37,16 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
       {/* Section 1: What is Forex */}
       <section id="what-is-forex" className="mb-16 scroll-mt-20">
         <h2 className="text-3xl font-black mb-6 text-black dark:text-white border-l-4 border-black dark:border-white pl-4">
-          {isZh ? '什么是外汇交易？' : 'What is Forex Trading?'}
+          {isZh ? '什么是金融交易？' : 'What is Forex Trading?'}
         </h2>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
             <strong className="text-black dark:text-white">
-              {isZh ? '外汇交易（Forex Trading）' : 'Forex Trading'}
+              {isZh ? '金融交易（Forex Trading）' : 'Forex Trading'}
             </strong>
             {isZh
-              ? '，全称为"外汇兑换交易"或"外汇保证金交易"，是指通过买卖不同国家的货币来赚取汇率差价的投资行为。外汇市场（Foreign Exchange Market，简称Forex或FX）是全球最大、流动性最强的金融市场。'
+              ? '，全称为"金融兑换交易"或"金融保证金交易"，是指通过买卖不同国家的货币来赚取汇率差价的投资行为。金融市场（Foreign Exchange Market，简称Forex或FX）是全球最大、流动性最强的金融市场。'
               : ', also known as Foreign Exchange Trading or FX Trading, refers to the investment activity of buying and selling different countries\' currencies to profit from exchange rate fluctuations. The Foreign Exchange Market (Forex or FX) is the world\'s largest and most liquid financial market.'}
           </p>
 
@@ -56,7 +56,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
             </h3>
             <p className="mb-0">
               {isZh
-                ? '外汇交易的本质是'
+                ? '金融交易的本质是'
                 : 'The essence of forex trading is '}
               <strong>
                 {isZh ? '货币对之间的价值交换' : 'value exchange between currency pairs'}
@@ -68,11 +68,11 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
           </div>
 
           <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">
-            {isZh ? '外汇市场的规模' : 'Scale of the Forex Market'}
+            {isZh ? '金融市场的规模' : 'Scale of the Forex Market'}
           </h3>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
             {isZh
-              ? '根据国际清算银行（BIS）2022年的数据，全球外汇市场日均交易量超过'
+              ? '根据国际清算银行（BIS）2022年的数据，全球金融市场日均交易量超过'
               : 'According to the Bank for International Settlements (BIS) 2022 data, the global forex market\'s average daily trading volume exceeds '}
             <strong className="text-black dark:text-white">
               {isZh ? '7.5万亿美元' : '$7.5 trillion'}
@@ -108,7 +108,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
       {/* Section 2: Market Mechanism */}
       <section id="forex-market" className="mb-16 scroll-mt-20">
         <h2 className="text-3xl font-black mb-6 text-black dark:text-white border-l-4 border-black dark:border-white pl-4">
-          {isZh ? '外汇市场的运作机制' : 'How the Forex Market Works'}
+          {isZh ? '金融市场的运作机制' : 'How the Forex Market Works'}
         </h2>
 
         <div className="prose prose-lg max-w-none">
@@ -117,13 +117,13 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
           </h3>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             {isZh
-              ? '与股票市场不同，外汇市场是一个'
+              ? '与股票市场不同，金融市场是一个'
               : 'Unlike stock markets, the forex market is a '}
             <strong className="text-black dark:text-white">
               {isZh ? '去中心化的全球市场' : 'decentralized global market'}
             </strong>
             {isZh
-              ? '，通过电子网络连接全球银行、经纪商和交易者。由于全球时区的差异，外汇市场实现了24小时连续交易（周一至周五）。'
+              ? '，通过电子网络连接全球银行、经纪商和交易者。由于全球时区的差异，金融市场实现了24小时连续交易（周一至周五）。'
               : ', connecting banks, brokers, and traders worldwide through electronic networks. Due to global time zone differences, the forex market operates 24 hours continuously (Monday to Friday).'}
           </p>
 
@@ -190,7 +190,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
             </h4>
             <p className="text-gray-700 dark:text-gray-300 mb-0">
               {isZh
-                ? '伦敦-纽约重叠时段（北京时间 20:30-00:30）是流动性最强、波动最大的黄金交易时段。超过50%的外汇交易发生在这个时段，非常适合日内交易和短线策略。'
+                ? '伦敦-纽约重叠时段（北京时间 20:30-00:30）是流动性最强、波动最大的黄金交易时段。超过50%的金融交易发生在这个时段，非常适合日内交易和短线策略。'
                 : 'The London-New York overlap (20:30-00:30 Beijing time) is the golden trading period with highest liquidity and volatility. Over 50% of forex trades occur during this session, ideal for day trading and short-term strategies.'}
             </p>
           </div>
@@ -199,7 +199,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
             {isZh ? '市场参与者' : 'Market Participants'}
           </h3>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-            {isZh ? '外汇市场的主要参与者包括：' : 'The main participants in the forex market include:'}
+            {isZh ? '金融市场的主要参与者包括：' : 'The main participants in the forex market include:'}
           </p>
 
           <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -219,7 +219,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
               </h4>
               <p className="text-sm text-gray-700 dark:text-gray-300">
                 {isZh
-                  ? '为企业和个人提供外汇兑换服务'
+                  ? '为企业和个人提供金融兑换服务'
                   : 'Provide currency exchange services for businesses and individuals'}
               </p>
             </div>
@@ -256,7 +256,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             {isZh
-              ? '外汇交易始终以'
+              ? '金融交易始终以'
               : 'Forex trading always occurs in the form of '}
             <strong className="text-black dark:text-white">
               {isZh ? '货币对（Currency Pair）' : 'Currency Pairs'}
@@ -307,7 +307,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
               </h4>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
                 {isZh
-                  ? '包含美元且交易量最大的7个货币对，占全球外汇交易量的80%以上：'
+                  ? '包含美元且交易量最大的7个货币对，占全球金融交易量的80%以上：'
                   : 'Seven currency pairs containing USD with the largest trading volume, accounting for over 80% of global forex trading:'}
               </p>
               <ul className="grid md:grid-cols-2 gap-2 list-none">
@@ -380,7 +380,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             {isZh
-              ? '掌握以下术语是理解外汇交易的关键：'
+              ? '掌握以下术语是理解金融交易的关键：'
               : 'Mastering the following terms is key to understanding forex trading:'}
           </p>
 
@@ -391,7 +391,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
               </h4>
               <p className="text-gray-700 dark:text-gray-300 mb-2">
                 {isZh
-                  ? '外汇价格变动的最小单位。对于大多数货币对，1 pip = 0.0001。例如，EUR/USD 从 1.1000 上涨到 1.1050，上涨了 50 个点。'
+                  ? '金融价格变动的最小单位。对于大多数货币对，1 pip = 0.0001。例如，EUR/USD 从 1.1000 上涨到 1.1050，上涨了 50 个点。'
                   : 'The smallest unit of price movement in forex. For most currency pairs, 1 pip = 0.0001. For example, if EUR/USD rises from 1.1000 to 1.1050, it has risen 50 pips.'}
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-0">
@@ -426,7 +426,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
                 {isZh ? '手数（Lot）' : 'Lot Size'}
               </h4>
               <p className="text-gray-700 dark:text-gray-300 mb-3">
-                {isZh ? '外汇交易的标准单位：' : 'Standard units of forex trading:'}
+                {isZh ? '金融交易的标准单位：' : 'Standard units of forex trading:'}
               </p>
               <ul className="list-none space-y-2 mb-0">
                 <li className="text-gray-700 dark:text-gray-300">
@@ -509,7 +509,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
       {/* Section 5: How to Trade */}
       <section id="how-to-trade" className="mb-16 scroll-mt-20">
         <h2 className="text-3xl font-black mb-6 text-black dark:text-white border-l-4 border-black dark:border-white pl-4">
-          {isZh ? '外汇交易如何进行？' : 'How to Trade Forex?'}
+          {isZh ? '金融交易如何进行？' : 'How to Trade Forex?'}
         </h2>
 
         <div className="prose prose-lg max-w-none">
@@ -517,7 +517,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
             {isZh ? '交易方向' : 'Trading Directions'}
           </h3>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-            {isZh ? '外汇交易有两个基本方向：' : 'Forex trading has two basic directions:'}
+            {isZh ? '金融交易有两个基本方向：' : 'Forex trading has two basic directions:'}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -762,7 +762,7 @@ export default async function ForexBasicsPage({ params }: { params: Promise<{ lo
                   </p>
                   <p className="text-sm text-gray-700 dark:text-gray-300">
                     {isZh
-                      ? '掌握外汇基础概念、交易术语、市场机制'
+                      ? '掌握金融基础概念、交易术语、市场机制'
                       : 'Master forex basics, trading terminology, market mechanisms'}
                   </p>
                 </div>

@@ -3,12 +3,12 @@ import LocaleLink from '@/components/navigation/LocaleLink';
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: '外汇市场参与者完整指南 - 了解市场主要玩家 | Buoyancy Capital',
-  description: '深入了解外汇市场的所有参与者：中央银行、商业银行、对冲基金、零售交易者、做市商等。掌握不同参与者的角色、交易策略及其对市场的影响力，提升交易认知。',
-  keywords: '外汇市场参与者, 中央银行外汇干预, 对冲基金交易策略, 零售交易者, 做市商, 外汇市场结构, 机构交易员',
+  title: '金融市场参与者完整指南 - 了解市场主要玩家 | Buoyancy Capital',
+  description: '深入了解金融市场的所有参与者：中央银行、商业银行、对冲基金、零售交易者、做市商等。掌握不同参与者的角色、交易策略及其对市场的影响力，提升交易认知。',
+  keywords: '金融市场参与者, 中央银行金融干预, 对冲基金交易策略, 零售交易者, 做市商, 金融市场结构, 机构交易员',
   openGraph: {
-    title: '外汇市场参与者完整指南 - 了解市场主要玩家 | Buoyancy Capital',
-    description: '全面解析外汇市场生态系统，了解各类参与者的角色和影响力。',
+    title: '金融市场参与者完整指南 - 了解市场主要玩家 | Buoyancy Capital',
+    description: '全面解析金融市场生态系统，了解各类参与者的角色和影响力。',
     type: 'article',
     locale: 'zh_CN',
   },
@@ -30,7 +30,7 @@ export default function MarketParticipantsPage() {
               教育中心
             </LocaleLink>
             <span className="text-gray-400">/</span>
-            <span className="text-black dark:text-white font-bold">外汇市场参与者</span>
+            <span className="text-black dark:text-white font-bold">金融市场参与者</span>
           </nav>
         </div>
       </div>
@@ -39,10 +39,10 @@ export default function MarketParticipantsPage() {
       <div className="bg-black dark:bg-white text-white dark:text-black py-16">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-            外汇市场参与者<br />完整指南
+            金融市场参与者<br />完整指南
           </h1>
           <p className="text-xl text-gray-300 dark:text-gray-700 mb-8 leading-relaxed">
-            深入了解外汇市场的生态系统，掌握不同参与者的角色、动机和交易策略。
+            深入了解金融市场的生态系统，掌握不同参与者的角色、动机和交易策略。
             理解"谁在交易"是成为成功交易者的关键一步。
           </p>
           <div className="flex items-center gap-6 text-sm">
@@ -70,7 +70,7 @@ export default function MarketParticipantsPage() {
           <h2 className="text-2xl font-bold mb-6 text-black dark:text-white">📑 内容目录</h2>
           <nav className="space-y-2">
             <a href="#overview" className="block text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:pl-2 transition-all">
-              1. 外汇市场参与者概览
+              1. 金融市场参与者概览
             </a>
             <a href="#central-banks" className="block text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:pl-2 transition-all">
               2. 中央银行：市场的超级玩家
@@ -99,18 +99,18 @@ export default function MarketParticipantsPage() {
         {/* Section 1: Overview */}
         <section id="overview" className="mb-16">
           <h2 className="text-3xl font-black mb-6 text-black dark:text-white border-l-4 border-black dark:border-white pl-4">
-            外汇市场参与者概览
+            金融市场参与者概览
           </h2>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              外汇市场是一个<strong className="text-black dark:text-white">多层次、去中心化的全球市场</strong>，每天有数万亿美元的交易量。理解谁在交易、为什么交易以及如何交易，对于个人交易者制定策略至关重要。外汇市场的参与者可以分为两大类：<strong className="text-black dark:text-white">机构参与者</strong>和<strong className="text-black dark:text-white">零售参与者</strong>。
+              金融市场是一个<strong className="text-black dark:text-white">多层次、去中心化的全球市场</strong>，每天有数万亿美元的交易量。理解谁在交易、为什么交易以及如何交易，对于个人交易者制定策略至关重要。金融市场的参与者可以分为两大类：<strong className="text-black dark:text-white">机构参与者</strong>和<strong className="text-black dark:text-white">零售参与者</strong>。
             </p>
 
             <div className="bg-black dark:bg-white text-white dark:text-black p-6 my-6 border-2 border-black dark:border-white">
               <h3 className="text-xl font-bold mb-4">💡 核心概念</h3>
               <p className="mb-0">
-                外汇市场呈现<strong>金字塔结构</strong>：顶层是中央银行和大型国际银行（银行间市场），中层是对冲基金、企业和资产管理公司，底层是零售交易者。层级越高，交易规模越大，对市场影响力越强。
+                金融市场呈现<strong>金字塔结构</strong>：顶层是中央银行和大型国际银行（银行间市场），中层是对冲基金、企业和资产管理公司，底层是零售交易者。层级越高，交易规模越大，对市场影响力越强。
               </p>
             </div>
 
@@ -178,7 +178,7 @@ export default function MarketParticipantsPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              中央银行是外汇市场中<strong className="text-black dark:text-white">最具影响力的参与者</strong>。它们不以盈利为目的，而是通过外汇干预和货币政策来维护本国经济稳定和货币价值。
+              中央银行是金融市场中<strong className="text-black dark:text-white">最具影响力的参与者</strong>。它们不以盈利为目的，而是通过金融干预和货币政策来维护本国经济稳定和货币价值。
             </p>
 
             <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">主要职能</h3>
@@ -187,7 +187,7 @@ export default function MarketParticipantsPage() {
               <div className="border-2 border-black dark:border-white p-6">
                 <h4 className="font-bold text-black dark:text-white mb-3 text-lg">🎯 汇率干预</h4>
                 <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">
-                  当本国货币过度升值或贬值时，中央银行会通过买卖外汇储备来稳定汇率。例如，瑞士央行（SNB）长期干预以防止瑞郎过度升值。
+                  当本国货币过度升值或贬值时，中央银行会通过买卖金融储备来稳定汇率。例如，瑞士央行（SNB）长期干预以防止瑞郎过度升值。
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-900 p-3 border border-black dark:border-white">
                   <p className="text-xs text-gray-600 dark:text-gray-400 mb-0">
@@ -197,13 +197,13 @@ export default function MarketParticipantsPage() {
               </div>
 
               <div className="border-2 border-black dark:border-white p-6">
-                <h4 className="font-bold text-black dark:text-white mb-3 text-lg">💰 外汇储备管理</h4>
+                <h4 className="font-bold text-black dark:text-white mb-3 text-lg">💰 金融储备管理</h4>
                 <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">
-                  中央银行持有大量外汇储备用于国际支付和应急需求。中国、日本、瑞士的外汇储备均超过1万亿美元。
+                  中央银行持有大量金融储备用于国际支付和应急需求。中国、日本、瑞士的金融储备均超过1万亿美元。
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-900 p-3 border border-black dark:border-white">
                   <p className="text-xs text-gray-600 dark:text-gray-400 mb-0">
-                    <strong>数据：</strong>截至2024年，中国外汇储备约3.2万亿美元，是全球最大的外汇储备持有国。
+                    <strong>数据：</strong>截至2024年，中国金融储备约3.2万亿美元，是全球最大的金融储备持有国。
                   </p>
                 </div>
               </div>
@@ -211,7 +211,7 @@ export default function MarketParticipantsPage() {
               <div className="border-2 border-black dark:border-white p-6">
                 <h4 className="font-bold text-black dark:text-white mb-3 text-lg">📊 货币政策实施</h4>
                 <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">
-                  通过调整利率、量化宽松（QE）等政策影响货币供应和汇率。美联储（Fed）、欧洲央行（ECB）、英国央行（BoE）的政策对外汇市场影响巨大。
+                  通过调整利率、量化宽松（QE）等政策影响货币供应和汇率。美联储（Fed）、欧洲央行（ECB）、英国央行（BoE）的政策对金融市场影响巨大。
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-900 p-3 border border-black dark:border-white">
                   <p className="text-xs text-gray-600 dark:text-gray-400 mb-0">
@@ -310,16 +310,16 @@ export default function MarketParticipantsPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              商业银行和投资银行构成了<strong className="text-black dark:text-white">银行间市场（Interbank Market）</strong>的核心，是外汇市场流动性的主要提供者。它们既为客户提供外汇服务，也进行自营交易获利。
+              商业银行和投资银行构成了<strong className="text-black dark:text-white">银行间市场（Interbank Market）</strong>的核心，是金融市场流动性的主要提供者。它们既为客户提供金融服务，也进行自营交易获利。
             </p>
 
             <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">主要业务类型</h3>
 
             <div className="space-y-6 mb-8">
               <div className="border-l-4 border-black dark:border-white pl-6">
-                <h4 className="text-xl font-bold mb-3 text-black dark:text-white">1. 客户外汇服务</h4>
+                <h4 className="text-xl font-bold mb-3 text-black dark:text-white">1. 客户金融服务</h4>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  为企业、机构和个人提供外汇兑换、国际汇款、外汇衍生品等服务。银行从买卖价差（点差）中获利。
+                  为企业、机构和个人提供金融兑换、国际汇款、金融衍生品等服务。银行从买卖价差（点差）中获利。
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 border border-black dark:border-white">
                   <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
@@ -331,7 +331,7 @@ export default function MarketParticipantsPage() {
               <div className="border-l-4 border-black dark:border-white pl-6">
                 <h4 className="text-xl font-bold mb-3 text-black dark:text-white">2. 自营交易（Proprietary Trading）</h4>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  银行使用自有资金进行外汇投机交易，追求利润最大化。大型投资银行拥有专业的外汇交易团队，采用复杂的量化策略和算法交易。
+                  银行使用自有资金进行金融投机交易，追求利润最大化。大型投资银行拥有专业的金融交易团队，采用复杂的量化策略和算法交易。
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 border border-black dark:border-white">
                   <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
@@ -347,7 +347,7 @@ export default function MarketParticipantsPage() {
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 border border-black dark:border-white">
                   <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
-                    <strong>顶级做市商：</strong>摩根大通、花旗银行、德意志银行、巴克莱银行、瑞银集团（UBS）等，它们控制了全球外汇交易量的60%以上。
+                    <strong>顶级做市商：</strong>摩根大通、花旗银行、德意志银行、巴克莱银行、瑞银集团（UBS）等，它们控制了全球金融交易量的60%以上。
                   </p>
                 </div>
               </div>
@@ -410,7 +410,7 @@ export default function MarketParticipantsPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              对冲基金和资产管理公司是外汇市场中最活跃的<strong className="text-black dark:text-white">投机力量</strong>。它们管理着数十亿甚至数千亿美元的资产，采用多样化的交易策略追求绝对收益。
+              对冲基金和资产管理公司是金融市场中最活跃的<strong className="text-black dark:text-white">投机力量</strong>。它们管理着数十亿甚至数千亿美元的资产，采用多样化的交易策略追求绝对收益。
             </p>
 
             <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">主要交易策略</h3>
@@ -481,7 +481,7 @@ export default function MarketParticipantsPage() {
               <div className="border-2 border-black dark:border-white p-5">
                 <h4 className="text-lg font-bold mb-2 text-black dark:text-white">比尔·利普舒茨的传奇（所罗门兄弟）</h4>
                 <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  被誉为"外汇市场的苏丹"，利普舒茨在1980年代末为所罗门兄弟创造了年均3亿美元的外汇交易利润。他强调风险管理和市场"感觉"的重要性。
+                  被誉为"金融市场的苏丹"，利普舒茨在1980年代末为所罗门兄弟创造了年均3亿美元的金融交易利润。他强调风险管理和市场"感觉"的重要性。
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-0">
                   <strong>名言：</strong>"如果大多数交易者学会只追求小而持续的盈利，而不是总想一夜暴富，他们的成功率会大大提高。"
@@ -511,10 +511,10 @@ export default function MarketParticipantsPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              跨国企业和机构投资者参与外汇市场的主要目的是<strong className="text-black dark:text-white">贸易结算和风险对冲</strong>，而非投机获利。但它们的交易规模同样庞大，对市场有重要影响。
+              跨国企业和机构投资者参与金融市场的主要目的是<strong className="text-black dark:text-white">贸易结算和风险对冲</strong>，而非投机获利。但它们的交易规模同样庞大，对市场有重要影响。
             </p>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">跨国企业的外汇需求</h3>
+            <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">跨国企业的金融需求</h3>
 
             <div className="space-y-6 mb-8">
               <div className="border-l-4 border-black dark:border-white pl-6">
@@ -530,9 +530,9 @@ export default function MarketParticipantsPage() {
               </div>
 
               <div className="border-l-4 border-black dark:border-white pl-6">
-                <h4 className="text-xl font-bold mb-3 text-black dark:text-white">2. 外汇风险对冲</h4>
+                <h4 className="text-xl font-bold mb-3 text-black dark:text-white">2. 金融风险对冲</h4>
                 <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  企业使用远期合约、外汇期权等衍生品锁定未来汇率，避免汇率波动影响利润。例如，波音公司签订飞机订单时，会提前对冲未来收到的外币货款。
+                  企业使用远期合约、金融期权等衍生品锁定未来汇率，避免汇率波动影响利润。例如，波音公司签订飞机订单时，会提前对冲未来收到的外币货款。
                 </p>
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 border border-black dark:border-white">
                   <p className="text-sm text-gray-700 dark:text-gray-300 mb-0">
@@ -561,7 +561,7 @@ export default function MarketParticipantsPage() {
                 <thead>
                   <tr className="bg-black dark:bg-white text-white dark:text-black">
                     <th className="border-2 border-black dark:border-white px-4 py-3 text-left font-bold">机构类型</th>
-                    <th className="border-2 border-black dark:border-white px-4 py-3 text-left font-bold">外汇用途</th>
+                    <th className="border-2 border-black dark:border-white px-4 py-3 text-left font-bold">金融用途</th>
                     <th className="border-2 border-black dark:border-white px-4 py-3 text-left font-bold">典型代表</th>
                   </tr>
                 </thead>
@@ -573,7 +573,7 @@ export default function MarketParticipantsPage() {
                   </tr>
                   <tr className="bg-gray-50 dark:bg-gray-900">
                     <td className="border-2 border-black dark:border-white px-4 py-3 font-bold">主权财富基金</td>
-                    <td className="border-2 border-black dark:border-white px-4 py-3">全球资产配置、外汇储备多元化</td>
+                    <td className="border-2 border-black dark:border-white px-4 py-3">全球资产配置、金融储备多元化</td>
                     <td className="border-2 border-black dark:border-white px-4 py-3">挪威主权财富基金、新加坡GIC</td>
                   </tr>
                   <tr>
@@ -591,9 +591,9 @@ export default function MarketParticipantsPage() {
             </div>
 
             <div className="bg-black dark:bg-white text-white dark:text-black p-6 my-6 border-2 border-black dark:border-white">
-              <h4 className="text-lg font-bold mb-3">📊 数据洞察：企业外汇交易的季节性</h4>
+              <h4 className="text-lg font-bold mb-3">📊 数据洞察：企业金融交易的季节性</h4>
               <p className="mb-0">
-                跨国企业的外汇交易具有明显的<strong>季度和月末效应</strong>。每季度末和年末，企业需要结算财报和调整外汇敞口，导致外汇市场在3月末、6月末、9月末、12月末出现异常波动和流动性变化。交易者应留意这些时间窗口的特殊性。
+                跨国企业的金融交易具有明显的<strong>季度和月末效应</strong>。每季度末和年末，企业需要结算财报和调整金融敞口，导致金融市场在3月末、6月末、9月末、12月末出现异常波动和流动性变化。交易者应留意这些时间窗口的特殊性。
               </p>
             </div>
           </div>
@@ -607,7 +607,7 @@ export default function MarketParticipantsPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              零售交易者是指通过在线经纪商平台进行外汇交易的<strong className="text-black dark:text-white">个人投资者</strong>。随着互联网和移动技术的发展，零售外汇交易在过去20年迅速普及，但成功率相对较低。
+              零售交易者是指通过在线经纪商平台进行金融交易的<strong className="text-black dark:text-white">个人投资者</strong>。随着互联网和移动技术的发展，零售金融交易在过去20年迅速普及，但成功率相对较低。
             </p>
 
             <h3 className="text-2xl font-bold mt-8 mb-4 text-black dark:text-white">零售交易者的特点</h3>
@@ -665,7 +665,7 @@ export default function MarketParticipantsPage() {
               <div className="space-y-3">
                 <p>根据欧洲证券及市场管理局（ESMA）2023年的数据：</p>
                 <ul className="list-none space-y-2">
-                  <li>• <strong>70-80%的零售外汇交易者在12个月内亏损</strong></li>
+                  <li>• <strong>70-80%的零售金融交易者在12个月内亏损</strong></li>
                   <li>• 平均账户存活时间：<strong>3-6个月</strong></li>
                   <li>• 仅有<strong>5-10%的零售交易者</strong>能实现长期稳定盈利</li>
                   <li>• 最常见的失败原因：<strong>过度杠杆（45%）、缺乏风险管理（35%）、情绪化交易（20%）</strong></li>
@@ -715,7 +715,7 @@ export default function MarketParticipantsPage() {
             <div className="bg-gray-50 dark:bg-gray-900 border-2 border-black dark:border-white p-6 my-6">
               <h4 className="text-lg font-bold mb-3 text-black dark:text-white">💡 Buoyancy Capital的建议</h4>
               <p className="text-gray-700 dark:text-gray-300 mb-0">
-                不要试图在短期内暴富，也不要相信"圣杯"系统或100%胜率的承诺。外汇交易是一项<strong>技能</strong>，需要时间、练习和持续学习。通过Buoyancy Capital的系统化培训，你可以大大提高成功概率，但最终成败取决于你的执行力和心理素质。
+                不要试图在短期内暴富，也不要相信"圣杯"系统或100%胜率的承诺。金融交易是一项<strong>技能</strong>，需要时间、练习和持续学习。通过Buoyancy Capital的系统化培训，你可以大大提高成功概率，但最终成败取决于你的执行力和心理素质。
               </p>
             </div>
           </div>
@@ -861,7 +861,7 @@ export default function MarketParticipantsPage() {
                   中央银行可以<strong className="text-black dark:text-white">影响</strong>但无法完全<strong className="text-black dark:text-white">控制</strong>汇率。它们的影响力取决于：
                 </p>
                 <ul className="list-disc pl-6 space-y-2 mb-4">
-                  <li><strong className="text-black dark:text-white">外汇储备规模：</strong>储备越多，干预能力越强</li>
+                  <li><strong className="text-black dark:text-white">金融储备规模：</strong>储备越多，干预能力越强</li>
                   <li><strong className="text-black dark:text-white">经济基本面：</strong>如果经济基本面疲弱，干预效果有限</li>
                   <li><strong className="text-black dark:text-white">市场信心：</strong>如果市场不相信央行的决心，干预会失败（如1992年英镑危机）</li>
                 </ul>
@@ -957,10 +957,10 @@ export default function MarketParticipantsPage() {
               </summary>
               <div className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p className="mb-3">
-                  在受监管的外汇市场中，<strong className="text-black dark:text-white">大规模操纵价格是不可能的</strong>，因为：
+                  在受监管的金融市场中，<strong className="text-black dark:text-white">大规模操纵价格是不可能的</strong>，因为：
                 </p>
                 <ul className="list-disc pl-6 space-y-2 mb-4">
-                  <li>外汇市场规模太大（日均7.5万亿美元），单个做市商无法控制</li>
+                  <li>金融市场规模太大（日均7.5万亿美元），单个做市商无法控制</li>
                   <li>严格的监管（如FCA、ASIC、NFA）防止操纵行为</li>
                   <li>价格透明度高，多个银行和经纪商的报价可以对比</li>
                 </ul>
@@ -989,15 +989,15 @@ export default function MarketParticipantsPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <LocaleLink href="/education/forex-basics" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
               <div className="text-3xl mb-4">📚</div>
-              <h3 className="text-xl font-bold mb-2">外汇交易基础</h3>
+              <h3 className="text-xl font-bold mb-2">金融交易基础</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
-                从零开始学习外汇市场的基本概念和运作机制
+                从零开始学习金融市场的基本概念和运作机制
               </p>
             </LocaleLink>
 
             <LocaleLink href="/education/trading-sessions-guide" className="border-2 border-black dark:border-white p-6 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all group">
               <div className="text-3xl mb-4">🕐</div>
-              <h3 className="text-xl font-bold mb-2">外汇交易时段</h3>
+              <h3 className="text-xl font-bold mb-2">金融交易时段</h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-300 dark:group-hover:text-gray-600">
                 了解不同交易时段的特点和最佳交易时间
               </p>
@@ -1048,7 +1048,7 @@ export default function MarketParticipantsPage() {
             <div>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">上一课</p>
               <LocaleLink href="/education/forex-basics" className="text-lg font-bold text-black dark:text-white hover:underline">
-                ← 外汇交易基础
+                ← 金融交易基础
               </LocaleLink>
             </div>
             <div className="text-right">

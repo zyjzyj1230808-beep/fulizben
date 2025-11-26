@@ -6,7 +6,7 @@
 
 1. **FXStreet** ✅ (已测试可用)
    - URL: `https://www.fxstreet.com/rss/news/latest`
-   - 内容：外汇、商品新闻
+   - 内容：金融、商品新闻
    - 更新频率：实时
    - 语言：英文
 
@@ -17,11 +17,11 @@
 
 3. **DailyFX**
    - URL: `https://www.dailyfx.com/feeds/market-news`
-   - 内容：外汇市场分析
+   - 内容：金融市场分析
 
 4. **ForexFactory**
    - URL: `https://www.forexfactory.com/news.xml`
-   - 内容：外汇新闻和事件
+   - 内容：金融新闻和事件
 
 ## 🤖 GitHub Actions 工作流程
 
@@ -359,6 +359,6 @@ const latestNews = feed.items.slice(0, 5); // 改为需要的数量
 ## 🔧 后续优化
 
 1. **AI摘要** - 使用OpenAI API生成中文摘要
-2. **分类标签** - 自动识别新闻类别（外汇、股票、加密货币）
+2. **分类标签** - 自动识别新闻类别（金融、股票、加密货币）
 3. **邮件通知** - 重要新闻发送邮件提醒
 4. **双语支持** - 自动翻译为中英双语

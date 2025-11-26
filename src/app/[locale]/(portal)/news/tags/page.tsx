@@ -84,7 +84,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: isZh ? '标签归档 - Buoyancy Capital' : 'Tags Archive - Buoyancy Capital',
     description: isZh
-      ? '按标签浏览Buoyancy Capital的所有外汇新闻文章'
+      ? '按标签浏览Buoyancy Capital的所有金融新闻文章'
       : 'Browse all Buoyancy Capital forex news articles by tags',
   };
 }
@@ -110,7 +110,7 @@ export default async function TagsArchivePage() {
             {isZh ? '标签归档' : 'Tags Archive'}
           </h1>
           <p className="text-xl text-gray-300">
-            {isZh ? '按标签浏览所有外汇新闻文章' : 'Browse all forex news articles by tags'}
+            {isZh ? '按标签浏览所有金融新闻文章' : 'Browse all forex news articles by tags'}
           </p>
 
           {/* Tag Cloud */}

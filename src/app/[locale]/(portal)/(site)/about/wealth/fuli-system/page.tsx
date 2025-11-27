@@ -475,6 +475,7 @@ function FuliSystemLogin({ isZh, onAuthenticate, storageKey }: FuliSystemLoginPr
     }
 
     return {
+      id: userId,
       email: data.email,
       role: data.role as UserRole,
       studyStatus: data.study_status as StudyStatus,

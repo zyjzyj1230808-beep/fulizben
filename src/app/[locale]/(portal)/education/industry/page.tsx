@@ -22,7 +22,20 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   );
 }
 
-const mediaRecommendations = {
+type MediaItem = {
+  zh: string;
+  en: string;
+  country: { zh: string; en: string };
+  link: string;
+  description: { zh: string; en: string };
+  rating?: string;
+};
+
+const mediaRecommendations: {
+  documentaries: MediaItem[];
+  tvSeries: MediaItem[];
+  movies: MediaItem[];
+} = {
   documentaries: [
     {
       zh: '《魔鬼交易员》',

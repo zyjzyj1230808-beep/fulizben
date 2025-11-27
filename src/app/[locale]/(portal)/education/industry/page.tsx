@@ -22,32 +22,144 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   );
 }
 
-const mediaRecommendations = [
-  {
-    zh: '华尔街之狼（The Wolf of Wall Street）',
-    en: 'The Wolf of Wall Street',
-    description: {
-      zh: '深入了解投机交易的极端案例，提醒我们保持纪律与风险意识。',
-      en: 'A deep dive into speculative extremes, reminding traders about discipline and risk awareness.',
+const mediaRecommendations = {
+  documentaries: [
+    {
+      zh: '《魔鬼交易员》',
+      en: 'Rogue Trader',
+      country: { zh: '英国', en: 'UK' },
+      link: 'https://search.bilibili.com/all?keyword=%E9%AD%94%E9%AC%BC%E4%BA%A4%E6%98%93%E5%91%98',
+      description: {
+        zh: '讲述了历史上最著名的金融欺诈案之一——尼克·利森搞垮巴林银行的故事。它深刻揭示了风险管理的重要性、人性的贪婪以及制度上的漏洞。对于任何想从事交易的人来说，这都是一堂血淋淋的风险教育课。',
+        en: 'Retells how Nick Leeson brought down Barings Bank, underscoring risk controls, human greed, and structural loopholes. It is a visceral lesson for anyone entering trading.',
+      },
     },
-  },
-  {
-    zh: '商海通牒（Margin Call）',
-    en: 'Margin Call',
-    description: {
-      zh: '根据2008年金融危机改编，展现风控缺失带来的连锁反应。',
-      en: 'Based on the 2008 financial crisis, highlighting the cascading impact of missing risk controls.',
+    {
+      zh: '《比特币的崛起》',
+      en: 'The Rise of Bitcoin',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E5%B4%9B%E8%B5%B7',
+      description: {
+        zh: '如果你想了解最新的金融前沿——加密货币，这部纪录片是很好的起点。它记录了比特币从极客玩具成长为全球性资产的早期历程，涵盖了支持者与怀疑者的各种观点，能帮助你理解这个新兴市场的巨大波动性和潜力。',
+        en: 'A superb primer on the crypto frontier, tracing Bitcoin’s rise from geek experiment to global asset while covering both believers and skeptics to explain the market’s volatility and potential.',
+      },
     },
-  },
-  {
-    zh: '大空头（The Big Short）',
-    en: 'The Big Short',
-    description: {
-      zh: '揭示金融市场泡沫与逆向思维的重要性。',
-      en: 'Reveals financial bubbles and the value of contrarian thinking.',
+    {
+      zh: '《监守自盗》',
+      en: 'Inside Job',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E7%9B%91%E5%AE%88%E8%87%AA%E7%9B%97',
+      description: {
+        zh: '荣获奥斯卡最佳纪录片奖。它系统地剖析了2008年全球金融危机的起源和根源，采访了包括政府官员、金融分析师、大学教授在内的众多知情人士，并回答“这场危机是如何发生的？谁该负责？”等关键问题，是理解现代金融体系弊病的必看之作。',
+        en: 'An Oscar-winning deep dive into the 2008 crisis that interviews insiders across government, finance, and academia to answer how it happened and who was responsible—essential viewing on systemic flaws.',
+      },
     },
-  },
-];
+    {
+      zh: '《华尔街》',
+      en: 'Wall Street',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E5%8D%8E%E5%B0%94%E8%A1%97%E7%BA%AA%E5%BD%95%E7%89%87',
+      description: {
+        zh: '这部纪录片通过采访华尔街的顶级银行家、交易员和分析师，深入探讨了现代金融体系的运作方式、2008年金融危机的后果以及金融创新带来的巨大影响。它提供了一个非常系统和内部的视角。',
+        en: 'Interviews top Wall Street bankers, traders, and analysts to explore modern market mechanics, the aftermath of 2008, and the sweeping impact of financial innovation.',
+      },
+    },
+    {
+      zh: '《行为经济学入门》',
+      en: 'Introduction to Behavioral Economics',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E8%A1%8C%E4%B8%BA%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%85%A5%E9%97%A8',
+      description: {
+        zh: '这并非纯粹的交易纪录片，但它对理解市场至关重要。它解释了人类心理如何系统性地偏离理性，从而导致可预测的投资错误。理解了行为偏差，才能更好地把握市场脉搏。',
+        en: 'Though not a trading doc per se, it reveals how human psychology systematically departs from rationality and drives predictable investing errors—essential for reading market sentiment.',
+      },
+    },
+  ],
+  tvSeries: [
+    {
+      zh: '《亿万》',
+      en: 'Billions',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E4%BA%BF%E4%B8%87%20Billions',
+      description: {
+        zh: '堪称金融题材的“神作”。剧情围绕一名对冲基金亿万富翁和一位美国司法部长之间的智斗展开。它不仅展示了高超的交易策略、市场操纵和内幕信息战，更深入探讨了权力、法律与道德的灰色地带，充满精彩的金融与心理博弈。',
+        en: 'Often hailed as the definitive finance drama, following a hedge-fund titan and a U.S. Attorney locked in mind games that mix elite trading tactics, market manipulation, and moral gray zones.',
+      },
+    },
+    {
+      zh: '《黑钱》',
+      en: 'Dirty Money',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E9%BB%91%E9%92%B1%20Dirty%20Money',
+      description: {
+        zh: '这部纪录片剧集每一集都深入一个不同的企业丑闻或金融腐败案例。它揭示了在巨大利益驱使下，企业如何铤而走险，以及背后的道德沦丧。对于理解宏观市场环境和公司治理风险极具价值。',
+        en: 'Each episode dives into a new corporate scandal, revealing how firms chase profit at the expense of governance and ethics—vital context for understanding market and compliance risk.',
+      },
+    },
+    {
+      zh: '《投行风云》',
+      en: 'Industry',
+      country: { zh: '英国', en: 'UK' },
+      link: 'https://search.bilibili.com/all?keyword=%E6%8A%95%E8%A1%8C%E9%A3%8E%E4%BA%91',
+      description: {
+        zh: '这部英国剧集背景设定在1980年代伦敦的投行，聚焦于一群年轻的毕业生，揭示了那个时代金融业的贪婪、毒品、性以及残酷的职场文化。它更侧重于投行文化而非交易细节，但能让人感受到这个高压行业的原始生态。',
+        en: 'Set in a 1980s London investment bank, it follows young graduates through a world of greed, drugs, and brutal workplace dynamics—capturing the raw culture of high-pressure finance.',
+      },
+    },
+  ],
+  movies: [
+    {
+      zh: '《大空头》',
+      en: 'The Big Short',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E5%A4%A7%E7%A9%BA%E5%A4%B4',
+      description: {
+        zh: '以2008年金融危机为背景，讲述了几位洞察先机的投资鬼才，如何通过做空美国房地产市场而大幅获利的故事。电影用各种通俗有趣的方式（如让明星在浴缸里讲解CDO）解释复杂的金融衍生品，是理解金融创新双刃剑效应的最佳教材。',
+        en: 'Charts contrarian investors who shorted the U.S. housing market in 2008, using witty devices—like celebrity bathtub explainers—to demystify CDOs and the double-edged nature of financial innovation.',
+      },
+    },
+    {
+      zh: '《商海通牒》',
+      en: 'Margin Call',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E5%95%86%E6%B5%B7%E9%80%9A%E7%89%92',
+      description: {
+        zh: '电影将时间浓缩在2008年金融危机爆发前的24小时内，聚焦一家投资银行的交易员们如何发现风险并艰难求生。它不像《大空头》那样宏观，而是更细腻地刻画了交易大厅里的人性、职业道德和生存压力。',
+        en: 'Condenses the 24 hours before the crisis, focusing on traders at an investment bank as they discover risk and grapple with ethics, survival, and the weight of their decisions.',
+      },
+    },
+    {
+      zh: '《国家破产之日》',
+      en: 'Default Day',
+      country: { zh: '韩国', en: 'Korea' },
+      link: 'https://search.bilibili.com/all?keyword=%E5%9B%BD%E5%AE%B6%E7%A0%B4%E4%BA%A7%E4%B9%8B%E6%97%A5',
+      description: {
+        zh: '这部电影从韩国的视角再现了1997年亚洲金融风暴。它同时展现了政府官员、金融机构、企业和普通家庭在国家级经济危机中的不同选择和命运。对于理解宏观经济事件如何影响金融市场和个体命运，非常有启发。',
+        en: 'Recreates the 1997 Asian crisis through Korea’s lens, showing how officials, financiers, companies, and households confronted national default—revealing how macro shocks shape markets and lives.',
+      },
+    },
+    {
+      zh: '《聪明钱》',
+      en: 'Smart Money',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E8%81%AA%E6%98%8E%E9%92%B1%20%E7%94%B5%E5%BD%B1',
+      description: {
+        zh: '基于真实故事，讲述了纽约皇后区的一群普通蓝领工人，如何利用他们对保龄球的专业知识，在保龄球锦标赛的投注市场中发现了漏洞，并从中套利的故事。这是一个关于发现边缘机会、模型和套利的绝佳案例。',
+        en: 'Based on true events of Queens blue-collar workers who leveraged bowling expertise to spot inefficiencies in betting markets—a great case study in niche edge and arbitrage.',
+      },
+    },
+    {
+      zh: '《套利交易》',
+      en: 'Arbitrage',
+      country: { zh: '美国', en: 'USA' },
+      link: 'https://search.bilibili.com/all?keyword=%E5%A5%97%E5%88%A9%E4%BA%A4%E6%98%93%20%E7%94%B5%E5%BD%B1',
+      description: {
+        zh: '理查·基尔主演，讲述一位对冲基金大佬在试图出售自己公司时，却要竭力掩盖一桩致命失误和巨大的财务欺诈。这部电影深刻描绘了成功金融家光鲜背后的压力、欺瞒和道德困境。',
+        en: 'Richard Gere portrays a hedge-fund titan scrambling to hide a fatal mistake while selling his firm, exposing the pressure, deceit, and moral compromise lurking behind success.',
+      },
+    },
+  ],
+};
 
 const traderStories = [
   {
@@ -169,51 +281,172 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-16 space-y-12">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-8 shadow-lg">
-            <h2 className="text-2xl font-black mb-4 text-black dark:text-white">
+        <div className="space-y-8">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-black mb-4 text-black dark:text-white">
               {isZh ? '影视作品精选' : 'Featured Media'}
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
               {isZh
                 ? '以下影视作品帮助你从故事层面理解市场波动、风险事件与人性因素。'
                 : 'These films and documentaries showcase market swings, risk events, and the human element behind trading.'}
             </p>
-            <ul className="space-y-4">
-              {mediaRecommendations.map((item, index) => (
-                <li key={index} className="border border-gray-200 dark:border-gray-800 p-4">
-                  <p className="font-bold text-black dark:text-white">
-                    {isZh ? item.zh : item.en}
-                  </p>
-                  <p className="text-sm text-gray-700 dark:text-gray-400 mt-2 leading-relaxed">
-                    {isZh ? item.description.zh : item.description.en}
-                  </p>
-                </li>
-              ))}
-            </ul>
           </div>
 
+          {/* 纪录片 */}
           <div className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-8 shadow-lg">
-            <h2 className="text-2xl font-black mb-4 text-black dark:text-white">
-              {isZh ? '传奇交易员故事' : 'Legendary Trader Stories'}
-            </h2>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-              {isZh
-                ? '向顶级交易者学习，他们的成功都建立在纪律、风控与可复制的策略体系之上。'
-                : 'Learn from top traders whose success rests on discipline, risk control, and repeatable strategies.'}
-            </p>
-            <ul className="space-y-4">
-              {traderStories.map((item, index) => (
-                <li key={index} className="border border-gray-200 dark:border-gray-800 p-4">
-                  <p className="font-bold text-black dark:text-white">
-                    {isZh ? item.zh : item.en}
-                  </p>
-                  <p className="text-sm text-gray-700 dark:text-gray-400 mt-2 leading-relaxed">
-                    {isZh ? item.insight.zh : item.insight.en}
-                  </p>
-                </li>
+            <h3 className="text-2xl font-black mb-6 text-black dark:text-white flex items-center gap-2">
+              <span className="text-3xl">📹</span>
+              {isZh ? '纪录片' : 'Documentaries'}
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {mediaRecommendations.documentaries.map((item, index) => (
+                <article
+                  key={index}
+                  className="flex flex-col border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-shadow bg-white dark:bg-gray-900"
+                >
+                  <div className="bg-[#0a1b49] text-white px-6 py-5">
+                    <p className="text-lg font-bold">{isZh ? item.zh : item.en}</p>
+                    <p className="text-sm text-white/70 mt-2">
+                      {item.rating
+                        ? isZh
+                          ? `豆瓣评分 ${item.rating}`
+                          : `Douban ${item.rating}`
+                        : `${isZh ? '纪录片' : 'Documentary'} · ${
+                            isZh ? item.country.zh : item.country.en
+                          }`}
+                    </p>
+                  </div>
+                  <div className="px-6 py-6 flex flex-col flex-1 text-black dark:text-white">
+                    <p className="text-base font-bold mb-3">{isZh ? item.zh : item.en}</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed flex-1">
+                      <span className="font-semibold block mb-1">{isZh ? '核心看点' : 'Key Takeaway'}</span>
+                      {isZh ? item.description.zh : item.description.en}
+                    </p>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="mt-6 inline-flex items-center justify-center px-5 py-2 text-sm font-semibold bg-[#0a1b49] text-white rounded-md hover:bg-[#132863] transition-colors"
+                    >
+                      {isZh ? '观看视频' : 'Watch Video'}
+                    </a>
+                  </div>
+                </article>
               ))}
-            </ul>
+            </div>
+          </div>
+
+          {/* 电视剧 */}
+          <div className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-8 shadow-lg">
+            <h3 className="text-2xl font-black mb-6 text-black dark:text-white flex items-center gap-2">
+              <span className="text-3xl">📺</span>
+              {isZh ? '电视剧' : 'TV Series'}
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {mediaRecommendations.tvSeries.map((item, index) => (
+                <article
+                  key={index}
+                  className="flex flex-col border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-shadow bg-white dark:bg-gray-900"
+                >
+                  <div className="bg-[#0a1b49] text-white px-6 py-5">
+                    <p className="text-lg font-bold">{isZh ? item.zh : item.en}</p>
+                    <p className="text-sm text-white/70 mt-2">
+                      {item.rating
+                        ? isZh
+                          ? `豆瓣评分 ${item.rating}`
+                          : `Douban ${item.rating}`
+                        : `${isZh ? '电视剧' : 'TV Series'} · ${
+                            isZh ? item.country.zh : item.country.en
+                          }`}
+                    </p>
+                  </div>
+                  <div className="px-6 py-6 flex flex-col flex-1 text-black dark:text-white">
+                    <p className="text-base font-bold mb-3">{isZh ? item.zh : item.en}</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed flex-1">
+                      <span className="font-semibold block mb-1">{isZh ? '核心看点' : 'Key Takeaway'}</span>
+                      {isZh ? item.description.zh : item.description.en}
+                    </p>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="mt-6 inline-flex items-center justify-center px-5 py-2 text-sm font-semibold bg-[#0a1b49] text-white rounded-md hover:bg-[#132863] transition-colors"
+                    >
+                      {isZh ? '观看视频' : 'Watch Video'}
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* 电影 */}
+          <div className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-8 shadow-lg">
+            <h3 className="text-2xl font-black mb-6 text-black dark:text-white flex items-center gap-2">
+              <span className="text-3xl">🎬</span>
+              {isZh ? '电影' : 'Movies'}
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {mediaRecommendations.movies.map((item, index) => (
+                <article
+                  key={index}
+                  className="flex flex-col border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-shadow bg-white dark:bg-gray-900"
+                >
+                  <div className="bg-[#0a1b49] text-white px-6 py-5">
+                    <p className="text-lg font-bold">{isZh ? item.zh : item.en}</p>
+                    <p className="text-sm text-white/70 mt-2">
+                      {item.rating
+                        ? isZh
+                          ? `豆瓣评分 ${item.rating}`
+                          : `Douban ${item.rating}`
+                        : `${isZh ? '电影' : 'Film'} · ${
+                            isZh ? item.country.zh : item.country.en
+                          }`}
+                    </p>
+                  </div>
+                  <div className="px-6 py-6 flex flex-col flex-1 text-black dark:text-white">
+                    <p className="text-base font-bold mb-3">{isZh ? item.zh : item.en}</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed flex-1">
+                      <span className="font-semibold block mb-1">{isZh ? '核心看点' : 'Key Takeaway'}</span>
+                      {isZh ? item.description.zh : item.description.en}
+                    </p>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="mt-6 inline-flex items-center justify-center px-5 py-2 text-sm font-semibold bg-[#0a1b49] text-white rounded-md hover:bg-[#132863] transition-colors"
+                    >
+                      {isZh ? '观看视频' : 'Watch Video'}
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 传奇交易员故事 */}
+        <div className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-8 shadow-lg">
+          <h2 className="text-2xl font-black mb-4 text-black dark:text-white">
+            {isZh ? '传奇交易员故事' : 'Legendary Trader Stories'}
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            {isZh
+              ? '向顶级交易者学习，他们的成功都建立在纪律、风控与可复制的策略体系之上。'
+              : 'Learn from top traders whose success rests on discipline, risk control, and repeatable strategies.'}
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {traderStories.map((item, index) => (
+              <div key={index} className="border border-gray-200 dark:border-gray-800 p-4 hover:shadow-md transition-shadow">
+                <p className="font-bold text-black dark:text-white mb-2">
+                  {isZh ? item.zh : item.en}
+                </p>
+                <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
+                  {isZh ? item.insight.zh : item.insight.en}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

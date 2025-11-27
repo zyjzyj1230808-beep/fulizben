@@ -169,6 +169,11 @@ const traderStories = [
       zh: '宏观对冲基金与风险对冲策略的经典案例。',
       en: 'A classic case of macro hedge funds and risk hedging strategies.',
     },
+    cta: {
+      href: '/education/industry/quantum-hedge',
+      labelZh: '深入了解宏观对冲',
+      labelEn: 'Explore Macro Hedging',
+    },
   },
   {
     zh: '理查德·丹尼斯：海龟交易法则',
@@ -177,6 +182,11 @@ const traderStories = [
       zh: '强调系统化交易与严格执行的重要性。',
       en: 'Highlights the importance of systematic trading and strict execution.',
     },
+    cta: {
+      href: '/education/industry/turtle-trading',
+      labelZh: '学习海龟法则',
+      labelEn: 'Study Turtle Rules',
+    },
   },
   {
     zh: '琳达·拉斯基：短线交易女王',
@@ -184,6 +194,11 @@ const traderStories = [
     insight: {
       zh: '价格行为与资金管理的模范代表。',
       en: 'A role model for price action and capital management.',
+    },
+    cta: {
+      href: '/education/industry/linda-raschke',
+      labelZh: '学习短线法则',
+      labelEn: 'Study Short-Term Playbook',
     },
   },
 ];
@@ -244,6 +259,12 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
               <li>• {isZh ? '机构与基金：利用衍生品对冲或投机' : 'Institutions & funds hedging and speculating via derivatives'}</li>
               <li>• {isZh ? '零售交易者：技术与复制交易快速发展' : 'Retail growth driven by technology and copy trading'}</li>
             </ul>
+            <LocaleLink
+              href="/education/industry/landscape"
+              className="mt-6 inline-flex items-center justify-center px-4 py-2 border-2 border-black dark:border-white text-black dark:text-white font-semibold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all text-sm"
+            >
+              {isZh ? '查看详细解析' : 'View Detailed Breakdown'}
+            </LocaleLink>
           </div>
 
           <div className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-8 shadow-lg">
@@ -260,6 +281,12 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
               <li>• {isZh ? '1992 年：英镑黑色星期三事件' : '1992: Black Wednesday and the pound crisis'}</li>
               <li>• {isZh ? '2008 年：全球金融危机触发避险行情' : '2008: Global financial crisis sparks flight to safety'}</li>
             </ul>
+            <LocaleLink
+              href="/education/industry/history"
+              className="mt-6 inline-flex items-center justify-center px-4 py-2 border-2 border-black dark:border-white text-black dark:text-white font-semibold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all text-sm"
+            >
+              {isZh ? '查看关键事件' : 'Explore Timeline'}
+            </LocaleLink>
           </div>
 
           <div className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-8 shadow-lg">
@@ -276,6 +303,12 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
               <li>• {isZh ? '经济数据与通胀指标' : 'Economic releases and inflation metrics'}</li>
               <li>• {isZh ? '市场情绪与避险资产' : 'Risk sentiment and safe-haven assets'}</li>
             </ul>
+            <LocaleLink
+              href="/education/industry/macro"
+              className="mt-6 inline-flex items-center justify-center px-4 py-2 border-2 border-black dark:border-white text-black dark:text-white font-semibold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all text-sm"
+            >
+              {isZh ? '建立宏观框架' : 'Build Macro Framework'}
+            </LocaleLink>
           </div>
         </div>
       </section>
@@ -445,6 +478,14 @@ export default async function IndustryPage({ params }: { params: Promise<{ local
                 <p className="text-sm text-gray-700 dark:text-gray-400 leading-relaxed">
                   {isZh ? item.insight.zh : item.insight.en}
                 </p>
+                {item.cta && (
+                  <LocaleLink
+                    href={item.cta.href}
+                    className="mt-4 inline-flex items-center text-sm font-semibold text-[#0a1b49] hover:underline"
+                  >
+                    {isZh ? item.cta.labelZh : item.cta.labelEn}
+                  </LocaleLink>
+                )}
               </div>
             ))}
           </div>

@@ -8,6 +8,7 @@ import TiantiPanel from '@/app/[locale]/(portal)/dashboard/components/TiantiPane
 import { getSupabaseClient } from '@/lib/supabaseClient';
 import { UploadCloud, FileText } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import type { SupabaseClient } from '@supabase/supabase-js';
 
 const AUTH_STORAGE_KEY = 'fuli_system_authenticated';
 const PROFILE_STORAGE_KEY = 'fuli_system_profile';
@@ -68,9 +69,10 @@ const courseStages = [
 ];
 
 
-const IdentityManagement = dynamic(() => import('@/components/admin/IdentityManagement'), {
-  ssr: false,
-});
+const IdentityManagement = dynamic(
+  () => import('@/components/admin/IdentityManagement'),
+  { ssr: false }
+);
 
 interface StudyMaterial {
   id: string;
@@ -89,7 +91,6 @@ const roleLabels: Record<UserRole, { zh: string; en: string }> = {
 
 export default function FuliSystemPage() {
   const supabase = getSupabaseClient();
-
   if (!supabase) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
@@ -102,7 +103,10 @@ export default function FuliSystemPage() {
       </div>
     );
   }
+  return <FuliSystemPageInner supabase={supabase} />;
+}
 
+function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [activeTab, setActiveTab] = useState('materials');
@@ -136,7 +140,7 @@ export default function FuliSystemPage() {
     };
 
     restoreSession();
-  }, []);
+  }, [supabase]);
 
   const fetchProfile = async (userId: string) => {
     const { data, error } = await supabase
@@ -250,6 +254,7 @@ export default function FuliSystemPage() {
   if (!isAuthenticated) {
     return (
       <FuliSystemLogin
+        supabase={supabase}
         isZh={isZh}
         onAuthenticate={(profile) => {
           setUserProfile(profile);
@@ -450,7 +455,7 @@ export default function FuliSystemPage() {
 
           {isAdmin && (
             <TabsContent value="identity" className="space-y-6">
-              <IdentityManagement />
+              <IdentityManagement supabase={supabase} />
             </TabsContent>
           )}
         </Tabs>
@@ -470,21 +475,10 @@ interface FuliSystemLoginProps {
   isZh: boolean;
   onAuthenticate: (profile: UserProfile) => void;
   storageKey: string;
+  supabase: SupabaseClient;
 }
 
-function FuliSystemLogin({ isZh, onAuthenticate, storageKey }: FuliSystemLoginProps) {
-  const supabase = getSupabaseClient();
-
-  if (!supabase) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <div className="p-6 text-center space-y-3">
-          <p className="font-bold text-lg">Supabase 未配置</p>
-          <p className="text-sm text-gray-300">请联系管理员补充环境变量后再登录。</p>
-        </div>
-      </div>
-    );
-  }
+function FuliSystemLogin({ isZh, onAuthenticate, storageKey, supabase }: FuliSystemLoginProps) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

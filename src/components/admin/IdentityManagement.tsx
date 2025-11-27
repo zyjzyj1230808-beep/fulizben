@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { getSupabaseClient } from '@/lib/supabaseClient';
+import type { SupabaseClient } from '@supabase/supabase-js';
 
 type UserRole = 'newbie' | 'trainee' | 'junior' | 'senior' | 'admin';
 type StudyStatus = 'pending' | 'approved' | 'rejected';
@@ -36,17 +36,7 @@ const roleLabels: Record<UserRole, string> = {
   admin: '管理员',
 };
 
-export default function IdentityManagement() {
-  const supabase = getSupabaseClient();
-  if (!supabase) {
-    return (
-      <section className="border-2 border-black dark:border-white bg-white dark:bg-gray-900 p-6">
-        <p className="text-sm text-gray-600 dark:text-gray-300">
-          Supabase 未配置，暂时无法加载身份管理功能。
-        </p>
-      </section>
-    );
-  }
+export default function IdentityManagement({ supabase }: { supabase: SupabaseClient }) {
   const [identities, setIdentities] = useState<IdentityRecord[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
@@ -84,7 +74,7 @@ export default function IdentityManagement() {
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [supabase]);
 
   const fetchIdentities = async () => {
     setLoading(true);

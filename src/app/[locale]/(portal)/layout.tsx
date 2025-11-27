@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Theme } from "@radix-ui/themes";
-import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import UnifiedNavbar from "@/components/layout/UnifiedNavbar";
 import SplanFooter from "@/components/splan/SplanFooter";
@@ -14,12 +13,6 @@ import ScrollProgress, { BackToTop } from "@/components/effects/ScrollProgress";
 import PageLoader from "@/components/effects/PageLoader";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fuliziben.com'),

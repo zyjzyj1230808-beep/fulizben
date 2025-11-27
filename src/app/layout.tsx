@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "@/app/globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://fuliziben.com'),
@@ -18,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN" className={inter.variable} suppressHydrationWarning style={{ colorScheme: 'light dark' }}>
+    <html lang="zh-CN" suppressHydrationWarning style={{ colorScheme: 'light dark' }}>
       <head>
         <meta name="baidu-site-verification" content="codeva-kDRjETSiUu" />
         <meta name="color-scheme" content="light dark" />

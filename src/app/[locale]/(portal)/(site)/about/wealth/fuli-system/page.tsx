@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import BrandName from '@/components/custom/BrandName';
 import { useLanguage } from '@/contexts/LanguageContext';
 import TiantiPanel from '@/app/[locale]/(portal)/dashboard/components/TiantiPanel';
-import { supabase } from '@/lib/supabaseClient';
+import { getSupabaseClient } from '@/lib/supabaseClient';
 import { UploadCloud, FileText } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
@@ -88,6 +88,21 @@ const roleLabels: Record<UserRole, { zh: string; en: string }> = {
 };
 
 export default function FuliSystemPage() {
+  const supabase = getSupabaseClient();
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+        <div className="p-6 text-center space-y-3">
+          <p className="text-lg font-bold">Supabase 未配置</p>
+          <p className="text-sm text-gray-300">
+            请在 .env.local 中设置 NEXT_PUBLIC_SUPABASE_URL 与 NEXT_PUBLIC_SUPABASE_ANON_KEY。
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [activeTab, setActiveTab] = useState('materials');
@@ -458,6 +473,19 @@ interface FuliSystemLoginProps {
 }
 
 function FuliSystemLogin({ isZh, onAuthenticate, storageKey }: FuliSystemLoginProps) {
+  const supabase = getSupabaseClient();
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+        <div className="p-6 text-center space-y-3">
+          <p className="font-bold text-lg">Supabase 未配置</p>
+          <p className="text-sm text-gray-300">请联系管理员补充环境变量后再登录。</p>
+        </div>
+      </div>
+    );
+  }
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');

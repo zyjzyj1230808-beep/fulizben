@@ -1,12 +1,26 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+let cachedClient: SupabaseClient | null = null;
 
-if (!supabaseUrl || !supabaseKey) {
-  // eslint-disable-next-line no-console
-  console.warn('Missing Supabase environment variables. Please check .env.local.');
-}
+export const getSupabaseClient = (): SupabaseClient | null => {
+  if (cachedClient) {
+    return cachedClient;
+  }
 
-export const supabase = createClient(supabaseUrl || '', supabaseKey || '');
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY. Supabase features are disabled.'
+      );
+    }
+    return null;
+  }
+
+  cachedClient = createClient(supabaseUrl, supabaseKey);
+  return cachedClient;
+};
 

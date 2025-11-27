@@ -6,9 +6,19 @@ import BrandName from '@/components/custom/BrandName';
 
 interface AdminLoginProps {
   onAuthenticate: () => void;
+  titleOverride?: string;
+  subtitleOverride?: string;
+  showBrand?: boolean;
+  storageKey?: string;
 }
 
-export default function AdminLogin({ onAuthenticate }: AdminLoginProps) {
+export default function AdminLogin({
+  onAuthenticate,
+  titleOverride,
+  subtitleOverride,
+  showBrand = true,
+  storageKey = 'dashboard_authenticated',
+}: AdminLoginProps) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { t } = useLanguage();
@@ -16,11 +26,11 @@ export default function AdminLogin({ onAuthenticate }: AdminLoginProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'Life@1949..';
+    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || '88888';
 
     if (password === adminPassword) {
       // Store authentication in localStorage for persistent login
-      localStorage.setItem('dashboard_authenticated', 'true');
+      localStorage.setItem(storageKey, 'true');
       onAuthenticate();
     } else {
       setError(t('login.error'));
@@ -28,16 +38,25 @@ export default function AdminLogin({ onAuthenticate }: AdminLoginProps) {
     }
   };
 
+  const headingTitle = titleOverride ?? t('login.title');
+  const subtitleText = subtitleOverride ?? t('login.subtitle');
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950">
       <div className="max-w-md w-full mx-4">
         <div className="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 p-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              <BrandName /> {t('login.title')}
+              {showBrand ? (
+                <>
+                  <BrandName /> {headingTitle}
+                </>
+              ) : (
+                headingTitle
+              )}
             </h1>
             <p className="text-gray-600 dark:text-gray-400">
-              {t('login.subtitle')}
+              {subtitleText}
             </p>
           </div>
 

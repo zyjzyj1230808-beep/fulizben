@@ -65,6 +65,7 @@ export default function UnifiedNavbar() {
       dropdownItems: [
         { name: language === 'zh' ? '复利矩阵' : 'Compound Matrix', link: '/about/wealth#compound-matrix' },
         { name: language === 'zh' ? '合伙人' : 'Partners', link: '/about/wealth#partners' },
+        { name: language === 'zh' ? '浮力系统' : 'Fuli System', link: '/about/wealth/fuli-system' },
       ],
     },
     {

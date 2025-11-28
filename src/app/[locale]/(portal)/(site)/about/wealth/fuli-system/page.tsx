@@ -13,7 +13,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 const AUTH_STORAGE_KEY = 'fuli_system_authenticated';
 const PROFILE_STORAGE_KEY = 'fuli_system_profile';
 
-type UserRole = 'newbie' | 'trainee' | 'junior' | 'senior' | 'admin';
+type UserRole = 'newbie' | 'trainee' | 'junior' | 'senior' | 'admin' | 'assistant';
 type StudyStatus = 'pending' | 'approved' | 'rejected';
 
 interface UserProfile {
@@ -74,6 +74,11 @@ const IdentityManagement = dynamic(
   { ssr: false }
 );
 
+const MaterialReview = dynamic(
+  () => import('@/components/admin/MaterialReview'),
+  { ssr: false }
+);
+
 interface StudyMaterial {
   id: string;
   file_path: string;
@@ -87,6 +92,7 @@ const roleLabels: Record<UserRole, { zh: string; en: string }> = {
   junior: { zh: '初级交易员', en: 'Junior Trader' },
   senior: { zh: '中级交易员', en: 'Senior Trader' },
   admin: { zh: '管理员', en: 'Admin' },
+  assistant: { zh: '助教', en: 'Assistant' },
 };
 
 export default function FuliSystemPage() {
@@ -214,10 +220,13 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
     setIsAuthenticated(false);
   };
 
+  // 助教和管理员都可以查看课程系统
   const canViewCourses = userProfile ? userProfile.role !== 'newbie' : false;
+  // 天网系统：只有初级交易员、中级交易员和管理员可以访问，助教不能访问
   const canViewQuant =
     userProfile && ['junior', 'senior', 'admin'].includes(userProfile.role);
-
+  // 管理员和助教都可以审核资料
+  const canReviewMaterials = userProfile && ['admin', 'assistant'].includes(userProfile.role);
   const isAdmin = userProfile?.role === 'admin';
 
   const accessibleTabs = useMemo(
@@ -233,17 +242,17 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
         visible: !!canViewCourses,
       },
       {
+        value: 'review',
+        label: isZh ? '资料审核' : 'Material Review',
+        visible: !!canReviewMaterials,
+      },
+      {
         value: 'tianti',
         label: isZh ? '量化天网' : 'Quant Net',
         visible: !!canViewQuant,
       },
-      {
-        value: 'identity',
-        label: isZh ? '身份管理' : 'Identity Admin',
-        visible: isAdmin,
-      },
     ],
-    [isZh, canViewCourses, canViewQuant, isAdmin]
+    [isZh, canViewCourses, canViewQuant, canReviewMaterials]
   );
 
   useEffect(() => {
@@ -288,12 +297,29 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
                 : 'Role-based access console for Fuli Wealth partners covering knowledge, courses, and quant net.'}
             </p>
           </div>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-          >
-            {t('dashboard.logout')}
-          </button>
+          <div className="flex items-center gap-3">
+            {/* 只有管理员身份才能看到身份管理按钮 */}
+            {isAdmin && userProfile?.role === 'admin' && (
+              <button
+                onClick={() => {
+                  // 双重检查：确保用户确实是管理员
+                  if (userProfile?.role === 'admin') {
+                    setActiveTab('identity');
+                  }
+                }}
+                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border border-gray-300 dark:border-gray-600 rounded-md hover:border-blue-500 dark:hover:border-blue-400"
+                title={isZh ? '管理员专用：身份管理' : 'Admin Only: Identity Management'}
+              >
+                {isZh ? '身份管理' : 'Identity Admin'}
+              </button>
+            )}
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+            >
+              {t('dashboard.logout')}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -322,7 +348,7 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
           </div>
         )}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
             {accessibleTabs
               .filter((tab) => tab.visible)
               .map((tab) => (
@@ -447,13 +473,20 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
             </TabsContent>
           )}
 
+          {canReviewMaterials && (
+            <TabsContent value="review" className="space-y-6">
+              <MaterialReview supabase={supabase} />
+            </TabsContent>
+          )}
+
           {canViewQuant && (
             <TabsContent value="tianti" className="space-y-6">
               <TiantiPanel />
             </TabsContent>
           )}
 
-          {isAdmin && (
+          {/* 只有管理员身份才能访问身份管理内容 */}
+          {isAdmin && userProfile?.role === 'admin' && (
             <TabsContent value="identity" className="space-y-6">
               <IdentityManagement supabase={supabase} />
             </TabsContent>

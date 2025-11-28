@@ -45,6 +45,46 @@ async function authorize(request: Request) {
   return { adminClient, actorId: userData.user.id };
 }
 
+export async function GET(request: Request) {
+  const auth = await authorize(request);
+  if ('error' in auth) return auth.error;
+  const { adminClient } = auth;
+
+  // 获取所有profiles
+  const { data: profiles, error: profilesError } = await adminClient
+    .from('profiles')
+    .select('id, email, nickname, role, study_status, is_active, created_at')
+    .order('created_at', { ascending: false });
+
+  if (profilesError || !profiles) {
+    return NextResponse.json({ message: profilesError?.message || '获取身份信息失败' }, { status: 400 });
+  }
+
+  // 获取所有用户的最后登录时间
+  const userIds = profiles.map((p) => p.id);
+  const { data: usersData, error: usersError } = await adminClient.auth.admin.listUsers();
+
+  if (usersError) {
+    return NextResponse.json({ message: usersError.message || '获取用户信息失败' }, { status: 400 });
+  }
+
+  // 创建用户ID到last_sign_in_at的映射
+  const lastSignInMap = new Map<string, string | null>();
+  usersData.users.forEach((user) => {
+    if (user.last_sign_in_at) {
+      lastSignInMap.set(user.id, user.last_sign_in_at);
+    }
+  });
+
+  // 合并数据
+  const result = profiles.map((profile) => ({
+    ...profile,
+    last_sign_in_at: lastSignInMap.get(profile.id) || null,
+  }));
+
+  return NextResponse.json(result);
+}
+
 export async function POST(request: Request) {
   const auth = await authorize(request);
   if ('error' in auth) return auth.error;
@@ -134,5 +174,53 @@ export async function PUT(request: Request) {
   });
 
   return NextResponse.json({ message: '密码已重置' });
+}
+
+export async function DELETE(request: Request) {
+  const auth = await authorize(request);
+  if ('error' in auth) return auth.error;
+  const { adminClient, actorId } = auth;
+
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get('id');
+
+  if (!id) {
+    return NextResponse.json({ message: '缺少用户ID' }, { status: 400 });
+  }
+
+  // 获取用户信息用于日志
+  const { data: profile } = await adminClient
+    .from('profiles')
+    .select('email')
+    .eq('id', id)
+    .single();
+
+  const targetEmail = profile?.email || id;
+
+  // 删除auth用户
+  const { error: deleteAuthError } = await adminClient.auth.admin.deleteUser(id);
+  if (deleteAuthError) {
+    return NextResponse.json({ message: deleteAuthError.message || '删除用户失败' }, { status: 400 });
+  }
+
+  // 删除profile记录
+  const { error: deleteProfileError } = await adminClient
+    .from('profiles')
+    .delete()
+    .eq('id', id);
+
+  if (deleteProfileError) {
+    return NextResponse.json({ message: deleteProfileError.message || '删除资料失败' }, { status: 400 });
+  }
+
+  // 记录操作日志
+  await adminClient.from('identity_logs').insert({
+    actor_id: actorId,
+    target_email: targetEmail,
+    action: 'delete_user',
+    detail: { id, email: targetEmail },
+  });
+
+  return NextResponse.json({ message: '删除成功' });
 }
 

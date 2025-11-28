@@ -26,7 +26,8 @@ async function authorize(request: Request) {
     .select('role')
     .eq('id', userData.user.id)
     .single();
-  if (profile?.role !== 'admin') {
+  // 管理员和助教都可以审核资料
+  if (!profile || !['admin', 'assistant'].includes(profile.role)) {
     return { error: NextResponse.json({ message: 'Forbidden' }, { status: 403 }) };
   }
 

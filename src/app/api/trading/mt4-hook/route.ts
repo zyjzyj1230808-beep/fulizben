@@ -53,7 +53,8 @@ async function authorize(token: string) {
   return { adminClient, userId: data.user_id, account: data.account || null };
 }
 
-async function recomputeAssessment(adminClient: ReturnType<typeof createClient>, userId: string) {
+// 宽松类型，避免 Supabase 泛型推断导致 never
+async function recomputeAssessment(adminClient: any, userId: string) {
   // 只有在用户主动“报名考核”后（存在 status = 'started' 的记录），才统计 10 日考核
   const { data: activeAssessment, error: assessError } = await adminClient
     .from('assessments')
@@ -66,6 +67,7 @@ async function recomputeAssessment(adminClient: ReturnType<typeof createClient>,
   if (assessError || !activeAssessment) {
     return;
   }
+  const assessment = (activeAssessment as any) as { id?: string | null; status?: string | null; rule?: string | null } | null;
 
   const { data: dailyRows, error } = await adminClient
     .from('daily_pnl')
@@ -74,23 +76,27 @@ async function recomputeAssessment(adminClient: ReturnType<typeof createClient>,
     .order('trade_date', { ascending: false })
     .limit(10);
   if (error || !dailyRows || dailyRows.length < 10) return;
-  const allNonLoss = dailyRows.every((row) => (row.net_pnl ?? 0) >= 0);
+
+  const rows = (dailyRows ?? []) as { net_pnl: number | null }[];
+  const allNonLoss = rows.every((row) => (row.net_pnl ?? 0) >= 0);
   if (!allNonLoss) return;
 
-  const { data: profile } = await adminClient
+  // 统一放宽 adminClient 的类型，避免生成 never
+  const admin = adminClient as any;
+
+  const profileResp = await admin
     .from('profiles')
     .select('role, email')
     .eq('id', userId)
     .single();
 
+  const profile = (profileResp?.data ?? null) as { role?: string | null; email?: string | null } | null;
+
   if (profile?.role !== 'trainee') return;
 
-  await adminClient.from('profiles').update({ role: 'junior' }).eq('id', userId);
-  await adminClient
-    .from('assessments')
-    .update({ status: 'passed' })
-    .eq('id', activeAssessment.id);
-  await adminClient.from('identity_logs').insert({
+  await admin.from('profiles').update({ role: 'junior' }).eq('id', userId);
+  await admin.from('assessments').update({ status: 'passed' }).eq('id', assessment?.id || '');
+  await admin.from('identity_logs').insert({
     actor_id: userId,
     target_email: profile?.email || userId,
     action: 'assessment_pass',
@@ -150,13 +156,17 @@ export async function POST(request: Request) {
         },
         { onConflict: 'user_id,trade_date' }
       );
-      await adminClient.rpc('increment_daily_pnl', {
-        p_user_id: userId,
-        p_trade_date: tradeDate,
-        p_gross: payload.profit ?? 0,
-        p_net: netPnl,
-      }).catch(() => Promise.resolve());
-      await recomputeAssessment(adminClient, userId);
+      try {
+        await adminClient.rpc('increment_daily_pnl', {
+          p_user_id: userId,
+          p_trade_date: tradeDate,
+          p_gross: payload.profit ?? 0,
+          p_net: netPnl,
+        });
+      } catch {
+        // ignore RPC aggregation errors
+      }
+      await recomputeAssessment(adminClient as any, userId);
     }
 
     return NextResponse.json({ message: 'ok' });

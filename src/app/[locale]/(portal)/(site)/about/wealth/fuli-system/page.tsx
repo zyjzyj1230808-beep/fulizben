@@ -236,7 +236,11 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
   const handleExamPassed = () => {
     setUserProfile((prev) => {
       if (!prev) return prev;
-      const updated = { ...prev, role: 'trainee', studyStatus: 'approved' as StudyStatus };
+      const updated: UserProfile = {
+        ...prev,
+        role: 'trainee',
+        studyStatus: 'approved' as StudyStatus,
+      };
       localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(updated));
       return updated;
     });

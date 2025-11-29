@@ -6,7 +6,7 @@ import BrandName from '@/components/custom/BrandName';
 import { useLanguage } from '@/contexts/LanguageContext';
 import TiantiPanel from '@/app/[locale]/(portal)/dashboard/components/TiantiPanel';
 import { getSupabaseClient } from '@/lib/supabaseClient';
-import { UploadCloud, FileText } from 'lucide-react';
+import { CheckCircle, RefreshCw } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
@@ -22,6 +22,89 @@ interface UserProfile {
   studyStatus: StudyStatus;
   email: string;
 }
+
+interface QuizQuestion {
+  id: string;
+  questionZh: string;
+  questionEn: string;
+  options: { zh: string; en: string }[];
+  answerIndex: number;
+}
+
+const QUIZ_QUESTIONS: QuizQuestion[] = [
+  {
+    id: 'q1',
+    questionZh: '新人从“新学员”晋级为“见习学员”的必要条件是什么？',
+    questionEn: 'What is required for a newbie to become a trainee?',
+    options: [
+      { zh: '提交 Word 报告等待人工审核', en: 'Upload a Word report for manual review' },
+      { zh: '完成选择题考试并获得 100 分', en: 'Pass the multiple-choice exam with a perfect score' },
+      { zh: '主动联系管理员申请放行', en: 'Ask an admin to unlock manually' },
+      { zh: '缴纳报名费用', en: 'Pay an enrollment fee' },
+    ],
+    answerIndex: 1,
+  },
+  {
+    id: 'q2',
+    questionZh: '考试未满分时，以下哪项描述正确？',
+    questionEn: 'If the exam is not a perfect score, which is correct?',
+    options: [
+      { zh: '只能再考一次', en: 'Only one more attempt is allowed' },
+      { zh: '需要等待管理员批准后再考', en: 'Must wait for admin approval to retry' },
+      { zh: '可以无限次重考，直到 100 分', en: 'Can retake unlimited times until 100' },
+      { zh: '系统自动晋级为见习学员', en: 'System still promotes to trainee' },
+    ],
+    answerIndex: 2,
+  },
+  {
+    id: 'q3',
+    questionZh: '通过考试后系统会自动做什么？',
+    questionEn: 'What happens after passing the exam?',
+    options: [
+      { zh: '自动升级角色为见习学员', en: 'Auto-upgrade role to trainee' },
+      { zh: '发送邮件让你手动申请', en: 'Send an email to apply manually' },
+      { zh: '要求再次提交学习资料', en: 'Ask to upload study materials again' },
+      { zh: '无任何变化，需要管理员操作', en: 'Nothing changes until admin acts' },
+    ],
+    answerIndex: 0,
+  },
+  {
+    id: 'q4',
+    questionZh: '以下哪项行为符合学习纪律？',
+    questionEn: 'Which behavior matches the discipline?',
+    options: [
+      { zh: '遇到不懂的题目直接猜测提交', en: 'Guess and submit without understanding' },
+      { zh: '确保每题理解后再答，力求零错误', en: 'Understand each question and aim for zero mistakes' },
+      { zh: '随便选择答案，后续让管理员帮改', en: 'Pick random answers and ask admins to fix later' },
+      { zh: '考试期间与他人共享账号', en: 'Share account during the exam' },
+    ],
+    answerIndex: 1,
+  },
+  {
+    id: 'q5',
+    questionZh: '如果已经是见习学员或更高角色，再次考试会怎样？',
+    questionEn: 'If you are already a trainee or higher, what happens when retaking?',
+    options: [
+      { zh: '角色被降级为新学员', en: 'Role is downgraded to newbie' },
+      { zh: '保持当前角色，记录通过日志', en: 'Role stays; pass is logged' },
+      { zh: '必须联系管理员解锁', en: 'Must contact admin to unlock' },
+      { zh: '账号被锁定', en: 'Account gets locked' },
+    ],
+    answerIndex: 1,
+  },
+  {
+    id: 'q6',
+    questionZh: '考试需要达到的分数线是？',
+    questionEn: 'What score is required to pass?',
+    options: [
+      { zh: '60 分', en: '60 points' },
+      { zh: '80 分', en: '80 points' },
+      { zh: '90 分', en: '90 points' },
+      { zh: '100 分', en: '100 points' },
+    ],
+    answerIndex: 3,
+  },
+];
 
 const materialBlocks = [
   {
@@ -74,18 +157,6 @@ const IdentityManagement = dynamic(
   { ssr: false }
 );
 
-const MaterialReview = dynamic(
-  () => import('@/components/admin/MaterialReview'),
-  { ssr: false }
-);
-
-interface StudyMaterial {
-  id: string;
-  file_path: string;
-  status: StudyStatus;
-  created_at: string;
-}
-
 const roleLabels: Record<UserRole, { zh: string; en: string }> = {
   newbie: { zh: '新学员', en: 'New Trainee' },
   trainee: { zh: '见习学员', en: 'Junior Trainee' },
@@ -117,9 +188,6 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [activeTab, setActiveTab] = useState('materials');
   const [loadingProfile, setLoadingProfile] = useState(true);
-  const [materials, setMaterials] = useState<StudyMaterial[]>([]);
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState('');
   const { t, language } = useLanguage();
   const isZh = language === 'zh';
   const profileId = userProfile?.id || null;
@@ -131,9 +199,6 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
         const parsed: UserProfile = JSON.parse(cachedProfile);
         setUserProfile(parsed);
         setIsAuthenticated(true);
-        if (parsed.id) {
-          await fetchMaterials(parsed.id);
-        }
       }
 
       const { data } = await supabase.auth.getSession();
@@ -164,52 +229,18 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
       };
       setUserProfile(profile);
       localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
-      await fetchMaterials(userId);
     }
     setLoadingProfile(false);
   };
 
-  const fetchMaterials = async (userId: string) => {
-    const { data } = await supabase
-      .from('study_materials')
-      .select('id, file_path, status, created_at')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false });
-    if (data) {
-      setMaterials(data as StudyMaterial[]);
-    }
-  };
-
-  const handleMaterialUpload = async (file: File) => {
-    if (!profileId || !userProfile) return;
-    const ext = file.name.split('.').pop()?.toLowerCase();
-    if (!ext || !['doc', 'docx', 'pdf'].includes(ext)) {
-      setUploadError(isZh ? '仅支持 DOC/DOCX/PDF 文件' : 'Only DOC/DOCX/PDF allowed');
-      return;
-    }
-    setUploading(true);
-    setUploadError('');
-    const filePath = `${userProfile.email}/${Date.now()}-${file.name}`;
-    const { error: uploadErr } = await supabase.storage
-      .from('study-materials')
-      .upload(filePath, file, { upsert: true });
-    if (uploadErr) {
-      setUploadError(uploadErr.message);
-      setUploading(false);
-      return;
-    }
-    const { error: insertErr } = await supabase.from('study_materials').insert({
-      user_id: profileId,
-      file_path: filePath,
-      status: 'pending',
+  const handleExamPassed = () => {
+    setUserProfile((prev) => {
+      if (!prev) return prev;
+      const updated = { ...prev, role: 'trainee', studyStatus: 'approved' as StudyStatus };
+      localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(updated));
+      return updated;
     });
-    if (insertErr) {
-      setUploadError(insertErr.message);
-      setUploading(false);
-      return;
-    }
-    await fetchMaterials(profileId);
-    setUploading(false);
+    setActiveTab('courses');
   };
 
   const handleLogout = async () => {
@@ -226,7 +257,6 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
   const canViewQuant =
     userProfile && ['junior', 'senior', 'admin'].includes(userProfile.role);
   // 管理员和助教都可以审核资料
-  const canReviewMaterials = userProfile && ['admin', 'assistant'].includes(userProfile.role);
   const isAdmin = userProfile?.role === 'admin';
 
   const accessibleTabs = useMemo(
@@ -242,17 +272,12 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
         visible: !!canViewCourses,
       },
       {
-        value: 'review',
-        label: isZh ? '资料审核' : 'Material Review',
-        visible: !!canReviewMaterials,
-      },
-      {
         value: 'tianti',
         label: isZh ? '量化天网' : 'Quant Net',
         visible: !!canViewQuant,
       },
     ],
-    [isZh, canViewCourses, canViewQuant, canReviewMaterials]
+    [isZh, canViewCourses, canViewQuant]
   );
 
   useEffect(() => {
@@ -336,7 +361,7 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
               {userProfile.role === 'newbie'
                 ? isZh
                   ? '请先阅读资料并上传 Word 学习报告，管理员审核通过后解锁见习权限。'
-                  : 'Please study the knowledge base and upload your Word report to unlock trainee access.'
+                  : 'Please study the knowledge base first, then complete the multiple-choice exam (perfect score required) to auto-unlock trainee access.'
                 : userProfile.role === 'trainee'
                 ? isZh
                   ? '恭喜进入见习阶段，继续完成课程系统任务以申请交易员等级。'
@@ -379,77 +404,7 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
             </div>
 
             {userProfile?.role === 'newbie' && (
-              <section className="border-2 border-dashed border-blue-500 bg-blue-50 dark:bg-blue-950/30 p-6 space-y-4">
-                <h3 className="text-xl font-bold text-blue-800 dark:text-blue-200 flex items-center gap-2">
-                  <UploadCloud className="w-5 h-5" />
-                  {isZh ? '提交学习资料' : 'Submit Study Report'}
-                </h3>
-                <p className="text-sm text-blue-900 dark:text-blue-100">
-                  {isZh
-                    ? '请上传 Word/PDF 文档，记录你的学习过程与心得，管理员审核通过后将自动解锁见习权限。'
-                    : 'Upload your study report (Word/PDF). Once approved you will unlock trainee access.'}
-                </p>
-
-                <div
-                  className="border-2 border-dashed border-blue-300 bg-white dark:bg-transparent p-6 text-center cursor-pointer"
-                  onClick={() => document.getElementById('material-upload')?.click()}
-                >
-                  <input
-                    id="material-upload"
-                    type="file"
-                    accept=".doc,.docx,.pdf"
-                    className="hidden"
-                    onChange={async (e) => {
-                      const file = e.target.files?.[0];
-                      if (!file) return;
-                      await handleMaterialUpload(file);
-                      e.target.value = '';
-                    }}
-                  />
-                  <p className="text-sm text-blue-900 dark:text-blue-200">
-                    {uploading
-                      ? isZh
-                        ? '上传中...'
-                        : 'Uploading...'
-                      : isZh
-                      ? '点击或拖拽文件到此处'
-                      : 'Click or drag file here'}
-                  </p>
-                  {uploadError && <p className="text-xs text-red-600 mt-2">{uploadError}</p>}
-                </div>
-
-                {materials.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold">{isZh ? '历史提交' : 'Submission History'}</p>
-                    <ul className="space-y-2">
-                      {materials.map((item) => (
-                        <li
-                          key={item.id}
-                          className="flex items-center justify-between border border-blue-100 dark:border-blue-800 bg-white dark:bg-blue-950/30 px-4 py-2 text-sm"
-                        >
-                          <div className="flex items-center gap-2">
-                            <FileText className="w-4 h-4 text-blue-500" />
-                            <span>{item.file_path.split('/').pop()}</span>
-                          </div>
-                          <span>
-                            {item.status === 'pending'
-                              ? isZh
-                                ? '待审核'
-                                : 'Pending'
-                              : item.status === 'approved'
-                              ? isZh
-                                ? '已通过'
-                                : 'Approved'
-                              : isZh
-                              ? '已驳回'
-                              : 'Rejected'}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </section>
+              <ExamSection isZh={isZh} supabase={supabase} onPassed={handleExamPassed} />
             )}
           </TabsContent>
 
@@ -470,12 +425,6 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
                   </div>
                 ))}
               </div>
-            </TabsContent>
-          )}
-
-          {canReviewMaterials && (
-            <TabsContent value="review" className="space-y-6">
-              <MaterialReview supabase={supabase} />
             </TabsContent>
           )}
 
@@ -503,6 +452,221 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
     </div>
   );
 }
+
+
+function ExamSection({
+  isZh,
+  supabase,
+  onPassed,
+}: {
+  isZh: boolean;
+  supabase: SupabaseClient;
+  onPassed: () => void;
+}) {
+  const initialAnswers = useMemo(
+    () =>
+      QUIZ_QUESTIONS.reduce((acc, q) => {
+        acc[q.id] = null;
+        return acc;
+      }, {} as Record<string, number | null>),
+    []
+  );
+  const [answers, setAnswers] = useState<Record<string, number | null>>({ ...initialAnswers });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const [scoreInfo, setScoreInfo] = useState<{ score: number; total: number } | null>(null);
+  const [ready, setReady] = useState(false);
+
+  const handleSelect = (questionId: string, optionIndex: number) => {
+    setAnswers((prev) => ({ ...prev, [questionId]: optionIndex }));
+  };
+
+  const handleReset = () => {
+    setAnswers({ ...initialAnswers });
+    setScoreInfo(null);
+    setError('');
+  };
+
+  const handleSubmit = async () => {
+    const total = QUIZ_QUESTIONS.length;
+    const score = QUIZ_QUESTIONS.reduce(
+      (sum, q) => sum + (answers[q.id] === q.answerIndex ? 1 : 0),
+      0
+    );
+    setScoreInfo({ score, total });
+    setError('');
+
+    if (score !== total) return;
+
+    setSubmitting(true);
+    try {
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      if (!token) throw new Error(isZh ? '??????????' : 'Please sign in again before submitting.');
+
+      const response = await fetch('/api/exam/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ score, total }),
+      });
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.message || (isZh ? '??????????' : 'Failed to submit, please retry.'));
+      }
+
+      onPassed();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : isZh ? '????' : 'Submit failed');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <section className="border-2 border-dashed border-blue-500 bg-blue-50 dark:bg-blue-950/30 p-6 space-y-5">
+      <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+        <div className="space-y-1">
+          <h3 className="text-xl font-bold text-blue-800 dark:text-blue-200 flex items-center gap-2">
+            <CheckCircle className="w-5 h-5" />
+            {isZh ? '???????????' : 'Online Exam: Perfect Score to Unlock'}
+          </h3>
+          <p className="text-sm text-blue-900 dark:text-blue-100">
+            {isZh
+              ? '???????????????????? 100 ????????????????????????'
+              : 'Study the materials first, then take the quiz; 100/100 required, unlimited retries, perfect score auto-promotes to trainee.'}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={handleReset}
+          className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 dark:text-blue-200 border border-blue-200 dark:border-blue-800 px-3 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+        >
+          <RefreshCw className="w-4 h-4" />
+          {isZh ? '????' : 'Reset answers'}
+        </button>
+      </div>
+
+      {!ready ? (
+        <div className="rounded-lg border border-blue-200 dark:border-blue-800 bg-white dark:bg-blue-950/30 p-4 space-y-3">
+          <p className="text-sm text-blue-900 dark:text-blue-100">
+            {isZh
+              ? '?????????????????????????????????'
+              : 'Please finish the study materials before starting. Confirm readiness to unlock the exam.'}
+          </p>
+          <button
+            type="button"
+            onClick={() => setReady(true)}
+            className="inline-flex items-center justify-center px-4 py-2 rounded-md bg-blue-700 text-white font-semibold hover:bg-blue-800 transition-colors"
+          >
+            {isZh ? '??????????' : 'I have studied, start exam'}
+          </button>
+        </div>
+      ) : (
+        <>
+          <div className="space-y-4">
+            {QUIZ_QUESTIONS.map((q, idx) => (
+              <div
+                key={q.id}
+                className="border border-blue-100 dark:border-blue-900 rounded-lg bg-white dark:bg-blue-950/30 p-4 shadow-sm"
+              >
+                <div className="flex items-start gap-3">
+                  <span className="px-2 py-1 rounded-md bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-100 text-xs font-semibold">
+                    {idx + 1}
+                  </span>
+                  <div className="space-y-3 flex-1">
+                    <p className="font-semibold text-gray-900 dark:text-white">
+                      {isZh ? q.questionZh : q.questionEn}
+                    </p>
+                    <div className="grid gap-2">
+                      {q.options.map((opt, optIdx) => {
+                        const selected = answers[q.id] === optIdx;
+                        return (
+                          <button
+                            key={optIdx}
+                            type="button"
+                            onClick={() => handleSelect(q.id, optIdx)}
+                            className={`text-left w-full border rounded-md px-3 py-2 text-sm transition-colors ${
+                              selected
+                                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-100'
+                                : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 hover:border-blue-300 dark:hover:border-blue-600'
+                            }`}
+                          >
+                            <span className="font-medium">
+                              {optIdx + 1}. {isZh ? opt.zh : opt.en}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {scoreInfo && (
+            <div
+              className={`rounded-lg border px-4 py-3 ${
+                scoreInfo.score === scoreInfo.total
+                  ? 'border-green-300 bg-green-50 dark:border-green-800 dark:bg-green-900/20 text-green-800 dark:text-green-100'
+                  : 'border-orange-300 bg-orange-50 dark:border-orange-800 dark:bg-orange-900/20 text-orange-800 dark:text-orange-100'
+              }`}
+            >
+              <p className="font-semibold">
+                {isZh ? '????' : 'Current score'}?{scoreInfo.score} / {scoreInfo.total}
+              </p>
+              <p className="text-sm mt-1">
+                {scoreInfo.score === scoreInfo.total
+                  ? isZh
+                    ? '??????????????????'
+                    : 'Perfect! You will be promoted to trainee automatically.'
+                  : isZh
+                  ? '?? 100 ???????????????????'
+                  : 'Perfect score required. Update answers and submit again.'}
+              </p>
+            </div>
+          )}
+
+          {error && (
+            <div className="rounded-lg border border-red-300 bg-red-50 dark:border-red-800 dark:bg-red-900/20 px-4 py-3 text-red-700 dark:text-red-200 text-sm">
+              {error}
+            </div>
+          )}
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-blue-900 dark:text-blue-100">
+              {isZh
+                ? '?????????????????????????'
+                : 'Note: all answers must be correct. Unlimited retries.'}
+            </p>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={handleSubmit}
+                disabled={submitting}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-md bg-blue-700 text-white font-semibold hover:bg-blue-800 disabled:opacity-60 transition-colors"
+              >
+                {submitting ? (isZh ? '???...' : 'Submitting...') : isZh ? '?????' : 'Submit to unlock'}
+              </button>
+              <button
+                type="button"
+                onClick={handleReset}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              >
+                {isZh ? '????' : 'Clear answers'}
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    </section>
+  );
+}
+
 
 interface FuliSystemLoginProps {
   isZh: boolean;

@@ -2,30 +2,15 @@ import React, { useEffect, useMemo, useState } from 'react';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
 type UserRole = 'newbie' | 'trainee' | 'junior' | 'senior' | 'admin' | 'assistant';
-type StudyStatus = 'pending' | 'approved' | 'rejected';
 
 interface IdentityRecord {
   id: string;
   email: string;
   nickname: string | null;
   role: UserRole;
-  study_status: StudyStatus;
   is_active: boolean;
   created_at?: string;
   last_sign_in_at?: string;
-}
-
-interface SubmissionRecord {
-  id: string;
-  file_path: string;
-  status: StudyStatus;
-  created_at: string;
-  profile: {
-    email: string;
-    nickname: string | null;
-    role: UserRole;
-    study_status?: StudyStatus;
-  } | null;
 }
 
 const roleLabels: Record<UserRole, string> = {
@@ -54,8 +39,6 @@ export default function IdentityManagement({ supabase }: { supabase: SupabaseCli
   const [savingRow, setSavingRow] = useState<string | null>(null);
   const [createError, setCreateError] = useState('');
   const [createLoading, setCreateLoading] = useState(false);
-  const [submissions, setSubmissions] = useState<SubmissionRecord[]>([]);
-  const [subLoading, setSubLoading] = useState(false);
   const [showLogs, setShowLogs] = useState(false);
   const [logs, setLogs] = useState<any[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
@@ -97,23 +80,9 @@ export default function IdentityManagement({ supabase }: { supabase: SupabaseCli
     }
   };
 
-  const fetchSubmissions = async () => {
-    if (!sessionToken) return;
-    setSubLoading(true);
-    try {
-      const result = await authorizedFetch('/api/admin/materials');
-      setSubmissions(result);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '加载资料失败');
-    } finally {
-      setSubLoading(false);
-    }
-  };
-
   useEffect(() => {
     if (sessionToken) {
       fetchIdentities();
-      fetchSubmissions();
     }
   }, [sessionToken]);
 
@@ -339,7 +308,7 @@ export default function IdentityManagement({ supabase }: { supabase: SupabaseCli
           <tbody>
             {loading ? (
               <tr>
-                <td className="px-5 py-12 text-center" colSpan={8}>
+                <td className="px-5 py-12 text-center" colSpan={7}>
                   <div className="flex flex-col items-center gap-3">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white"></div>
                     <span className="text-gray-500 dark:text-gray-400">加载中...</span>
@@ -348,7 +317,7 @@ export default function IdentityManagement({ supabase }: { supabase: SupabaseCli
               </tr>
             ) : filtered.length === 0 ? (
               <tr>
-                <td className="px-5 py-12 text-center" colSpan={8}>
+                <td className="px-5 py-12 text-center" colSpan={7}>
                   <div className="flex flex-col items-center gap-2">
                     <span className="text-4xl">📭</span>
                     <span className="text-gray-500 dark:text-gray-400">暂无数据</span>
@@ -411,25 +380,7 @@ export default function IdentityManagement({ supabase }: { supabase: SupabaseCli
                         </span>
                       </label>
                     </td>
-                    <td className="px-5 py-4">
-                      {/* 资料状态：用于跟踪学员提交的学习资料的审核状态
-                          - 待审核(pending): 学员已提交学习资料，等待管理员审核
-                          - 已通过(approved): 管理员审核通过，学员可解锁更高权限
-                          - 已驳回(rejected): 管理员审核不通过，学员需要重新提交
-                          管理员可以在"资料审核"区域查看和审核学员提交的学习资料 */}
-                      <select
-                        className="w-full min-w-[100px] border-2 border-gray-200 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900 px-3 py-1.5 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 transition-all duration-200 cursor-pointer"
-                        value={getDraftValue<StudyStatus>(identity, 'study_status')}
-                        onChange={(e) =>
-                          updateDraft(identity.id, 'study_status', e.target.value as StudyStatus)
-                        }
-                        title="资料状态：跟踪学员学习资料的审核进度"
-                      >
-                        <option value="pending">待审核</option>
-                        <option value="approved">已通过</option>
-                        <option value="rejected">已驳回</option>
-                      </select>
-                    </td>
+                    
                     <td className="px-5 py-4">
                       <span className="text-xs text-gray-600 dark:text-gray-400 font-mono">
                         {formatDateTime(identity.created_at)}
@@ -477,83 +428,7 @@ export default function IdentityManagement({ supabase }: { supabase: SupabaseCli
         </table>
       </div>
 
-      <section className="space-y-4 border-2 border-gray-200 dark:border-gray-700 rounded-lg p-5 bg-gray-50 dark:bg-gray-800/50">
-        <header className="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100">📋 资料审核</h3>
-          <button
-            className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline-offset-2 hover:underline transition-colors"
-            onClick={fetchSubmissions}
-            disabled={subLoading}
-          >
-            {subLoading ? '刷新中...' : '🔄 刷新'}
-          </button>
-        </header>
-        {submissions.length === 0 ? (
-          <div className="text-center py-8">
-            <span className="text-4xl mb-2 block">📄</span>
-            <p className="text-sm text-gray-500 dark:text-gray-400">暂无待处理的学习资料。</p>
-          </div>
-        ) : (
-          <ul className="space-y-3">
-            {submissions.map((submission) => (
-              <li
-                key={submission.id}
-                className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900 flex flex-col md:flex-row md:items-center md:justify-between gap-3 hover:border-blue-300 dark:hover:border-blue-600 transition-colors duration-200 shadow-sm hover:shadow"
-              >
-                <div>
-                  <p className="font-semibold">
-                    {submission.profile?.email || submission.file_path}
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    {new Date(submission.created_at).toLocaleString()}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    className="px-4 py-2 text-xs font-medium border-2 border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
-                    onClick={async () => {
-                      const res = await authorizedFetch(
-                        `/api/admin/materials?file=${encodeURIComponent(submission.file_path)}`
-                      );
-                      if (res.url) {
-                        window.open(res.url, '_blank');
-                      }
-                    }}
-                  >
-                    📥 下载
-                  </button>
-                  <button
-                    className="px-4 py-2 text-xs font-medium border-2 border-green-300 dark:border-green-700 text-green-600 dark:text-green-400 rounded-md hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors duration-200"
-                    onClick={async () => {
-                      await authorizedFetch('/api/admin/materials', {
-                        method: 'PATCH',
-                        body: JSON.stringify({ id: submission.id, status: 'approved' }),
-                      });
-                      fetchSubmissions();
-                      fetchIdentities();
-                    }}
-                  >
-                    ✓ 通过
-                  </button>
-                  <button
-                    className="px-4 py-2 text-xs font-medium border-2 border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 rounded-md hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors duration-200"
-                    onClick={async () => {
-                      await authorizedFetch('/api/admin/materials', {
-                        method: 'PATCH',
-                        body: JSON.stringify({ id: submission.id, status: 'rejected' }),
-                      });
-                      fetchSubmissions();
-                      fetchIdentities();
-                    }}
-                  >
-                    ✗ 驳回
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      
 
       {creating && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">

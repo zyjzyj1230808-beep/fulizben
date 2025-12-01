@@ -31,6 +31,26 @@ interface AssessmentForm {
   investorPassword: string;
 }
 
+interface AdminDailyRow {
+  user_id: string;
+  trade_date: string;
+  net_pnl: number | null;
+  gross_pnl: number | null;
+  trade_count: number;
+  email?: string | null;
+}
+
+interface AdminTradeRow {
+  user_id: string;
+  ticket: string;
+  symbol: string;
+  side: string;
+  status: string;
+  profit: number | null;
+  close_time: string | null;
+  email?: string | null;
+}
+
 interface QuizQuestion {
   id: string;
   questionZh: string;
@@ -204,6 +224,10 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
   });
   const [assessmentLoading, setAssessmentLoading] = useState(false);
   const [assessmentError, setAssessmentError] = useState('');
+  const [adminDaily, setAdminDaily] = useState<AdminDailyRow[]>([]);
+  const [adminTrades, setAdminTrades] = useState<AdminTradeRow[]>([]);
+  const [adminLoading, setAdminLoading] = useState(false);
+  const [adminError, setAdminError] = useState('');
   const { t, language } = useLanguage();
   const isZh = language === 'zh';
   const profileId = userProfile?.id || null;
@@ -295,6 +319,68 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
       alive = false;
     };
   }, [profileId, supabase]);
+
+  useEffect(() => {
+    if (!userProfile || userProfile.role !== 'admin') return;
+    let alive = true;
+    const loadAdminData = async () => {
+      setAdminLoading(true);
+      setAdminError('');
+      try {
+        const { data: dailyData, error: dailyError } = await supabase
+          .from('daily_pnl')
+          .select('user_id, trade_date, net_pnl, gross_pnl, trade_count, profiles(email)')
+          .order('trade_date', { ascending: false })
+          .limit(50);
+
+        const { data: tradeData, error: tradeError } = await supabase
+          .from('trades')
+          .select('user_id, ticket, symbol, side, status, profit, close_time, profiles(email)')
+          .order('close_time', { ascending: false })
+          .limit(50);
+
+        if (dailyError || tradeError) {
+          throw new Error(dailyError?.message || tradeError?.message || 'load failed');
+        }
+
+        if (alive) {
+          setAdminDaily(
+            (dailyData || []).map((row: any) => ({
+              user_id: row.user_id,
+              trade_date: row.trade_date,
+              net_pnl: row.net_pnl,
+              gross_pnl: row.gross_pnl,
+              trade_count: row.trade_count,
+              email: row.profiles?.email || null,
+            }))
+          );
+          setAdminTrades(
+            (tradeData || []).map((row: any) => ({
+              user_id: row.user_id,
+              ticket: row.ticket,
+              symbol: row.symbol,
+              side: row.side,
+              status: row.status,
+              profit: row.profit,
+              close_time: row.close_time,
+              email: row.profiles?.email || null,
+            }))
+          );
+        }
+      } catch (err) {
+        if (alive) setAdminError(err instanceof Error ? err.message : 'load failed');
+      } finally {
+        if (alive) setAdminLoading(false);
+      }
+    };
+
+    loadAdminData();
+    const timer = setInterval(loadAdminData, 60_000); // 每分钟刷新一次
+    return () => {
+      alive = false;
+      clearInterval(timer);
+    };
+  }, [userProfile, supabase]);
 
   const handleStartAssessment = async () => {
     setAssessmentLoading(true);
@@ -546,6 +632,13 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
           {isAdmin && userProfile?.role === 'admin' && (
             <TabsContent value="identity" className="space-y-6">
               <IdentityManagement supabase={supabase} />
+              <AdminMonitorPanel
+                isZh={isZh}
+                daily={adminDaily}
+                trades={adminTrades}
+                loading={adminLoading}
+                error={adminError}
+              />
             </TabsContent>
           )}
         </Tabs>
@@ -671,6 +764,116 @@ function TenDayAssessmentCard({
             ? '开始考核'
             : 'Start Assessment'}
         </button>
+      </div>
+    </section>
+  );
+}
+
+function AdminMonitorPanel({
+  isZh,
+  daily,
+  trades,
+  loading,
+  error,
+}: {
+  isZh: boolean;
+  daily: AdminDailyRow[];
+  trades: AdminTradeRow[];
+  loading: boolean;
+  error: string;
+}) {
+  return (
+    <section className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 space-y-4 bg-white dark:bg-gray-900">
+      <div className="flex items-center justify-between">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+          {isZh ? '考核监控：日盈亏 & 做单明细' : 'Assessment Monitor: Daily PnL & Trades'}
+        </h3>
+        {loading && (
+          <span className="text-xs text-gray-500">{isZh ? '刷新中…' : 'Refreshing...'}</span>
+        )}
+      </div>
+      {error && (
+        <div className="rounded-md border border-red-300 bg-red-50 dark:border-red-800 dark:bg-red-900/20 px-3 py-2 text-sm text-red-700 dark:text-red-200">
+          {error}
+        </div>
+      )}
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="space-y-2">
+          <p className="font-semibold text-sm text-gray-800 dark:text-gray-100">
+            {isZh ? '最近 50 条日盈亏（含考核账号）' : 'Latest 50 daily PnL (assessment accounts)'}
+          </p>
+          <div className="max-h-72 overflow-auto border border-gray-200 dark:border-gray-700 rounded-md">
+            <table className="min-w-full text-xs text-left">
+              <thead className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                <tr>
+                  <th className="px-3 py-2">User</th>
+                  <th className="px-3 py-2">{isZh ? '日期' : 'Date'}</th>
+                  <th className="px-3 py-2">Net</th>
+                  <th className="px-3 py-2">Gross</th>
+                  <th className="px-3 py-2">{isZh ? '笔数' : 'Cnt'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {daily.map((row) => (
+                  <tr key={`${row.user_id}-${row.trade_date}`} className="border-b border-gray-100 dark:border-gray-800">
+                    <td className="px-3 py-2 truncate">{row.email || row.user_id}</td>
+                    <td className="px-3 py-2">{row.trade_date}</td>
+                    <td className="px-3 py-2">{row.net_pnl ?? 0}</td>
+                    <td className="px-3 py-2">{row.gross_pnl ?? 0}</td>
+                    <td className="px-3 py-2">{row.trade_count}</td>
+                  </tr>
+                ))}
+                {daily.length === 0 && (
+                  <tr>
+                    <td className="px-3 py-2 text-center text-gray-500" colSpan={5}>
+                      {isZh ? '暂无数据' : 'No data'}
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <p className="font-semibold text-sm text-gray-800 dark:text-gray-100">
+            {isZh ? '最近 50 条做单明细（含未平仓）' : 'Latest 50 trades (including open)'}
+          </p>
+          <div className="max-h-72 overflow-auto border border-gray-200 dark:border-gray-700 rounded-md">
+            <table className="min-w-full text-xs text-left">
+              <thead className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                <tr>
+                  <th className="px-3 py-2">User</th>
+                  <th className="px-3 py-2">Ticket</th>
+                  <th className="px-3 py-2">Symbol</th>
+                  <th className="px-3 py-2">Side</th>
+                  <th className="px-3 py-2">Status</th>
+                  <th className="px-3 py-2">P/L</th>
+                  <th className="px-3 py-2">{isZh ? '平仓时间' : 'Close time'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {trades.map((row) => (
+                  <tr key={`${row.ticket}-${row.close_time || row.user_id}`} className="border-b border-gray-100 dark:border-gray-800">
+                    <td className="px-3 py-2 truncate">{row.email || row.user_id}</td>
+                    <td className="px-3 py-2">{row.ticket}</td>
+                    <td className="px-3 py-2">{row.symbol}</td>
+                    <td className="px-3 py-2">{row.side}</td>
+                    <td className="px-3 py-2">{row.status}</td>
+                    <td className="px-3 py-2">{row.profit ?? 0}</td>
+                    <td className="px-3 py-2">{row.close_time || '-'}</td>
+                  </tr>
+                ))}
+                {trades.length === 0 && (
+                  <tr>
+                    <td className="px-3 py-2 text-center text-gray-500" colSpan={7}>
+                      {isZh ? '暂无数据' : 'No data'}
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
   );

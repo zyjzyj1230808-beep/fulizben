@@ -77,7 +77,8 @@ async function recomputeAssessment(adminClient: any, userId: string) {
     .limit(10);
   if (error || !dailyRows || dailyRows.length < 10) return;
 
-  const rows = (dailyRows ?? []) as { net_pnl: number | null }[];
+  // 宽松处理 dailyRows，避免 TS 推断 never
+  const rows: { net_pnl?: number | null }[] = (dailyRows as any[]) || [];
   const allNonLoss = rows.every((row) => (row.net_pnl ?? 0) >= 0);
   if (!allNonLoss) return;
 

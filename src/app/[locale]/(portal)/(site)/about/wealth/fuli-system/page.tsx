@@ -459,8 +459,13 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
         label: isZh ? '量化天网' : 'Quant Net',
         visible: !!canViewQuant,
       },
+      {
+        value: 'monitor',
+        label: isZh ? '考核监控' : 'Assessment Monitor',
+        visible: isAdmin, // 仅管理员
+      },
     ],
-    [isZh, canViewCourses, canViewQuant]
+    [isZh, canViewCourses, canViewQuant, isAdmin]
   );
 
   useEffect(() => {
@@ -628,10 +633,9 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
             </TabsContent>
           )}
 
-          {/* 只有管理员身份才能访问身份管理内容 */}
+          {/* 考核监控：放在量化天网旁边，仅管理员可见 */}
           {isAdmin && userProfile?.role === 'admin' && (
-            <TabsContent value="identity" className="space-y-6">
-              <IdentityManagement supabase={supabase} />
+            <TabsContent value="monitor" className="space-y-6">
               <AdminMonitorPanel
                 isZh={isZh}
                 daily={adminDaily}
@@ -639,6 +643,13 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
                 loading={adminLoading}
                 error={adminError}
               />
+            </TabsContent>
+          )}
+
+          {/* 只有管理员身份才能访问身份管理内容 */}
+          {isAdmin && userProfile?.role === 'admin' && (
+            <TabsContent value="identity" className="space-y-6">
+              <IdentityManagement supabase={supabase} />
             </TabsContent>
           )}
         </Tabs>

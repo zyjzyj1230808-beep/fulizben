@@ -449,16 +449,21 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
         label: isZh ? '资料系统' : 'Knowledge System',
         visible: true,
       },
-      {
-        value: 'courses',
-        label: isZh ? '课程系统' : 'Course System',
-        visible: !!canViewCourses,
-      },
-      {
-        value: 'tianti',
-        label: isZh ? '量化天网' : 'Quant Net',
-        visible: !!canViewQuant,
-      },
+        {
+          value: 'courses',
+          label: isZh ? '课程系统' : 'Course System',
+          visible: !!canViewCourses,
+        },
+        {
+          value: 'sim-assessment',
+          label: isZh ? '模拟盘考核' : 'Sim Assessment',
+          visible: userProfile?.role === 'trainee',
+        },
+        {
+          value: 'tianti',
+          label: isZh ? '量化天网' : 'Quant Net',
+          visible: !!canViewQuant,
+        },
       {
         value: 'monitor',
         label: isZh ? '考核监控' : 'Assessment Monitor',
@@ -561,28 +566,18 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
           </div>
         )}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
+          <TabsList className="flex w-full mb-8">
             {accessibleTabs
               .filter((tab) => tab.visible)
               .map((tab) => (
-                <TabsTrigger key={tab.value} value={tab.value}>
+                  <TabsTrigger key={tab.value} value={tab.value} className="flex-1">
                   {tab.label}
                 </TabsTrigger>
               ))}
           </TabsList>
 
           <TabsContent value="materials" className="space-y-6">
-            {userProfile?.role === 'trainee' && (
-              <TenDayAssessmentCard
-                isZh={isZh}
-                status={assessmentStatus}
-                loading={assessmentLoading}
-                form={assessmentForm}
-                onFormChange={setAssessmentForm}
-                onStart={handleStartAssessment}
-                error={assessmentError}
-              />
-            )}
+            {/* 资料系统 Tab 不再展示考核报名卡片 */}
             <div className="grid gap-6 md:grid-cols-3">
               {materialBlocks.map((block) => (
                 <div
@@ -630,6 +625,20 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
           {canViewQuant && (
             <TabsContent value="tianti" className="space-y-6">
               <TiantiPanel />
+            </TabsContent>
+          )}
+
+          {userProfile?.role === 'trainee' && (
+            <TabsContent value="sim-assessment" className="space-y-6">
+              <TenDayAssessmentCard
+                isZh={isZh}
+                status={assessmentStatus}
+                loading={assessmentLoading}
+                form={assessmentForm}
+                onFormChange={setAssessmentForm}
+                onStart={handleStartAssessment}
+                error={assessmentError}
+              />
             </TabsContent>
           )}
 

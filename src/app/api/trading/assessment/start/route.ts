@@ -76,33 +76,24 @@ export async function POST(request: Request) {
     .maybeSingle();
 
   if (account || server || investorPassword) {
+    // 第二次提交需要管理员审核：如果已有记录，阻止自动覆盖
     if (existingEnroll) {
-      const { error: updateEnrollError } = await supabase
-        .from('assessment_enrollments')
-        .update({
-          account: account || null,
-          server: server || null,
-          investor_password: investorPassword || null,
-          updated_at: new Date().toISOString(),
-        })
-        .eq('user_id', user.id)
-        .eq('rule', '10_days_no_loss');
+      return NextResponse.json(
+        { message: '已提交过考核信息，若需修改请联系管理员审核后再处理' },
+        { status: 403 }
+      );
+    }
 
-      if (updateEnrollError) {
-        return NextResponse.json({ message: updateEnrollError.message }, { status: 400 });
-      }
-    } else {
-      const { error: insertEnrollError } = await supabase.from('assessment_enrollments').insert({
-        user_id: user.id,
-        rule: '10_days_no_loss',
-        account: account || null,
-        server: server || null,
-        investor_password: investorPassword || null,
-      });
+    const { error: insertEnrollError } = await supabase.from('assessment_enrollments').insert({
+      user_id: user.id,
+      rule: '10_days_no_loss',
+      account: account || null,
+      server: server || null,
+      investor_password: investorPassword || null,
+    });
 
-      if (insertEnrollError) {
-        return NextResponse.json({ message: insertEnrollError.message }, { status: 400 });
-      }
+    if (insertEnrollError) {
+      return NextResponse.json({ message: insertEnrollError.message }, { status: 400 });
     }
   }
 

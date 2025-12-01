@@ -5,6 +5,16 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export async function POST(request: Request) {
+  const body = (await request.json().catch(() => ({}))) as {
+    account?: string;
+    server?: string;
+    investorPassword?: string;
+  };
+
+  const account = (body.account || '').trim();
+  const server = (body.server || '').trim();
+  const investorPassword = (body.investorPassword || '').trim();
+
   const supabase = createClient(supabaseUrl, anonKey, {
     global: { headers: { Authorization: request.headers.get('authorization') || '' } },
   });
@@ -49,6 +59,25 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: upsertError.message }, { status: 400 });
   }
 
+  if (account || server || investorPassword) {
+    const { error: enrollError } = await supabase
+      .from('assessment_enrollments')
+      .upsert(
+        {
+          user_id: user.id,
+          rule: '10_days_no_loss',
+          account: account || null,
+          server: server || null,
+          investor_password: investorPassword || null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'user_id,rule' }
+      );
+
+    if (enrollError) {
+      return NextResponse.json({ message: enrollError.message }, { status: 400 });
+    }
+  }
+
   return NextResponse.json({ message: '考核已开始，接下来会自动统计最近 10 个交易日盈亏。' });
 }
-

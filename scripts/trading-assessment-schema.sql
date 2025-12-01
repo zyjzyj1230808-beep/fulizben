@@ -67,3 +67,15 @@ begin
         trade_count = public.daily_pnl.trade_count + 1;
 end;
 $$ language plpgsql;
+
+-- 见习学员报名 10 天不亏损考核时的登记信息
+create table if not exists public.assessment_enrollments (
+  user_id uuid not null references public.profiles (id) on delete cascade,
+  rule text not null,
+  account text,
+  server text,
+  investor_password text,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now(),
+  primary key (user_id, rule)
+);

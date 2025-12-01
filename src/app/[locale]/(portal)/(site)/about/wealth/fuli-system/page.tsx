@@ -23,6 +23,14 @@ interface UserProfile {
   email: string;
 }
 
+type AssessmentStatus = 'not_started' | 'started' | 'passed' | 'unknown';
+
+interface AssessmentForm {
+  account: string;
+  server: string;
+  investorPassword: string;
+}
+
 interface QuizQuestion {
   id: string;
   questionZh: string;
@@ -188,6 +196,14 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [activeTab, setActiveTab] = useState('materials');
   const [loadingProfile, setLoadingProfile] = useState(true);
+  const [assessmentStatus, setAssessmentStatus] = useState<AssessmentStatus>('unknown');
+  const [assessmentForm, setAssessmentForm] = useState<AssessmentForm>({
+    account: '',
+    server: '',
+    investorPassword: '',
+  });
+  const [assessmentLoading, setAssessmentLoading] = useState(false);
+  const [assessmentError, setAssessmentError] = useState('');
   const { t, language } = useLanguage();
   const isZh = language === 'zh';
   const profileId = userProfile?.id || null;
@@ -231,6 +247,83 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
       localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
     }
     setLoadingProfile(false);
+  };
+
+  useEffect(() => {
+    if (!profileId) return;
+    let alive = true;
+    const loadAssessment = async () => {
+      setAssessmentLoading(true);
+      setAssessmentError('');
+      try {
+        const { data: assessmentData } = await supabase
+          .from('assessments')
+          .select('status')
+          .eq('user_id', profileId)
+          .eq('rule', '10_days_no_loss')
+          .maybeSingle();
+
+        if (alive) {
+          setAssessmentStatus((assessmentData?.status as AssessmentStatus) || 'not_started');
+        }
+
+        const { data: enrollData } = await supabase
+          .from('assessment_enrollments')
+          .select('account, server, investor_password')
+          .eq('user_id', profileId)
+          .eq('rule', '10_days_no_loss')
+          .maybeSingle();
+
+        if (alive && enrollData) {
+          setAssessmentForm({
+            account: enrollData.account || '',
+            server: enrollData.server || '',
+            investorPassword: enrollData.investor_password || '',
+          });
+        }
+      } catch {
+        if (alive) {
+          setAssessmentStatus('unknown');
+        }
+      } finally {
+        if (alive) setAssessmentLoading(false);
+      }
+    };
+
+    loadAssessment();
+    return () => {
+      alive = false;
+    };
+  }, [profileId, supabase]);
+
+  const handleStartAssessment = async () => {
+    setAssessmentLoading(true);
+    setAssessmentError('');
+    try {
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      if (!token) throw new Error(isZh ? '请重新登录后再试' : 'Please sign in again and retry.');
+
+      const resp = await fetch('/api/trading/assessment/start', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(assessmentForm),
+      });
+
+      if (!resp.ok) {
+        const body = await resp.json().catch(() => ({}));
+        throw new Error(body.message || (isZh ? '提交失败，请稍后再试' : 'Submit failed, please retry.'));
+      }
+
+      setAssessmentStatus('started');
+    } catch (err) {
+      setAssessmentError(err instanceof Error ? err.message : isZh ? '提交失败' : 'Submit failed');
+    } finally {
+      setAssessmentLoading(false);
+    }
   };
 
   const handleExamPassed = () => {
@@ -388,6 +481,17 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
           </TabsList>
 
           <TabsContent value="materials" className="space-y-6">
+            {userProfile?.role === 'trainee' && (
+              <TenDayAssessmentCard
+                isZh={isZh}
+                status={assessmentStatus}
+                loading={assessmentLoading}
+                form={assessmentForm}
+                onFormChange={setAssessmentForm}
+                onStart={handleStartAssessment}
+                error={assessmentError}
+              />
+            )}
             <div className="grid gap-6 md:grid-cols-3">
               {materialBlocks.map((block) => (
                 <div
@@ -454,6 +558,121 @@ function FuliSystemPageInner({ supabase }: { supabase: SupabaseClient }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function TenDayAssessmentCard({
+  isZh,
+  status,
+  loading,
+  form,
+  onFormChange,
+  onStart,
+  error,
+}: {
+  isZh: boolean;
+  status: AssessmentStatus;
+  loading: boolean;
+  form: AssessmentForm;
+  onFormChange: React.Dispatch<React.SetStateAction<AssessmentForm>>;
+  onStart: () => void;
+  error: string;
+}) {
+  const statusLabel =
+    status === 'started'
+      ? isZh
+        ? '已报名考核，系统自动统计最近 10 个交易日盈亏'
+        : 'Enrolled. System will track the latest 10 trading days.'
+      : status === 'passed'
+      ? isZh
+        ? '已通过考核'
+        : 'Assessment passed'
+      : status === 'not_started'
+      ? isZh
+        ? '尚未报名考核'
+        : 'Not enrolled yet'
+      : isZh
+      ? '状态未知，可重新提交'
+      : 'Status unknown, you may submit again';
+
+  return (
+    <section className="border-2 border-dashed border-amber-500 bg-amber-50 dark:bg-amber-950/20 p-6 space-y-4 rounded-xl">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-lg font-bold text-amber-800 dark:text-amber-200">
+          {isZh ? '10 天不亏损考核报名' : '10-Day No-Loss Assessment Enrollment'}
+        </h3>
+        <p className="text-sm text-amber-900 dark:text-amber-100">{statusLabel}</p>
+        <ul className="text-xs text-amber-900 dark:text-amber-100 list-disc list-inside space-y-1">
+          <li>{isZh ? '填写 Tickmill 模拟账号信息后点击“开始考核”，系统会按日同步盈亏。' : 'Fill Tickmill demo account info, then click “Start Assessment”; system will sync daily PnL.'}</li>
+          <li>{isZh ? '10 个交易日连续不亏损，系统自动升级为“初级交易员”。' : 'If no loss for 10 trading days, you will be auto-upgraded to Junior Trader.'}</li>
+        </ul>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        <label className="space-y-1 text-sm text-gray-800 dark:text-gray-100">
+          <span>{isZh ? 'Tickmill 账号' : 'Tickmill Account'}</span>
+          <input
+            value={form.account}
+            onChange={(e) => onFormChange((prev) => ({ ...prev, account: e.target.value }))}
+            className="w-full rounded-md border border-amber-200 dark:border-amber-800 bg-white dark:bg-amber-950/40 px-3 py-2 text-sm text-gray-900 dark:text-white"
+            placeholder={isZh ? '请输入账号' : 'Enter account'}
+          />
+        </label>
+        <label className="space-y-1 text-sm text-gray-800 dark:text-gray-100">
+          <span>{isZh ? '服务器' : 'Server'}</span>
+          <input
+            value={form.server}
+            onChange={(e) => onFormChange((prev) => ({ ...prev, server: e.target.value }))}
+            className="w-full rounded-md border border-amber-200 dark:border-amber-800 bg-white dark:bg-amber-950/40 px-3 py-2 text-sm text-gray-900 dark:text-white"
+            placeholder={isZh ? '示例：Tickmill-Demo' : 'e.g. Tickmill-Demo'}
+          />
+        </label>
+        <label className="space-y-1 text-sm text-gray-800 dark:text-gray-100">
+          <span>{isZh ? '投资者密码' : 'Investor Password'}</span>
+          <input
+            type="password"
+            value={form.investorPassword}
+            onChange={(e) =>
+              onFormChange((prev) => ({ ...prev, investorPassword: e.target.value }))
+            }
+            className="w-full rounded-md border border-amber-200 dark:border-amber-800 bg-white dark:bg-amber-950/40 px-3 py-2 text-sm text-gray-900 dark:text-white"
+            placeholder={isZh ? '请输入投资者密码' : 'Enter investor password'}
+          />
+        </label>
+      </div>
+
+      {error && (
+        <div className="rounded-md border border-red-300 bg-red-50 dark:border-red-800 dark:bg-red-900/20 px-3 py-2 text-sm text-red-700 dark:text-red-200">
+          {error}
+        </div>
+      )}
+
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-xs text-amber-900 dark:text-amber-100">
+          {isZh
+            ? '提交后可随时修改账户信息，后台会显示你的每日盈亏与做单情况。'
+            : 'You can update these fields anytime; admins will see your daily PnL and trades.'}
+        </p>
+        <button
+          type="button"
+          onClick={onStart}
+          disabled={loading}
+          className="px-4 py-2 rounded-md bg-amber-600 text-white font-semibold hover:bg-amber-700 disabled:opacity-60"
+        >
+          {loading
+            ? isZh
+              ? '提交中...'
+              : 'Submitting...'
+            : status === 'started'
+            ? isZh
+              ? '更新考核信息'
+              : 'Update Enrollment'
+            : isZh
+            ? '开始考核'
+            : 'Start Assessment'}
+        </button>
+      </div>
+    </section>
   );
 }
 

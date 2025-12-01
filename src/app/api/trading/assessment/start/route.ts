@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     .from('profiles')
     .select('role')
     .eq('id', user.id)
-    .single();
+    .maybeSingle();
 
   if (profileError || !profile) {
     return NextResponse.json({ message: '找不到用户资料' }, { status: 400 });
@@ -42,40 +42,67 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: '只有见习学员可以报名该考核' }, { status: 403 });
   }
 
-  const { error: upsertError } = await supabase
+  // 手动 upsert assessments，避免依赖唯一约束
+  const { data: existingAssess } = await supabase
     .from('assessments')
-    .upsert(
-      {
-        user_id: user.id,
-        rule: '10_days_no_loss',
-        status: 'started',
-      },
-      {
-        onConflict: 'user_id,rule',
-      }
-    );
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('rule', '10_days_no_loss')
+    .maybeSingle();
 
-  if (upsertError) {
-    return NextResponse.json({ message: upsertError.message }, { status: 400 });
+  if (existingAssess?.id) {
+    const { error: updateAssessError } = await supabase
+      .from('assessments')
+      .update({ status: 'started' })
+      .eq('id', existingAssess.id);
+    if (updateAssessError) {
+      return NextResponse.json({ message: updateAssessError.message }, { status: 400 });
+    }
+  } else {
+    const { error: insertAssessError } = await supabase
+      .from('assessments')
+      .insert({ user_id: user.id, rule: '10_days_no_loss', status: 'started' });
+    if (insertAssessError) {
+      return NextResponse.json({ message: insertAssessError.message }, { status: 400 });
+    }
   }
 
+  // 手动 upsert assessment_enrollments
+  const { data: existingEnroll } = await supabase
+    .from('assessment_enrollments')
+    .select('user_id')
+    .eq('user_id', user.id)
+    .eq('rule', '10_days_no_loss')
+    .maybeSingle();
+
   if (account || server || investorPassword) {
-    const { error: enrollError } = await supabase
-      .from('assessment_enrollments')
-      .upsert(
-        {
-          user_id: user.id,
-          rule: '10_days_no_loss',
+    if (existingEnroll) {
+      const { error: updateEnrollError } = await supabase
+        .from('assessment_enrollments')
+        .update({
           account: account || null,
           server: server || null,
           investor_password: investorPassword || null,
           updated_at: new Date().toISOString(),
-        },
-        { onConflict: 'user_id,rule' }
-      );
+        })
+        .eq('user_id', user.id)
+        .eq('rule', '10_days_no_loss');
 
-    if (enrollError) {
-      return NextResponse.json({ message: enrollError.message }, { status: 400 });
+      if (updateEnrollError) {
+        return NextResponse.json({ message: updateEnrollError.message }, { status: 400 });
+      }
+    } else {
+      const { error: insertEnrollError } = await supabase.from('assessment_enrollments').insert({
+        user_id: user.id,
+        rule: '10_days_no_loss',
+        account: account || null,
+        server: server || null,
+        investor_password: investorPassword || null,
+      });
+
+      if (insertEnrollError) {
+        return NextResponse.json({ message: insertEnrollError.message }, { status: 400 });
+      }
     }
   }
 

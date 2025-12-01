@@ -51,6 +51,10 @@ create table if not exists public.assessments (
   created_at timestamptz default now()
 );
 
+-- 确保按 (user_id, rule) 去重，便于 upsert
+create unique index if not exists assessments_user_rule_idx
+  on public.assessments (user_id, rule);
+
 -- 可选：用于累加日度盈亏的 RPC（防止 upsert 覆盖）
 create or replace function public.increment_daily_pnl(
   p_user_id uuid,

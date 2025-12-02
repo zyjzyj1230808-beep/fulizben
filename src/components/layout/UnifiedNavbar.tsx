@@ -68,8 +68,8 @@ export default function UnifiedNavbar() {
       link: '/partners/magic-university',
       hasDropdown: true,
       dropdownItems: [
-        { name: language === 'zh' ? '魔法大学' : 'Magic University', link: '/partners/magic-university' },
-        { name: language === 'zh' ? '稳中孚交易孵化营' : 'WZH Prop Trading Incubator', link: '/partners/incubator' },
+        { name: language === 'zh' ? '魔界大学' : 'Magic University', link: '/partners/magic-university' },
+        { name: language === 'zh' ? '稳准狠交易孵化营' : 'WZH Prop Trading Incubator', link: '/partners/incubator' },
       ],
     },
   ];

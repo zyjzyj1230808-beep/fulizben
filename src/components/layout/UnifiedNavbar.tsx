@@ -19,63 +19,58 @@ export default function UnifiedNavbar() {
 
   const navItems = [
     {
-      name: language === 'zh' ? '关于我们' : 'About Us',
-      link: "/about/overview",
+      name: language === 'zh' ? '关于浮力' : 'About Us',
+      link: '/about/overview',
       hasDropdown: true,
       dropdownItems: [
         { name: language === 'zh' ? '关于浮力' : 'Overview', link: '/about/overview' },
-        { name: language === 'zh' ? '浮力榜' : 'Leaderboard', link: '/top-traders' },
-        { name: language === 'zh' ? '浮力市场晴雨表' : 'Market Barometer', link: '/market-barometer' },
+        { name: language === 'zh' ? '浮力榜单' : 'Leaderboard', link: '/top-traders' },
+        { name: language === 'zh' ? '市场晴雨表' : 'Market Barometer', link: '/market-barometer' },
         { name: language === 'zh' ? '联系我们' : 'Contact Us', link: '/about/contact' },
-      ]
+      ],
     },
     {
       name: language === 'zh' ? '浮力教育' : 'Fuli Education',
-      link: "/education",
+      link: '/education',
       hasDropdown: true,
       dropdownItems: [
-        { name: language === 'zh' ? '行业介绍' : 'Industry Overview', link: '/education/industry' },
-        { name: language === 'zh' ? '入门学习' : 'Beginner Learning', link: '/education/beginner' },
+        { name: language === 'zh' ? '行业概览' : 'Industry Overview', link: '/education/industry' },
+        { name: language === 'zh' ? '新手学习' : 'Beginner Learning', link: '/education/beginner' },
         { name: language === 'zh' ? '职业之路' : 'Career Path', link: '/education/career' },
         { name: t('nav.blog'), link: '/splan/blog' },
         { name: language === 'zh' ? '日历' : 'Calendar', link: '/economic-calendar' },
         { name: t('nav.dashboard'), link: '/dashboard' },
         { name: t('nav.tradingTools'), link: '/tools/position-calculator' },
-      ]
+      ],
     },
     {
       name: language === 'zh' ? '浮力助梦' : 'Fuli Support',
-      link: "/splan/support",
+      link: '/splan/support',
       hasDropdown: true,
       dropdownItems: [
-        {
-          name: language === 'zh' ? '项目介绍' : 'Program Overview',
-          link: '/splan/support',
-        },
-        {
-          name: language === 'zh' ? '培训体系' : 'Training Tracks',
-          link: '/splan/support/training',
-        },
+        { name: language === 'zh' ? '项目概览' : 'Program Overview', link: '/splan/support' },
+        { name: language === 'zh' ? '训练体系' : 'Training Tracks', link: '/splan/support/training' },
+        { name: language === 'zh' ? '捐赠' : 'Donate', link: '/splan/donate' },
       ],
     },
     {
       name: language === 'zh' ? '浮力财富' : 'Fuli Wealth',
-      link: "/about/wealth",
+      link: '/about/wealth',
       hasDropdown: true,
       dropdownItems: [
         { name: language === 'zh' ? '复利矩阵' : 'Compound Matrix', link: '/about/wealth#compound-matrix' },
-        { name: language === 'zh' ? '合伙人' : 'Partners', link: '/about/wealth#partners' },
+        { name: language === 'zh' ? '合作伙伴' : 'Partners', link: '/about/wealth#partners' },
         { name: language === 'zh' ? '浮力系统' : 'Fuli System', link: '/about/wealth/fuli-system' },
       ],
     },
     {
       name: language === 'zh' ? '战略合作伙伴' : 'Strategic Partners',
-      link: "/partners/magic-university",
+      link: '/partners/magic-university',
       hasDropdown: true,
       dropdownItems: [
-        { name: language === 'zh' ? '魔界大学' : 'Magic University', link: '/partners/magic-university' },
-        { name: language === 'zh' ? '稳准狠自营交易孵化器' : 'WZH Prop Trading Incubator', link: '/partners/incubator' },
-      ]
+        { name: language === 'zh' ? '魔法大学' : 'Magic University', link: '/partners/magic-university' },
+        { name: language === 'zh' ? '稳中孚交易孵化营' : 'WZH Prop Trading Incubator', link: '/partners/incubator' },
+      ],
     },
   ];
 
@@ -117,95 +112,103 @@ export default function UnifiedNavbar() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - 靠左 */}
+          {/* Logo - 桌面端 */}
           <div className="flex items-center space-x-6">
             <LocaleLink href="/" className="flex items-center group">
               <span className="text-2xl"><BrandName /></span>
             </LocaleLink>
 
-            {/* Desktop Navigation - 紧跟 Logo */}
+            {/* Desktop Navigation - 桌面端 Logo 右侧 */}
             <div className="hidden md:flex items-center">
               {navItems.map((item, index) => (
-              <div
-                key={index}
-                className="relative"
-                onMouseEnter={() => item.hasDropdown && setOpenDropdown(item.name)}
-                onMouseLeave={() => item.hasDropdown && setOpenDropdown(null)}
-              >
-                <LocaleLink
-                  href={item.link}
-                  className="relative px-3 py-2 text-sm font-medium transition-colors group flex items-center gap-1"
+                <div
+                  key={index}
+                  className="relative"
+                  onMouseEnter={() => item.hasDropdown && setOpenDropdown(item.name)}
+                  onMouseLeave={() => item.hasDropdown && setOpenDropdown(null)}
                 >
-                  <span
-                    className={`relative z-10 ${
-                      isActive(item.link)
-                        ? 'text-black dark:text-white font-bold'
-                        : 'text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white'
-                    }`}
+                  <LocaleLink
+                    href={item.link}
+                    className="relative px-3 py-2 text-sm font-medium transition-colors group flex items-center gap-1"
                   >
-                    {item.name}
-                  </span>
-                  {item.hasDropdown && (
-                    <svg
-                      className={`w-4 h-4 transition-transform ${
-                        openDropdown === item.name ? 'rotate-180' : ''
-                      } ${
+                    <span
+                      className={`relative z-10 ${
                         isActive(item.link)
-                          ? 'text-black dark:text-white'
+                          ? 'text-black dark:text-white font-bold'
                           : 'text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white'
                       }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  )}
-                  {isActive(item.link) && !item.hasDropdown && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-black dark:bg-white"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                </LocaleLink>
-
-                {/* Dropdown Menu */}
-                {item.hasDropdown && item.dropdownItems && (
-                  <AnimatePresence>
-                    {openDropdown === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg z-50"
+                      {item.name}
+                    </span>
+                    {item.hasDropdown && (
+                      <svg
+                        className={`w-4 h-4 transition-transform ${
+                          openDropdown === item.name ? 'rotate-180' : ''
+                        } ${
+                          isActive(item.link)
+                            ? 'text-black dark:text-white'
+                            : 'text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white'
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                        {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
-                          <LocaleLink
-                            key={dropdownIndex}
-                            href={dropdownItem.link}
-                            className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800 last:border-b-0"
-                          >
-                            {dropdownItem.name}
-                          </LocaleLink>
-                        ))}
-                      </motion.div>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
                     )}
-                  </AnimatePresence>
-                )}
-              </div>
-            ))}
+                    {isActive(item.link) && !item.hasDropdown && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-black dark:bg-white"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </LocaleLink>
+
+                  {/* Dropdown Menu */}
+                  {item.hasDropdown && item.dropdownItems && (
+                    <AnimatePresence>
+                      {openDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg z-50"
+                        >
+                          {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                            <LocaleLink
+                              key={dropdownIndex}
+                              href={dropdownItem.link}
+                              className="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-black dark:hover:text-white transition-colors border-b border-gray-100 dark:border-gray-800 last:border-b-0"
+                            >
+                              {dropdownItem.name}
+                            </LocaleLink>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Side Actions (Desktop) - 靠右 */}
+          {/* Right Side Actions (Desktop) - 桌面端 */}
           <div className="hidden md:flex items-center gap-3">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               className="p-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              title={theme === 'light' ? (language === 'zh' ? '切换到深色模式' : 'Switch to Dark Mode') : (language === 'zh' ? '切换到浅色模式' : 'Switch to Light Mode')}
+              title={
+                theme === 'light'
+                  ? language === 'zh'
+                    ? '切换到暗色模式'
+                    : 'Switch to Dark Mode'
+                  : language === 'zh'
+                    ? '切换到浅色模式'
+                    : 'Switch to Light Mode'
+              }
               aria-label={theme === 'light' ? 'Dark mode' : 'Light mode'}
             >
               {theme === 'light' ? (
@@ -340,7 +343,7 @@ export default function UnifiedNavbar() {
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                       </svg>
-                      <span>{language === 'zh' ? '深色模式' : 'Dark Mode'}</span>
+                      <span>{language === 'zh' ? '暗色模式' : 'Dark Mode'}</span>
                     </>
                   ) : (
                     <>
